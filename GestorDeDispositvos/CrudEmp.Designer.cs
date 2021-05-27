@@ -29,9 +29,10 @@ namespace GestorDeDispositvos
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CrudEmp));
+            this.txtNumEmp = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtNombEmp = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
@@ -45,12 +46,12 @@ namespace GestorDeDispositvos
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // textBox1
+            // txtNumEmp
             // 
-            this.textBox1.Location = new System.Drawing.Point(133, 47);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(160, 26);
-            this.textBox1.TabIndex = 0;
+            this.txtNumEmp.Location = new System.Drawing.Point(133, 47);
+            this.txtNumEmp.Name = "txtNumEmp";
+            this.txtNumEmp.Size = new System.Drawing.Size(160, 26);
+            this.txtNumEmp.TabIndex = 0;
             // 
             // label1
             // 
@@ -61,12 +62,12 @@ namespace GestorDeDispositvos
             this.label1.TabIndex = 1;
             this.label1.Text = "Número:";
             // 
-            // textBox2
+            // txtNombEmp
             // 
-            this.textBox2.Location = new System.Drawing.Point(133, 83);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(160, 26);
-            this.textBox2.TabIndex = 2;
+            this.txtNombEmp.Location = new System.Drawing.Point(133, 83);
+            this.txtNombEmp.Name = "txtNombEmp";
+            this.txtNombEmp.Size = new System.Drawing.Size(160, 26);
+            this.txtNombEmp.TabIndex = 2;
             // 
             // label2
             // 
@@ -89,9 +90,9 @@ namespace GestorDeDispositvos
             this.panel1.Controls.Add(this.button3);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.txtNumEmp);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.textBox2);
+            this.panel1.Controls.Add(this.txtNombEmp);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(24, 25);
             this.panel1.Name = "panel1";
@@ -101,7 +102,7 @@ namespace GestorDeDispositvos
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(346, 248);
+            this.label6.Location = new System.Drawing.Point(359, 248);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(68, 20);
             this.label6.TabIndex = 11;
@@ -136,6 +137,7 @@ namespace GestorDeDispositvos
             // 
             // button4
             // 
+            this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
             this.button4.Location = new System.Drawing.Point(356, 192);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 42);
@@ -144,6 +146,7 @@ namespace GestorDeDispositvos
             // 
             // button3
             // 
+            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
             this.button3.Location = new System.Drawing.Point(249, 192);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 42);
@@ -152,6 +155,7 @@ namespace GestorDeDispositvos
             // 
             // button2
             // 
+            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
             this.button2.Location = new System.Drawing.Point(145, 192);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 42);
@@ -160,7 +164,7 @@ namespace GestorDeDispositvos
             // 
             // button1
             // 
-            this.button1.Image = global::GestorDeDispositvos.Properties.Resources.nuevo;
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
             this.button1.Location = new System.Drawing.Point(47, 192);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 42);
@@ -175,6 +179,7 @@ namespace GestorDeDispositvos
             this.Controls.Add(this.panel1);
             this.Name = "CrudEmp";
             this.Text = "CrudEmp";
+            this.Load += new System.EventHandler(this.CrudEmp_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -183,9 +188,9 @@ namespace GestorDeDispositvos
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtNumEmp;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtNombEmp;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button1;

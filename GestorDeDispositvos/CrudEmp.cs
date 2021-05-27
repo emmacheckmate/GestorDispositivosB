@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 namespace GestorDeDispositvos
 {
@@ -15,6 +16,14 @@ namespace GestorDeDispositvos
         public CrudEmp()
         {
             InitializeComponent();
+        }
+
+        private void CrudEmp_Load(object sender, EventArgs e)
+        {
+            txtNombEmp.Text = "";
+            txtNumEmp.Text = "";
+
+
         }
     }
 }

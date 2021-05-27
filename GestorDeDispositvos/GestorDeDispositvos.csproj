@@ -66,6 +66,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Validaciones.cs" />
     <EmbeddedResource Include="CrudEmp.resx">
       <DependentUpon>CrudEmp.cs</DependentUpon>
     </EmbeddedResource>
