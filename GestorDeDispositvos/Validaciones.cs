@@ -42,7 +42,8 @@ namespace GestorDeDispositvos
             listaPatrones.Add(@"^[a-zA-Z0-9\_]+$");
             /*Numero de emp*/
             listaPatrones.Add(@"^[0-9\_]+$");
-
+            /*sucursal*/
+            listaPatrones.Add(@"^[0-9\_]+$")
         }
 
         /*02*/
