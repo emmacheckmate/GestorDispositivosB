@@ -30,3 +30,4 @@ C:\Users\Sistemas_B8\Documents\GitHub\GestorDispositivosB\GestorDeDispositvos\ob
 C:\Users\Sistemas_B8\Documents\GitHub\GestorDispositivosB\GestorDeDispositvos\bin\Debug\GestorDeDispositvos.exe.config
 C:\Users\Sistemas_B8\Documents\GitHub\GestorDispositivosB\GestorDeDispositvos\bin\Debug\GestorDeDispositvos.exe
 C:\Users\Sistemas_B8\Documents\GitHub\GestorDispositivosB\GestorDeDispositvos\bin\Debug\GestorDeDispositvos.pdb
+C:\Users\Sistemas_B8\Documents\GitHub\GestorDispositivosB\GestorDeDispositvos\obj\Debug\GestorDeDispositvos.CrudRadio.resources

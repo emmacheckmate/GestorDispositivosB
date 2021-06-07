@@ -30,7 +30,9 @@ namespace GestorDeDispositvos
 
         }
 
-
-
+        private void txtNombEmp_Validating(object sender, CancelEventArgs e)
+        {
+           
+        }
     }
 }

@@ -10,10 +10,12 @@ namespace GestorDeDispositvos
 {
     /*Clase para realizar todas las validaciones para los 
      datos a ingresar */
+   
+
     class Validaciones
     {
+        List<string> listaErrores = new List<string>(); 
         List<String> listaPatrones = new List<string>();
-        MessageBox msgbx;
 
         private  string nombrev;
         private int numemp;
@@ -47,11 +49,16 @@ namespace GestorDeDispositvos
         }
 
         /*02*/
-        public void inicializaMsgBox(string mensaje, string caption, MessageBoxButtons b )
+        public void inicializaMsgBox( )
         {
+            listaErrores.Add("Número de serie de radio no valida");
+            listaErrores.Add("Nombre de empleado no valido");
+            listaErrores.Add("Nombre ingresado no válido");
+            listaErrores.Add("Fecha ingresada incorrecta");
+
 
         }
-        /*Metodo al que va a hacer referencia para verificar los datos que va }
+        /*Metodo al que va a hacer referencia para verificar los datos que va 
          ingresar para registrar a un empleado */
         public void checaDatosDeEmpleado( string nameE , int numE)
         {

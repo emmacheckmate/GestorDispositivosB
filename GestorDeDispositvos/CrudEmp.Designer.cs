@@ -68,6 +68,7 @@ namespace GestorDeDispositvos
             this.txtNombEmp.Name = "txtNombEmp";
             this.txtNombEmp.Size = new System.Drawing.Size(160, 26);
             this.txtNombEmp.TabIndex = 2;
+            this.txtNombEmp.Validating += new System.ComponentModel.CancelEventHandler(this.txtNombEmp_Validating);
             // 
             // label2
             // 
@@ -175,9 +176,11 @@ namespace GestorDeDispositvos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(616, 404);
             this.Controls.Add(this.panel1);
             this.Name = "CrudEmp";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CrudEmp";
             this.Load += new System.EventHandler(this.CrudEmp_Load);
             this.panel1.ResumeLayout(false);

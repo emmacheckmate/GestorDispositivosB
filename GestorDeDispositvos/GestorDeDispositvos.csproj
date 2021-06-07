@@ -71,6 +71,9 @@
     <EmbeddedResource Include="CrudEmp.resx">
       <DependentUpon>CrudEmp.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CrudRadio.resx">
+      <DependentUpon>CrudRadio.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Principal.resx">
       <DependentUpon>Principal.cs</DependentUpon>
     </EmbeddedResource>
