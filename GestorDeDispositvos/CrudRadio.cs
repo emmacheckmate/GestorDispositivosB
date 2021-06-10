@@ -28,7 +28,11 @@ namespace GestorDeDispositvos
 
         private void CrudRadio_Load(object sender, EventArgs e)
         {
-            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM catArea ", "Data Source=DESKTOP-S0SCMU4" + "\\" + "SQLEXPRESS;Initial Catalog=dbGestDisp;Integrated Security=True");
+            SqlDataAdapter da1 = new SqlDataAdapter("SELECT * FROM catArea ", "Data Source=DESKTOP-S0SCMU4" + "\\" + "SQLEXPRESS;Initial Catalog=dbGestDisp;Integrated Security=True");
+            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM Information_Schema.Columns Where catArea PRDER NY COLUMN_NAME ", 
+                                                    "Data Source=DESKTOP-S0SCMU4" + 
+                                                    "\\" +
+                                                    "SQLEXPRESS;Initial Catalog=dbGestDisp;Integrated Security=True");
 
             DataTable dt = new DataTable();
             da.Fill(dt);
@@ -51,7 +55,7 @@ namespace GestorDeDispositvos
             dataGridEnt.Location = new System.Drawing.Point(29, 197);
 
             dataGridEnt.ColumnCount = 5;
-            dataGridEnt.Columns[0].Name = "NOMBRE";
+            dataGridEnt.Columns[0].Name = "No. Ser";
 
             dataGridEnt.Columns[0].Width = 150;
             dataGridEnt.Columns[1].Name = "DIR_AT";

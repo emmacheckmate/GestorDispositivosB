@@ -81,5 +81,29 @@ namespace GestorDeDispositvos
         {
           SqlDataAdapter da = new SqlDataAdapter( qry ,  cadenaConexion );
         }
+
+        public void inicializa_dgv( int i )
+        {
+
+
+
+            ldgCat[0].Size = new System.Drawing.Size(595, 304);
+            ldgCat[0].Location = new System.Drawing.Point(29, 197);
+
+                ldgCat[0].ColumnCount = 5;
+                ldgCat[0].Columns[0].Name = "No. Ser";
+
+                ldgCat[0].Columns[0].Width = 150;
+                ldgCat[0].Columns[1].Name = "DIR_AT";
+                ldgCat[0].Columns[2].Name = "DIR_ENT  ";
+                ldgCat[0].Columns[3].Name = "DIR_DATOS";
+                ldgCat[0].Columns[4].Name = "SIG_ENT";
+                ldgCat[0].BackgroundColor = System.Drawing.Color.LightGreen;
+                ldgCat[0].Columns[1].Visible = false;
+                ldgCat[0].Columns[2].Visible = false;
+                ldgCat[0].Columns[3].Visible = false;
+                ldgCat[0].Columns[4].Visible = false;
+            
+        }
     }
 }
