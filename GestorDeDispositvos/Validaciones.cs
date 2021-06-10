@@ -21,8 +21,8 @@ namespace GestorDeDispositvos
         private int numemp;
         public string Nombre
         {
-            get => nombrev;
-            set => nombrev = value;
+            set { this.nombrev = value; }
+            get { return nombrev; }
         }
 
         public int numero

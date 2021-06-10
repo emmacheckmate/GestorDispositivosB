@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BDSQL.cs" />
     <Compile Include="CrudEmp.cs">
       <SubType>Form</SubType>
     </Compile>
