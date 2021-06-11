@@ -59,6 +59,7 @@
     <Compile Include="CrudRadio.Designer.cs">
       <DependentUpon>CrudRadio.cs</DependentUpon>
     </Compile>
+    <Compile Include="DataGridControl.cs" />
     <Compile Include="Impresion.cs" />
     <Compile Include="Principal.cs">
       <SubType>Form</SubType>

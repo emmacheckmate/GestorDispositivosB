@@ -21,6 +21,7 @@ namespace GestorDeDispositvos
 
             InitializeComponent();
             this.Controls.Add(dataGridEnt);
+            this.inicilizaDataGridRadio();
             dataGridEnt.BringToFront();
 
 
@@ -28,15 +29,23 @@ namespace GestorDeDispositvos
 
         private void CrudRadio_Load(object sender, EventArgs e)
         {
-            SqlDataAdapter da1 = new SqlDataAdapter("SELECT * FROM catArea ", "Data Source=DESKTOP-S0SCMU4" + "\\" + "SQLEXPRESS;Initial Catalog=dbGestDisp;Integrated Security=True");
-            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM Information_Schema.Columns Where catArea PRDER NY COLUMN_NAME ", 
+            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM catArea ", "Data Source=DESKTOP-S0SCMU4" + "\\" + "SQLEXPRESS;Initial Catalog=dbGestDisp;Integrated Security=True");
+            SqlDataAdapter da1 = new SqlDataAdapter("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS " +
+                                                    "Where TABLE_NAME='catArea' ORDER BY ORDINAL_POSITION ", 
                                                     "Data Source=DESKTOP-S0SCMU4" + 
                                                     "\\" +
                                                     "SQLEXPRESS;Initial Catalog=dbGestDisp;Integrated Security=True");
 
             DataTable dt = new DataTable();
             da.Fill(dt);
-            
+
+
+            for (int i2 = 0; i2 < dt.Rows.Count; i2++)
+            {
+
+                comboBox1.Items.Add(dt.Rows[i2].Field<string>(0));
+            }
+
             for (int i = 0; i < dt.Rows.Count; i++  )
             {
                 
@@ -48,30 +57,57 @@ namespace GestorDeDispositvos
 
         }
 
-        public void inicilizaDataGridEntidad()
+        public void inicilizaDataGridRadio()
         {
 
             dataGridEnt.Size = new System.Drawing.Size(595, 304);
             dataGridEnt.Location = new System.Drawing.Point(29, 197);
 
-            dataGridEnt.ColumnCount = 5;
-            dataGridEnt.Columns[0].Name = "No. Ser";
-
+            dataGridEnt.ColumnCount =1;
+            dataGridEnt.Columns[0].Name = "Número de Serie";
             dataGridEnt.Columns[0].Width = 150;
-            dataGridEnt.Columns[1].Name = "DIR_AT";
-            dataGridEnt.Columns[2].Name = "DIR_ENT  ";
-            dataGridEnt.Columns[3].Name = "DIR_DATOS";
-            dataGridEnt.Columns[4].Name = "SIG_ENT";
             dataGridEnt.BackgroundColor = System.Drawing.Color.LightGreen;
-            dataGridEnt.Columns[1].Visible = false;
-            dataGridEnt.Columns[2].Visible = false;
-            dataGridEnt.Columns[3].Visible = false;
-            dataGridEnt.Columns[4].Visible = false;
+            
         }
 
-        public void cargaCatalogos(int filas, ComboBox c)
-        { }
+        public void inicilizaDataGridEmpleados()
+        {
 
-     
+            dataGridEnt.Size = new System.Drawing.Size(595, 304);
+            dataGridEnt.Location = new System.Drawing.Point(29, 197);
+
+            dataGridEnt.ColumnCount = 1;
+            dataGridEnt.Columns[0].Name = "Nombre";
+            dataGridEnt.Columns[0].Width = 150;
+            dataGridEnt.BackgroundColor = System.Drawing.Color.LightGreen;
+
+        }
+
+        public void inicilizaDataGridSucursales()
+        {
+
+            dataGridEnt.Size = new System.Drawing.Size(595, 304);
+            dataGridEnt.Location = new System.Drawing.Point(29, 197);
+
+            dataGridEnt.ColumnCount = 1;
+            dataGridEnt.Columns[0].Name = "Nombre";
+            dataGridEnt.Columns[0].Width = 150;
+            dataGridEnt.BackgroundColor = System.Drawing.Color.LightGreen;
+
+        }
+
+        public void inicilizaDataGridEstado()
+        {
+
+            dataGridEnt.Size = new System.Drawing.Size(595, 304);
+            dataGridEnt.Location = new System.Drawing.Point(29, 197);
+
+            dataGridEnt.ColumnCount = 1;
+            dataGridEnt.Columns[0].Name = "Nombre";
+            dataGridEnt.Columns[0].Width = 150;
+            dataGridEnt.BackgroundColor = System.Drawing.Color.LightGreen;
+
+        }
+       
     }
 }
