@@ -29,7 +29,7 @@ namespace GestorDeDispositvos
 
         private void CrudRadio_Load(object sender, EventArgs e)
         {
-            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM catArea ", "Data Source=DESKTOP-S0SCMU4" + "\\" + "SQLEXPRESS;Initial Catalog=dbGestDisp;Integrated Security=True");
+            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM catEmp  ", "Data Source=DESKTOP-S0SCMU4" + "\\" + "SQLEXPRESS;Initial Catalog=dbGestDisp;Integrated Security=True");
             SqlDataAdapter da1 = new SqlDataAdapter("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS " +
                                                     "Where TABLE_NAME='catArea' ORDER BY ORDINAL_POSITION ", 
                                                     "Data Source=DESKTOP-S0SCMU4" + 
@@ -38,21 +38,23 @@ namespace GestorDeDispositvos
 
             DataTable dt = new DataTable();
             da.Fill(dt);
-
+            
 
             for (int i2 = 0; i2 < dt.Rows.Count; i2++)
             {
 
                 comboBox1.Items.Add(dt.Rows[i2].Field<string>(0));
             }
-
-            for (int i = 0; i < dt.Rows.Count; i++  )
+            da1.Fill(dt);
+            
+            
+            for (int i = 0; i < dt.Columns.Count-1; i++  )
             {
+                MessageBox.Show(dt.Columns[i].ColumnName);
                 
-                comboBox1.Items.Add(dt.Rows[i].Field<string>(0));
             }
             
-          //
+            //
 
 
         }

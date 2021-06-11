@@ -82,28 +82,31 @@ namespace GestorDeDispositvos
           SqlDataAdapter da = new SqlDataAdapter( qry ,  cadenaConexion );
         }
 
-        public void inicializa_dgv( int i )
+        /*Lee los atributos de la tabla  le pasa la consulta */
+        public List<string> leeTabla(DataTable dt, SqlDataAdapter da)
+        {
+            List<string> l = new List<string>();
+            da.Fill(dt);
+
+
+            for (int i = 0; i < dt.Columns.Count - 1; i++)
+            {
+                l.Add(dt.Columns[i].ColumnName);
+
+            }
+
+            return ( l );
+        }
+        
+        /*Pasa una lista de los datos nombres de los nombres del de las tablas */
+        public void pasa_a_dataview(List<string> camposTabla)
         {
 
-
-
-            ldgCat[0].Size = new System.Drawing.Size(595, 304);
-            ldgCat[0].Location = new System.Drawing.Point(29, 197);
-
-                ldgCat[0].ColumnCount = 5;
-                ldgCat[0].Columns[0].Name = "No. Ser";
-
-                ldgCat[0].Columns[0].Width = 150;
-                ldgCat[0].Columns[1].Name = "DIR_AT";
-                ldgCat[0].Columns[2].Name = "DIR_ENT  ";
-                ldgCat[0].Columns[3].Name = "DIR_DATOS";
-                ldgCat[0].Columns[4].Name = "SIG_ENT";
-                ldgCat[0].BackgroundColor = System.Drawing.Color.LightGreen;
-                ldgCat[0].Columns[1].Visible = false;
-                ldgCat[0].Columns[2].Visible = false;
-                ldgCat[0].Columns[3].Visible = false;
-                ldgCat[0].Columns[4].Visible = false;
-            
         }
+
+
+
+            
+        
     }
 }

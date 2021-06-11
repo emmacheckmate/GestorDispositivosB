@@ -34,62 +34,29 @@ namespace GestorDeDispositvos
          /*Constructor del objeto del drig*/
         public DataGridControl()
         {
-            tama = new  Size(595, 304);
-            p = new Point(0, 0);
+            tama = new  Size( 595, 304 );
+            p = new Point( 29, 197 );
             ld = new List<DataGridView>();
             inicializaLista();
-
+            inicilizaListaDataGrids();
         }
 
-        public void inicilizaDataGridRadio()
+        /*Este metodo estable el formato de los datagrid */
+        public void inicilizaListaDataGrids()
         {
+            for (int i = 0; i < ld.Count; i++)
+            {
+                ld[i].Size = tama;
+                ld[i].Location = p;
+                ld[i].Columns[0].Width = 150;
+                ld[i].BackgroundColor = System.Drawing.Color.LightGreen;
+                ld[i].BringToFront();
 
-            ld[0].Size = new System.Drawing.Size(595, 304);
-            ld[0].Location = new System.Drawing.Point(29, 197);
+            }
 
             ld[0].ColumnCount = 1;
             ld[0].Columns[0].Name = "Número de Serie";
-            ld[0].Columns[0].Width = 150;
-            ld[0].BackgroundColor = System.Drawing.Color.LightGreen;
 
-        }
-
-        public void inicilizaDataGridEmpleados()
-        {
-
-            ld[0].Size = new System.Drawing.Size(595, 304);
-            ld[0].Location = new System.Drawing.Point(29, 197);
-
-            ld[0].ColumnCount = 1;
-            ld[0].Columns[0].Name = "Nombre";
-            ld[0].Columns[0].Width = 150;
-            ld[0].BackgroundColor = System.Drawing.Color.LightGreen;
-
-        }
-
-        public void inicilizaDataGridSucursales()
-        {
-
-            ld[1].Size = new System.Drawing.Size(595, 304);
-            ld[1].Location = new System.Drawing.Point(29, 197);
-
-            ld[1].ColumnCount = 1;
-            ld[1].Columns[0].Name = "Nombre";
-            ld[1].Columns[0].Width = 150;
-            ld[1].BackgroundColor = System.Drawing.Color.LightGreen;
-
-        }
-
-        public void inicilizaDataGridEstado()
-        {
-
-            ld[2].Size = new System.Drawing.Size(595, 304);
-            ld[2].Location = new System.Drawing.Point(29, 197);
-
-            ld[2].ColumnCount = 1;
-            ld[2].Columns[0].Name = "Nombre";
-            ld[2].Columns[0].Width = 150;
-            ld[2].BackgroundColor = System.Drawing.Color.LightGreen;
 
         }
     }
