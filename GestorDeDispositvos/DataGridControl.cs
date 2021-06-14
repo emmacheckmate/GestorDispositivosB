@@ -12,13 +12,8 @@ namespace GestorDeDispositvos
     {
         public Size tama;
         public Point p;
-        public List<DataGridView> ld;
-
-        public void inicializaLista()
-        {
-            for( int i = 0; i < 5; i++ )
-            { ld.Add( new DataGridView() ); }
-        }
+        public DataGridView ld;
+        public BDSQL baseDatos;
 
         /*Metodo de asignacion del tamaño para el  data grid */
         public Size getSetSize
@@ -34,30 +29,44 @@ namespace GestorDeDispositvos
          /*Constructor del objeto del drig*/
         public DataGridControl()
         {
+            baseDatos = new BDSQL();
             tama = new  Size( 595, 304 );
             p = new Point( 29, 197 );
-            ld = new List<DataGridView>();
-            inicializaLista();
-            inicilizaListaDataGrids();
+            ld = new DataGridView();
+            inicilizaDataGrid();
         }
 
-        /*Este metodo estable el formato de los datagrid */
-        public void inicilizaListaDataGrids()
+        /*Este metodo configura el formato de los datagrid */
+        public void inicilizaDataGrid()
         {
-            for (int i = 0; i < ld.Count; i++)
-            {
-                ld[i].Size = tama;
-                ld[i].Location = p;
-                ld[i].Columns[0].Width = 150;
-                ld[i].BackgroundColor = System.Drawing.Color.LightGreen;
-                ld[i].BringToFront();
+            
+                ld.Size = tama;
+                ld.Location = p;
+//                ld.Columns[0].Width = 150;
+                ld.BackgroundColor = System.Drawing.Color.LightGreen;
+                ld.BringToFront();
+            //  MessageBox.Show(ld.Columns.Count.ToString());
+            ld.ColumnCount = this.baseDatos.lAt.Count()+1;
+            MessageBox.Show("Num " +this.baseDatos.lAt.Count().ToString());
 
+
+
+            for (int i = 0; i < this.baseDatos.lAt.Count() ; i++)
+            {
+                
+                ld.Columns[i].Name = this.baseDatos.lAt[i];
             }
 
-            ld[0].ColumnCount = 1;
-            ld[0].Columns[0].Name = "Número de Serie";
 
+        }
 
+        /*Establece el numero de columnas para cada datagrid y
+         los nombres de la base de datos */ 
+        public void setColumnasNombres( List<string> et )
+        {
+            ld.ColumnCount = et.Count();
+            
+            
         }
     }
 }

@@ -32,7 +32,11 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>logo %281%29 %281%29.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -69,6 +73,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegRadio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegRadio.Designer.cs">
+      <DependentUpon>RegRadio.cs</DependentUpon>
+    </Compile>
     <Compile Include="Validaciones.cs" />
     <EmbeddedResource Include="CrudEmp.resx">
       <DependentUpon>CrudEmp.cs</DependentUpon>
@@ -89,6 +99,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="RegRadio.resx">
+      <DependentUpon>RegRadio.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -104,6 +117,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\nuevo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="logo %281%29 %281%29.ico" />
+    <Content Include="logo small.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

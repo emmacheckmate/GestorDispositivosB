@@ -180,8 +180,9 @@ namespace GestorDeDispositvos
             this.ClientSize = new System.Drawing.Size(616, 404);
             this.Controls.Add(this.panel1);
             this.Name = "CrudEmp";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "CrudEmp";
+            this.Text = "Empleados";
             this.Load += new System.EventHandler(this.CrudEmp_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

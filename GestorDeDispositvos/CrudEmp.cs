@@ -22,6 +22,7 @@ namespace GestorDeDispositvos
         private void CrudEmp_Load(object sender, EventArgs e)
         {
 
+            this.ShowIcon = false;
             txtNombEmp.Text = "";
             txtNumEmp.Text = "";
 

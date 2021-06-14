@@ -47,16 +47,7 @@ namespace GestorDeDispositvos
             }
             da1.Fill(dt);
             
-            
-            for (int i = 0; i < dt.Columns.Count-1; i++  )
-            {
-                MessageBox.Show(dt.Columns[i].ColumnName);
-                
-            }
-            
-            //
-
-
+           
         }
 
         public void inicilizaDataGridRadio()
@@ -65,7 +56,7 @@ namespace GestorDeDispositvos
             dataGridEnt.Size = new System.Drawing.Size(595, 304);
             dataGridEnt.Location = new System.Drawing.Point(29, 197);
 
-            dataGridEnt.ColumnCount =1;
+            dataGridEnt.ColumnCount =5;
             dataGridEnt.Columns[0].Name = "Número de Serie";
             dataGridEnt.Columns[0].Width = 150;
             dataGridEnt.BackgroundColor = System.Drawing.Color.LightGreen;
@@ -78,7 +69,7 @@ namespace GestorDeDispositvos
             dataGridEnt.Size = new System.Drawing.Size(595, 304);
             dataGridEnt.Location = new System.Drawing.Point(29, 197);
 
-            dataGridEnt.ColumnCount = 1;
+        //    dataGridEnt.ColumnCount = 1;
             dataGridEnt.Columns[0].Name = "Nombre";
             dataGridEnt.Columns[0].Width = 150;
             dataGridEnt.BackgroundColor = System.Drawing.Color.LightGreen;

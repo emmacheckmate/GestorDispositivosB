@@ -16,97 +16,98 @@ namespace GestorDeDispositvos
     */
     class BDSQL
     {
-        public int numCataLogos = 5;
-        public List<DataGridView> ldgCat;
+
+        public string nombreEquipo;
 
         public DataTable dt;
-        public List<ComboBox> combos;
+
         public List<string> listaQry;
-        string cadenacnx = "Data Source=DESKTOP-S0SCMU4" + 
-                                                    "\\" + 
-                            "SQLEXPRESS;Initial Catalog=dbGestDisp;Integrated Security=True";
+        string cadenacnx = "";
 
         private string cadenaConexion;
         private string Query;
-        private string nomBD;
-        private string equipo;
+        private string textboxQry;
+
+        public List< string > lAt;
+
+        public List<string> gslAt { get { return lAt; } set { this.lAt = value;  }  }
+
+        public string txtboxQryGS 
+        { get { return this.textboxQry; } set { this.textboxQry = value; }  }
+        public string nombEq
+        { get { return this.nombreEquipo; } set { this.nombreEquipo = value; } }
 
         public string QuerySG
         {
             get => Query;
             set => Query = value;
         }
-        public string cdncnxSG
-        {
-            get => cadenaConexion;
-            set => cadenaConexion = value;
+        public string cdncnxSG{
+            get { return this.cadenacnx; }
+            set { this.cadenacnx = value; }
         }
 
-        /*incializa datagridview */
-        public void iniDGV()
-        {
-            for(int c =0; c < numCataLogos; c++) { ldgCat.Add(new DataGridView()); }
-        }
+
         /*Constructor del  objeto para el objeto que va a controlar todas las consultas y 
          los objetos relacionados con la base de datos*/
         public BDSQL()
         {
-            combos = new List<ComboBox>();
-            ldgCat = new List<DataGridView>();
-            listaQry = new List<string>();
+            cadenacnx = "Data Source=DESKTOP-S0SCMU4" +
+                                                    "\\" +
+                            "SQLEXPRESS;Initial Catalog=dbGestDisp;Integrated Security=True";
 
-            iniCombox();
-            iniDGV();
+
+            listaQry = new List<string>();
+            lAt = new List<string>();
+            iniciaListaQuery();
         }
 
         /*Inicializa la lista de combos para los catalogos */
-        public void iniCombox() {
-            for (int i = 0; i < 2; i++)
-            {
-                combos.Add(new ComboBox());
-            }
-        }
-        public void iniciListaQuery()
+      
+        public void iniciaListaQuery()
         {
             /*Carga de los catalogos de empleados, areas, tipos de dispositivos
              * y estado del dispostivo y sucursales */
+            listaQry.Add("SELECT * FROM catRadio");
             listaQry.Add("SELECT * FROM catArea");
             listaQry.Add("SELECT * FROM catDisp");
             listaQry.Add("SELECT * FROM catEdo");
             listaQry.Add("SELECT * FROM catEmp");
             listaQry.Add("SELECT * FROM catSucursal");
 
-        }
-        public void inicializaSQLAdpater(string qry)
-        {
-          SqlDataAdapter da = new SqlDataAdapter( qry ,  cadenaConexion );
+            /*Consultas para la insercion de datos */
+            listaQry.Add("INSERT INTO catRadio (idRadio) VALUES(" +"'"+ this.txtboxQryGS +"'"+ ")");
+
+            listaQry.Add("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS " +
+                                                    "Where TABLE_NAME='catRadio' " +
+                                                    "ORDER BY ORDINAL_POSITION ");
+
+
+
         }
 
-        /*Lee los atributos de la tabla  le pasa la consulta */
-        public List<string> leeTabla(DataTable dt, SqlDataAdapter da)
+        /*Carga la conexion de los datos y  la tabla que se va a utilizar*/
+        public void leeAtributos(string qry)
         {
-            List<string> l = new List<string>();
+            SqlDataAdapter da = new SqlDataAdapter(qry, this.cdncnxSG);
+            DataTable dt = new DataTable();
             da.Fill(dt);
 
-
-            for (int i = 0; i < dt.Columns.Count - 1; i++)
-            {
-                l.Add(dt.Columns[i].ColumnName);
-
-            }
-
-            return ( l );
-        }
-        
-        /*Pasa una lista de los datos nombres de los nombres del de las tablas */
-        public void pasa_a_dataview(List<string> camposTabla)
-        {
-
-        }
-
-
-
             
-        
+            for (int i2 = 0; i2 < dt.Rows.Count; i2++) {
+
+                gslAt.Add(dt.Rows[i2].Field<string>(0));
+                MessageBox.Show(dt.Rows[i2].Field<string>(0) );
+            }
+            
+
+        }
+
+
+
+
+
+
+
     }
 }

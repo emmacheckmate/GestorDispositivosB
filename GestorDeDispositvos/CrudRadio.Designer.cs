@@ -282,6 +282,7 @@ namespace GestorDeDispositvos
             this.ClientSize = new System.Drawing.Size(1452, 713);
             this.Controls.Add(this.panel1);
             this.Name = "CrudRadio";
+            this.ShowIcon = false;
             this.Text = "CrudRadio";
             this.Load += new System.EventHandler(this.CrudRadio_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
