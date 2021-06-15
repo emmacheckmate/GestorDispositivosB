@@ -30,6 +30,7 @@ namespace GestorDeDispositvos
         public DataGridControl()
         {
             baseDatos = new BDSQL();
+            this.baseDatos.leeAtributos(this.baseDatos.listaQry[7]);
             tama = new  Size( 595, 304 );
             p = new Point( 29, 197 );
             ld = new DataGridView();
@@ -42,15 +43,11 @@ namespace GestorDeDispositvos
             
                 ld.Size = tama;
                 ld.Location = p;
-//                ld.Columns[0].Width = 150;
                 ld.BackgroundColor = System.Drawing.Color.LightGreen;
                 ld.BringToFront();
-            //  MessageBox.Show(ld.Columns.Count.ToString());
-            ld.ColumnCount = this.baseDatos.lAt.Count()+1;
-            MessageBox.Show("Num " +this.baseDatos.lAt.Count().ToString());
-
-
-
+            
+            ld.ColumnCount = this.baseDatos.lAt.Count();
+            
             for (int i = 0; i < this.baseDatos.lAt.Count() ; i++)
             {
                 

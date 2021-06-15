@@ -52,9 +52,17 @@ namespace GestorDeDispositvos
          los objetos relacionados con la base de datos*/
         public BDSQL()
         {
-            cadenacnx = "Data Source=DESKTOP-S0SCMU4" +
+
+            
+
+            cadenacnx = "Data Source=DESKTOP-FL9MFJT" +
+                                                  "\\" +
+                          "SQLEXPRESS;Initial Catalog=dbGestDisp;Integrated Security=True";
+            /*
+              cadenacnx = "Data Source=DESKTOP-S0SCMU4" +
                                                     "\\" +
                             "SQLEXPRESS;Initial Catalog=dbGestDisp;Integrated Security=True";
+            */
 
 
             listaQry = new List<string>();
@@ -79,7 +87,7 @@ namespace GestorDeDispositvos
             listaQry.Add("INSERT INTO catRadio (idRadio) VALUES(" +"'"+ this.txtboxQryGS +"'"+ ")");
 
             listaQry.Add("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS " +
-                                                    "Where TABLE_NAME='catRadio' " +
+                                                    "Where TABLE_NAME='catSucursal' " +
                                                     "ORDER BY ORDINAL_POSITION ");
 
 
@@ -99,7 +107,7 @@ namespace GestorDeDispositvos
                 gslAt.Add(dt.Rows[i2].Field<string>(0));
                 MessageBox.Show(dt.Rows[i2].Field<string>(0) );
             }
-            
+            MessageBox.Show(" num at " +gslAt.Count.ToString());
 
         }
 

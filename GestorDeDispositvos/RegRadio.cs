@@ -19,8 +19,7 @@ namespace GestorDeDispositvos
             InitializeComponent();
             DataGridControl d = new DataGridControl();
             
-            d.baseDatos.leeAtributos(d.baseDatos.listaQry[ 7 ]);
-
+ 
             this.Controls.Add(d.ld);
             
         }

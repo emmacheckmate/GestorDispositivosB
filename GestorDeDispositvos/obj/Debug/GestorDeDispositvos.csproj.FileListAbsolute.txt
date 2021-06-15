@@ -11,7 +11,6 @@ C:\Users\link2\source\repos\GestorDeDispositvos\GestorDeDispositvos\obj\Debug\Ge
 C:\Users\link2\OneDrive\Documentos\GitHub\GestorDispositivosB\GestorDeDispositvos\bin\Debug\GestorDeDispositvos.exe.config
 C:\Users\link2\OneDrive\Documentos\GitHub\GestorDispositivosB\GestorDeDispositvos\bin\Debug\GestorDeDispositvos.exe
 C:\Users\link2\OneDrive\Documentos\GitHub\GestorDispositivosB\GestorDeDispositvos\bin\Debug\GestorDeDispositvos.pdb
-C:\Users\link2\OneDrive\Documentos\GitHub\GestorDispositivosB\GestorDeDispositvos\obj\Debug\GestorDeDispositvos.csproj.AssemblyReference.cache
 C:\Users\link2\OneDrive\Documentos\GitHub\GestorDispositivosB\GestorDeDispositvos\obj\Debug\GestorDeDispositvos.CrudEmp.resources
 C:\Users\link2\OneDrive\Documentos\GitHub\GestorDispositivosB\GestorDeDispositvos\obj\Debug\GestorDeDispositvos.Principal.resources
 C:\Users\link2\OneDrive\Documentos\GitHub\GestorDispositivosB\GestorDeDispositvos\obj\Debug\GestorDeDispositvos.Properties.Resources.resources
@@ -32,3 +31,6 @@ C:\Users\Sistemas_B8\Documents\GitHub\GestorDispositivosB\GestorDeDispositvos\bi
 C:\Users\Sistemas_B8\Documents\GitHub\GestorDispositivosB\GestorDeDispositvos\bin\Debug\GestorDeDispositvos.pdb
 C:\Users\Sistemas_B8\Documents\GitHub\GestorDispositivosB\GestorDeDispositvos\obj\Debug\GestorDeDispositvos.CrudRadio.resources
 C:\Users\Sistemas_B8\Documents\GitHub\GestorDispositivosB\GestorDeDispositvos\obj\Debug\GestorDeDispositvos.RegRadio.resources
+C:\Users\link2\OneDrive\Documentos\GitHub\GestorDispositivosB\GestorDeDispositvos\obj\Debug\GestorDeDispositvos.csprojAssemblyReference.cache
+C:\Users\link2\OneDrive\Documentos\GitHub\GestorDispositivosB\GestorDeDispositvos\obj\Debug\GestorDeDispositvos.CrudRadio.resources
+C:\Users\link2\OneDrive\Documentos\GitHub\GestorDispositivosB\GestorDeDispositvos\obj\Debug\GestorDeDispositvos.RegRadio.resources
