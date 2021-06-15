@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Data;
 
 namespace GestorDeDispositvos
 {
@@ -26,15 +27,25 @@ namespace GestorDeDispositvos
         public Point getSetP
         { get { return this.p;  } set { this.p = value;  }   }
 
-         /*Constructor del objeto del drig*/
+        /*Constructor del objeto del drig*/
         public DataGridControl()
         {
+            DataTable t = new DataTable();
+
             baseDatos = new BDSQL();
+
             this.baseDatos.leeAtributos(this.baseDatos.listaQry[7]);
-            tama = new  Size( 595, 304 );
-            p = new Point( 29, 197 );
+            t = this.baseDatos.leeRegistros(this.baseDatos.listaQry[5]);
+
+            tama = new Size(300, 200);
+            p = new Point(50, 120);
             ld = new DataGridView();
             inicilizaDataGrid();
+
+            ld.DataSource = t;
+
+
+
         }
 
         /*Este metodo configura el formato de los datagrid */
@@ -57,13 +68,22 @@ namespace GestorDeDispositvos
 
         }
 
-        /*Establece el numero de columnas para cada datagrid y
-         los nombres de la base de datos */ 
-        public void setColumnasNombres( List<string> et )
+        /*Este metodo configura el formato de los datagrid */
+        public void llenaDataGrid()
         {
-            ld.ColumnCount = et.Count();
+            //this.baseDatos.leeRegistros().
+
             
-            
+
+            for (int i = 0; i < this.baseDatos.lAt.Count(); i++)
+            {
+
+                ld.Columns[i].Name = this.baseDatos.lAt[i];
+            }
+
+
         }
+
+
     }
 }

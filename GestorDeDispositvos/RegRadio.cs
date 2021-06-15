@@ -19,11 +19,22 @@ namespace GestorDeDispositvos
             InitializeComponent();
             DataGridControl d = new DataGridControl();
             
- 
+            d.ld.RowHeaderMouseClick += this.ld_RowHeaderMouseClick; 
             this.Controls.Add(d.ld);
             
         }
 
+
+        private void ld_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+
+            try
+            {
+                MessageBox.Show( e.RowIndex.ToString() );
+                
+            }
+            catch { }
+        }
         private void RegRadio_Load(object sender, EventArgs e)
         {
             this.ShowIcon = false;
