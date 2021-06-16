@@ -34,8 +34,8 @@ namespace GestorDeDispositvos
 
             baseDatos = new BDSQL();
 
-            this.baseDatos.leeAtributos(this.baseDatos.listaQry[7]);
-            t = this.baseDatos.leeRegistros(this.baseDatos.listaQry[5]);
+            
+            t = this.baseDatos.leeRegistros(this.baseDatos.listaQry[0]);
 
             tama = new Size(300, 200);
             p = new Point(50, 120);
@@ -43,6 +43,7 @@ namespace GestorDeDispositvos
             inicilizaDataGrid();
 
             ld.DataSource = t;
+            inicilizaDataGrid();
 
 
 
@@ -56,7 +57,7 @@ namespace GestorDeDispositvos
                 ld.Location = p;
                 ld.BackgroundColor = System.Drawing.Color.LightGreen;
                 ld.BringToFront();
-            
+            /*
             ld.ColumnCount = this.baseDatos.lAt.Count();
             
             for (int i = 0; i < this.baseDatos.lAt.Count() ; i++)
@@ -64,7 +65,7 @@ namespace GestorDeDispositvos
                 
                 ld.Columns[i].Name = this.baseDatos.lAt[i];
             }
-
+            */
 
         }
 

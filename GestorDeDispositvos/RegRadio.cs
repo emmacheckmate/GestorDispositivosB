@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.VisualBasic;
+using Microsoft.SqlServer.Management.Smo;
   
 
 namespace GestorDeDispositvos
@@ -17,6 +18,7 @@ namespace GestorDeDispositvos
         public RegRadio()
         {
             InitializeComponent();
+
             DataGridControl d = new DataGridControl();
             
             d.ld.RowHeaderMouseClick += this.ld_RowHeaderMouseClick; 
@@ -38,6 +40,8 @@ namespace GestorDeDispositvos
         private void RegRadio_Load(object sender, EventArgs e)
         {
             this.ShowIcon = false;
+            
+            pictureBox1.Image = "C:\Users\\link2\\OneDrive\\Documentos\\GitHub\\GestorDispositivosB\\GestorDeDispositvos\\Resources\\codigoqr.jpg";
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)

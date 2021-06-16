@@ -61,15 +61,21 @@ namespace GestorDeDispositvos
             dt = new DataTable();
              da = new SqlDataAdapter();
 
-            /*   cadenacnx = "Data Source=DESKTOP-FL9MFJT" +
+
+            cadenacnx = "Data Source=" + Environment.MachineName.ToString() +
+                                 "\\" +
+                                "SQLEXPRESS;Initial Catalog=dbGestDisp;Integrated Security=True";
+
+            /*
+            cadenacnx = "Data Source=DESKTOP-FL9MFJT" +
                                                      "\\" +
-                             "SQLEXPRESS;Initial Catalog=dbGestDisp;Integrated Security=True";*/
+                             "SQLEXPRESS;Initial Catalog=dbGestDisp;Integrated Security=True";
 
-            cadenacnx = "Data Source=DESKTOP-S0SCMU4" +
-                                                  "\\" +
-                          "SQLEXPRESS;Initial Catalog=dbGestDisp;Integrated Security=True";
-
-
+          //*  cadenacnx = "Data Source=DESKTOP-S0SCMU4" +
+               //                                   "\\" +
+             //             "SQLEXPRESS;Initial Catalog=dbGestDisp;Integrated Security=True";
+           // 
+            */
 
             listaQry = new List<string>();
             lAt = new List<string>();
@@ -106,8 +112,9 @@ namespace GestorDeDispositvos
             
             SqlDataAdapter da = new SqlDataAdapter(qry, this.cdncnxSG);
             DataTable dt = new DataTable();
-            
-            da.Fill(this.gsdt );
+
+             da.Fill(this.gsdt);  
+            MessageBox.Show("No se pudo encontrar base de datos"); 
           
         }
 
@@ -118,7 +125,8 @@ namespace GestorDeDispositvos
             List<string> renglon = new List<string>();
             SqlDataAdapter da = new SqlDataAdapter(qry, this.cdncnxSG);
             DataTable dt = new DataTable();
-            da.Fill(dt);
+             da.Fill(dt); 
+             
             return dt;
         }
 
