@@ -55,7 +55,7 @@ namespace GestorDeDispositvos
             
                 ld.Size = tama;
                 ld.Location = p;
-                ld.BackgroundColor = System.Drawing.Color.LightGreen;
+                ld.BackgroundColor = System.Drawing.Color.PeachPuff;
                 ld.BringToFront();
             /*
             ld.ColumnCount = this.baseDatos.lAt.Count();
