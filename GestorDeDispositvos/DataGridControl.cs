@@ -11,10 +11,19 @@ namespace GestorDeDispositvos
 {
     class DataGridControl
     {
+        private int index = -1;
         public Size tama;
         public Point p;
         public DataGridView ld;
         public BDSQL baseDatos;
+
+        /*Metodo para pasar el valor del indice del datagtird */
+        public Size getSetIndiceDG
+        {
+            get { return this.tama; }
+            set { this.tama = value; }
+        }
+
 
         /*Metodo de asignacion del tamaño para el  data grid */
         public Size getSetSize
@@ -38,9 +47,9 @@ namespace GestorDeDispositvos
             t = this.baseDatos.leeRegistros(this.baseDatos.listaQry[0]);
 
             tama = new Size(300, 200);
-            p = new Point(50, 120);
+            p = new Point(250, 150);
             ld = new DataGridView();
-            inicilizaDataGrid();
+            
 
             ld.DataSource = t;
             inicilizaDataGrid();
@@ -57,23 +66,33 @@ namespace GestorDeDispositvos
                 ld.Location = p;
                 ld.BackgroundColor = System.Drawing.Color.PeachPuff;
                 ld.BringToFront();
-            /*
-            ld.ColumnCount = this.baseDatos.lAt.Count();
-            
-            for (int i = 0; i < this.baseDatos.lAt.Count() ; i++)
-            {
-                
-                ld.Columns[i].Name = this.baseDatos.lAt[i];
-            }
-            */
+                ld.ReadOnly = true;
+          
 
+        }
+
+        public string seleccionaRenglonImagen( int i )
+        {
+            string ima = "";
+            var cell = this.ld.Rows[ i ].Cells[ 1 ];
+
+            ima = cell.Value.ToString();
+            if ( ima.Length == 0) { ima = "NULL"; }
+            
+            return ima;
+        }
+
+        public void seleccionaRenglonLlave(int i)
+        {
+
+            var cell = this.ld.Rows[i].Cells[0];
+            //MessageBox.Show(cell.Value.ToString());
         }
 
         /*Este metodo configura el formato de los datagrid */
         public void llenaDataGrid()
         {
-            //this.baseDatos.leeRegistros().
-
+           
             
 
             for (int i = 0; i < this.baseDatos.lAt.Count(); i++)

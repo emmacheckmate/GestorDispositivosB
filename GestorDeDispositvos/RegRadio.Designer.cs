@@ -45,17 +45,18 @@ namespace GestorDeDispositvos
             this.label1 = new System.Windows.Forms.Label();
             this.btnGuardarPIc = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnGuardar
             // 
             this.btnGuardar.Image = ((System.Drawing.Image)(resources.GetObject("btnGuardar.Image")));
-            this.btnGuardar.Location = new System.Drawing.Point(257, 68);
-            this.btnGuardar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnGuardar.Location = new System.Drawing.Point(386, 89);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(50, 27);
+            this.btnGuardar.Size = new System.Drawing.Size(75, 42);
             this.btnGuardar.TabIndex = 13;
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
@@ -63,10 +64,9 @@ namespace GestorDeDispositvos
             // btnBuscar
             // 
             this.btnBuscar.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscar.Image")));
-            this.btnBuscar.Location = new System.Drawing.Point(186, 68);
-            this.btnBuscar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnBuscar.Location = new System.Drawing.Point(279, 89);
             this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(50, 27);
+            this.btnBuscar.Size = new System.Drawing.Size(75, 42);
             this.btnBuscar.TabIndex = 12;
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
@@ -74,20 +74,18 @@ namespace GestorDeDispositvos
             // btnQuitar
             // 
             this.btnQuitar.Image = ((System.Drawing.Image)(resources.GetObject("btnQuitar.Image")));
-            this.btnQuitar.Location = new System.Drawing.Point(117, 68);
-            this.btnQuitar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnQuitar.Location = new System.Drawing.Point(176, 89);
             this.btnQuitar.Name = "btnQuitar";
-            this.btnQuitar.Size = new System.Drawing.Size(50, 27);
+            this.btnQuitar.Size = new System.Drawing.Size(75, 42);
             this.btnQuitar.TabIndex = 11;
             this.btnQuitar.UseVisualStyleBackColor = true;
             // 
             // btnAlta
             // 
             this.btnAlta.Image = ((System.Drawing.Image)(resources.GetObject("btnAlta.Image")));
-            this.btnAlta.Location = new System.Drawing.Point(51, 68);
-            this.btnAlta.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAlta.Location = new System.Drawing.Point(76, 89);
             this.btnAlta.Name = "btnAlta";
-            this.btnAlta.Size = new System.Drawing.Size(50, 27);
+            this.btnAlta.Size = new System.Drawing.Size(75, 42);
             this.btnAlta.TabIndex = 10;
             this.btnAlta.UseVisualStyleBackColor = true;
             // 
@@ -95,29 +93,26 @@ namespace GestorDeDispositvos
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.label2.Location = new System.Drawing.Point(49, 29);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(74, 45);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(85, 13);
+            this.label2.Size = new System.Drawing.Size(126, 20);
             this.label2.TabIndex = 9;
             this.label2.Text = "Numero de radio";
             // 
             // txtNombEmp
             // 
-            this.txtNombEmp.Location = new System.Drawing.Point(149, 25);
-            this.txtNombEmp.Margin = new System.Windows.Forms.Padding(2);
+            this.txtNombEmp.Location = new System.Drawing.Point(224, 38);
             this.txtNombEmp.Name = "txtNombEmp";
-            this.txtNombEmp.Size = new System.Drawing.Size(119, 20);
+            this.txtNombEmp.Size = new System.Drawing.Size(176, 26);
             this.txtNombEmp.TabIndex = 8;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.label6.Location = new System.Drawing.Point(259, 104);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Location = new System.Drawing.Point(388, 144);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(45, 13);
+            this.label6.Size = new System.Drawing.Size(68, 20);
             this.label6.TabIndex = 17;
             this.label6.Text = "Guardar";
             // 
@@ -125,10 +120,9 @@ namespace GestorDeDispositvos
             // 
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.label5.Location = new System.Drawing.Point(187, 104);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Location = new System.Drawing.Point(280, 144);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(40, 13);
+            this.label5.Size = new System.Drawing.Size(59, 20);
             this.label5.TabIndex = 16;
             this.label5.Text = "Buscar";
             // 
@@ -136,10 +130,9 @@ namespace GestorDeDispositvos
             // 
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.label4.Location = new System.Drawing.Point(127, 104);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Location = new System.Drawing.Point(190, 144);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(35, 13);
+            this.label4.Size = new System.Drawing.Size(52, 20);
             this.label4.TabIndex = 15;
             this.label4.Text = "Quitar";
             // 
@@ -147,47 +140,49 @@ namespace GestorDeDispositvos
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.label3.Location = new System.Drawing.Point(52, 104);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Location = new System.Drawing.Point(78, 144);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(49, 13);
+            this.label3.Size = new System.Drawing.Size(74, 20);
             this.label3.TabIndex = 14;
             this.label3.Text = "Registrar";
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(404, 180);
+            this.pictureBox1.Location = new System.Drawing.Point(76, 253);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(237, 235);
+            this.pictureBox1.Size = new System.Drawing.Size(184, 207);
             this.pictureBox1.TabIndex = 18;
             this.pictureBox1.TabStop = false;
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Location = new System.Drawing.Point(567, 66);
+            this.pictureBox2.ErrorImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.ErrorImage")));
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.InitialImage = null;
+            this.pictureBox2.Location = new System.Drawing.Point(38, 27);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(250, 231);
+            this.pictureBox2.Size = new System.Drawing.Size(375, 355);
             this.pictureBox2.TabIndex = 19;
             this.pictureBox2.TabStop = false;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(662, 350);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(158, 450);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(86, 13);
+            this.label1.Size = new System.Drawing.Size(130, 20);
             this.label1.TabIndex = 21;
             this.label1.Text = "Guardar Imagen ";
             // 
             // btnGuardarPIc
             // 
             this.btnGuardarPIc.Image = ((System.Drawing.Image)(resources.GetObject("btnGuardarPIc.Image")));
-            this.btnGuardarPIc.Location = new System.Drawing.Point(678, 321);
-            this.btnGuardarPIc.Margin = new System.Windows.Forms.Padding(2);
+            this.btnGuardarPIc.Location = new System.Drawing.Point(186, 405);
             this.btnGuardarPIc.Name = "btnGuardarPIc";
-            this.btnGuardarPIc.Size = new System.Drawing.Size(50, 27);
+            this.btnGuardarPIc.Size = new System.Drawing.Size(75, 42);
             this.btnGuardarPIc.TabIndex = 20;
             this.btnGuardarPIc.UseVisualStyleBackColor = true;
             this.btnGuardarPIc.Click += new System.EventHandler(this.btnGuardarPIc_Click);
@@ -195,19 +190,29 @@ namespace GestorDeDispositvos
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.panel1.Location = new System.Drawing.Point(12, 17);
+            this.panel1.Location = new System.Drawing.Point(-7, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(549, 114);
+            this.panel1.Size = new System.Drawing.Size(1342, 168);
             this.panel1.TabIndex = 22;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.panel2.Controls.Add(this.pictureBox2);
+            this.panel2.Controls.Add(this.btnGuardarPIc);
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Location = new System.Drawing.Point(848, 161);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(442, 488);
+            this.panel2.TabIndex = 23;
             // 
             // RegRadio
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(883, 427);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnGuardarPIc);
-            this.Controls.Add(this.pictureBox2);
+            this.ClientSize = new System.Drawing.Size(1324, 657);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -220,7 +225,7 @@ namespace GestorDeDispositvos
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtNombEmp);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Controls.Add(this.panel2);
             this.Name = "RegRadio";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -228,6 +233,8 @@ namespace GestorDeDispositvos
             this.Load += new System.EventHandler(this.RegRadio_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -250,5 +257,6 @@ namespace GestorDeDispositvos
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnGuardarPIc;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
     }
 }

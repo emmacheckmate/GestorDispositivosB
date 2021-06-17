@@ -27,19 +27,25 @@ namespace GestorDeDispositvos
         public List<string> listaQry;
         string cadenacnx = "";
 
-        private string cadenaConexion;
+        
         private string Query;
-        private string textboxQry;
+        private string llaveQry;
+        private string tablaQry;
+        private string valuesQry;
+        private string valorabuscar;
 
         public List<string> lAt;
 
+        public string valorabuscarGS { get { return this.valuesQry; } set { this.valuesQry = value; } }
+        public string valueQryGS { get { return this.valuesQry; } set { this.valuesQry = value; } }
+        public string tablaQryGS { get { return this.tablaQry; } set { this.tablaQry = value; } }
+        public string llaveGS { get { return this.llaveQry; } set { this.llaveQry = value; } }
         public SqlDataAdapter gsda { get { return this.da; } set { this.da = value; } }
         public DataTable gsdt { get { return this.dt; } set { this.dt = value;  } }
         public List<DataGridViewRow> ldgvGS { get { return ldgv; } set { this.ldgv = value; } }
         public List<string> gslAt { get { return lAt; } set { this.lAt = value; } }
 
-        public string txtboxQryGS
-        { get { return this.textboxQry; } set { this.textboxQry = value; } }
+        
         public string nombEq
         { get { return this.nombreEquipo; } set { this.nombreEquipo = value; } }
 
@@ -66,17 +72,6 @@ namespace GestorDeDispositvos
                                  "\\" +
                                 "SQLEXPRESS;Initial Catalog=dbGestDisp;Integrated Security=True";
 
-            /*
-            cadenacnx = "Data Source=DESKTOP-FL9MFJT" +
-                                                     "\\" +
-                             "SQLEXPRESS;Initial Catalog=dbGestDisp;Integrated Security=True";
-
-          //*  cadenacnx = "Data Source=DESKTOP-S0SCMU4" +
-               //                                   "\\" +
-             //             "SQLEXPRESS;Initial Catalog=dbGestDisp;Integrated Security=True";
-           // 
-            */
-
             listaQry = new List<string>();
             lAt = new List<string>();
             iniciaListaQuery();
@@ -96,12 +91,17 @@ namespace GestorDeDispositvos
             listaQry.Add("SELECT * FROM catSucursal");
 
             /*Consultas para la insercion de datos */
-            listaQry.Add("INSERT INTO catRadio (idRadio) VALUES(" + "'" + this.txtboxQryGS + "'" + ")");
+            listaQry.Add("INSERT INTO catRadio (idRadio) VALUES(" + "'" + this.valueQryGS + "'" + ")");
 
+            /*Consulta para obtener el nombre de los atributos*/
             listaQry.Add("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS " +
                                                     "Where TABLE_NAME='catSucursal' " +
                                                     "ORDER BY ORDINAL_POSITION ");
 
+            /*Consulta para tablas que tienen  llaves de tipo entero*/
+            listaQry.Add("SELECT "+ this.llaveGS + 
+                         "FROM" + this.tablaQry +
+                         "WHERE " + this.llaveGS  + this.valorabuscarGS);
 
 
         }
@@ -114,7 +114,7 @@ namespace GestorDeDispositvos
             DataTable dt = new DataTable();
 
              da.Fill(this.gsdt);  
-            MessageBox.Show("No se pudo encontrar base de datos"); 
+         //   MessageBox.Show("No se pudo encontrar base de datos"); 
           
         }
 
@@ -129,13 +129,6 @@ namespace GestorDeDispositvos
              
             return dt;
         }
-
-
-
-
-
-
-
 
     }
 }
