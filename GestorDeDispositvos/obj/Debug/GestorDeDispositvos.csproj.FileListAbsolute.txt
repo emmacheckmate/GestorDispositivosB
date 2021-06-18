@@ -268,3 +268,6 @@ C:\Users\Sistemas_B8\Documents\GitHub\GestorDispositivosB\GestorDeDispositvos\bi
 C:\Users\Sistemas_B8\Documents\GitHub\GestorDispositivosB\GestorDeDispositvos\bin\Debug\zh-Hans\Microsoft.Data.SqlClient.resources.dll
 C:\Users\Sistemas_B8\Documents\GitHub\GestorDispositivosB\GestorDeDispositvos\bin\Debug\zh-Hant\Microsoft.Data.SqlClient.resources.dll
 C:\Users\Sistemas_B8\Documents\GitHub\GestorDispositivosB\GestorDeDispositvos\obj\Debug\GestorDeDispositvos.csproj.CopyComplete
+C:\Users\Sistemas_B8\Documents\GitHub\GestorDispositivosB\GestorDeDispositvos\obj\Debug\GestorDeDispositvos.sucursales.resources
+C:\Users\Sistemas_B8\Documents\GitHub\GestorDispositivosB\GestorDeDispositvos\obj\Debug\GestorDeDispositvos.Areas.resources
+C:\Users\Sistemas_B8\Documents\GitHub\GestorDispositivosB\GestorDeDispositvos\obj\Debug\GestorDeDispositvos.Estados.resources

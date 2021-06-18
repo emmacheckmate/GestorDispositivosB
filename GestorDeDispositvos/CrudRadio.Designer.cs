@@ -34,27 +34,24 @@ namespace GestorDeDispositvos
             this.txtNombEmp = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtNumEmp = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.cmbEmpledo = new System.Windows.Forms.ComboBox();
-            this.cmbEstado = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -86,44 +83,9 @@ namespace GestorDeDispositvos
             // 
             this.txtNumEmp.Location = new System.Drawing.Point(267, 80);
             this.txtNumEmp.Name = "txtNumEmp";
+            this.txtNumEmp.ReadOnly = true;
             this.txtNumEmp.Size = new System.Drawing.Size(160, 26);
             this.txtNumEmp.TabIndex = 0;
-            // 
-            // button1
-            // 
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(47, 192);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 42);
-            this.button1.TabIndex = 4;
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.Location = new System.Drawing.Point(145, 192);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 42);
-            this.button2.TabIndex = 5;
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
-            this.button3.Location = new System.Drawing.Point(249, 192);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 42);
-            this.button3.TabIndex = 6;
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
-            this.button4.Location = new System.Drawing.Point(356, 192);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 42);
-            this.button4.TabIndex = 7;
-            this.button4.UseVisualStyleBackColor = true;
             // 
             // label3
             // 
@@ -163,39 +125,23 @@ namespace GestorDeDispositvos
             // 
             // dateTimePicker2
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(706, 45);
+            this.dateTimePicker2.Location = new System.Drawing.Point(752, 125);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(339, 26);
             this.dateTimePicker2.TabIndex = 7;
             // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(706, 99);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(339, 26);
-            this.dateTimePicker1.TabIndex = 12;
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(528, 50);
+            this.label8.Location = new System.Drawing.Point(574, 130);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(162, 20);
+            this.label8.Size = new System.Drawing.Size(150, 20);
             this.label8.TabIndex = 13;
-            this.label8.Text = "Fecha de Asignación:";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(528, 105);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(172, 20);
-            this.label7.TabIndex = 14;
-            this.label7.Text = "Fecha de Reubicación:";
+            this.label8.Text = "Fecha para asignar:";
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(950, 256);
+            this.richTextBox1.Location = new System.Drawing.Point(485, 305);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.Size = new System.Drawing.Size(406, 216);
             this.richTextBox1.TabIndex = 15;
@@ -204,59 +150,21 @@ namespace GestorDeDispositvos
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(966, 214);
+            this.label9.Location = new System.Drawing.Point(501, 263);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(118, 20);
             this.label9.TabIndex = 16;
             this.label9.Text = "Observaciones:";
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(72, 341);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 62;
-            this.dataGridView1.Size = new System.Drawing.Size(391, 150);
-            this.dataGridView1.TabIndex = 17;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(706, 245);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 28);
-            this.comboBox1.TabIndex = 18;
-            // 
-            // cmbEmpledo
-            // 
-            this.cmbEmpledo.FormattingEnabled = true;
-            this.cmbEmpledo.Location = new System.Drawing.Point(706, 423);
-            this.cmbEmpledo.Name = "cmbEmpledo";
-            this.cmbEmpledo.Size = new System.Drawing.Size(121, 28);
-            this.cmbEmpledo.TabIndex = 19;
-            // 
-            // cmbEstado
-            // 
-            this.cmbEstado.FormattingEnabled = true;
-            this.cmbEstado.Location = new System.Drawing.Point(706, 341);
-            this.cmbEstado.Name = "cmbEstado";
-            this.cmbEstado.Size = new System.Drawing.Size(121, 28);
-            this.cmbEstado.TabIndex = 20;
-            // 
             // panel1
             // 
             this.panel1.AutoSize = true;
-            this.panel1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel1.Controls.Add(this.cmbEstado);
-            this.panel1.Controls.Add(this.cmbEmpledo);
-            this.panel1.Controls.Add(this.comboBox1);
-            this.panel1.Controls.Add(this.dataGridView1);
+            this.panel1.Controls.Add(this.pictureBox2);
+            this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.label9);
             this.panel1.Controls.Add(this.richTextBox1);
-            this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.label8);
-            this.panel1.Controls.Add(this.dateTimePicker1);
             this.panel1.Controls.Add(this.dateTimePicker2);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.label5);
@@ -274,6 +182,63 @@ namespace GestorDeDispositvos
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1428, 625);
             this.panel1.TabIndex = 5;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::GestorDeDispositvos.Properties.Resources.baner1;
+            this.pictureBox2.Location = new System.Drawing.Point(809, 3);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(612, 103);
+            this.pictureBox2.TabIndex = 20;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::GestorDeDispositvos.Properties.Resources.logoRadio_fw;
+            this.pictureBox1.Location = new System.Drawing.Point(1096, 218);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(288, 273);
+            this.pictureBox1.TabIndex = 19;
+            this.pictureBox1.TabStop = false;
+            // 
+            // button4
+            // 
+            this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
+            this.button4.Location = new System.Drawing.Point(356, 192);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 42);
+            this.button4.TabIndex = 7;
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
+            this.button3.Location = new System.Drawing.Point(249, 192);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 42);
+            this.button3.TabIndex = 6;
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
+            this.button2.Location = new System.Drawing.Point(145, 192);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 42);
+            this.button2.TabIndex = 5;
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button1
+            // 
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.Location = new System.Drawing.Point(47, 192);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 42);
+            this.button1.TabIndex = 4;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // CrudRadio
             // 
@@ -285,9 +250,10 @@ namespace GestorDeDispositvos
             this.ShowIcon = false;
             this.Text = "CrudRadio";
             this.Load += new System.EventHandler(this.CrudRadio_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -308,15 +274,11 @@ namespace GestorDeDispositvos
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox cmbEmpledo;
-        private System.Windows.Forms.ComboBox cmbEstado;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }

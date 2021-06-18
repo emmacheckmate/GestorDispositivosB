@@ -17,90 +17,30 @@ namespace GestorDeDispositvos
         DataGridView dataGridEnt ; 
         public CrudRadio()
         {
-            dataGridEnt = new DataGridView();
-
             InitializeComponent();
-            this.Controls.Add(dataGridEnt);
-            this.inicilizaDataGridRadio();
-            dataGridEnt.BringToFront();
-
-
         }
 
         private void CrudRadio_Load(object sender, EventArgs e)
         {
-            SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM catEmp  ", "Data Source=DESKTOP-S0SCMU4" + "\\" + "SQLEXPRESS;Initial Catalog=dbGestDisp;Integrated Security=True");
-            SqlDataAdapter da1 = new SqlDataAdapter("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS " +
-                                                    "Where TABLE_NAME='catArea' ORDER BY ORDINAL_POSITION ", 
-                                                    "Data Source=DESKTOP-S0SCMU4" + 
-                                                    "\\" +
-                                                    "SQLEXPRESS;Initial Catalog=dbGestDisp;Integrated Security=True");
-
-            DataTable dt = new DataTable();
-            da.Fill(dt);
+            panel1.BackColor = Color.FromArgb(255, 192, 128);
             
 
-            for (int i2 = 0; i2 < dt.Rows.Count; i2++)
-            {
 
-                comboBox1.Items.Add(dt.Rows[i2].Field<string>(0));
-            }
-            da1.Fill(dt);
-            
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
            
         }
 
-        public void inicilizaDataGridRadio()
+        private void button2_Click(object sender, EventArgs e)
         {
-
-            dataGridEnt.Size = new System.Drawing.Size(595, 304);
-            dataGridEnt.Location = new System.Drawing.Point(29, 197);
-
-            dataGridEnt.ColumnCount =5;
-            dataGridEnt.Columns[0].Name = "Número de Serie";
-            dataGridEnt.Columns[0].Width = 150;
-            dataGridEnt.BackgroundColor = System.Drawing.Color.LightGreen;
-            
-        }
-
-        public void inicilizaDataGridEmpleados()
-        {
-
-            dataGridEnt.Size = new System.Drawing.Size(595, 304);
-            dataGridEnt.Location = new System.Drawing.Point(29, 197);
-
-        //    dataGridEnt.ColumnCount = 1;
-            dataGridEnt.Columns[0].Name = "Nombre";
-            dataGridEnt.Columns[0].Width = 150;
-            dataGridEnt.BackgroundColor = System.Drawing.Color.LightGreen;
 
         }
 
-        public void inicilizaDataGridSucursales()
+        private void button1_Click(object sender, EventArgs e)
         {
-
-            dataGridEnt.Size = new System.Drawing.Size(595, 304);
-            dataGridEnt.Location = new System.Drawing.Point(29, 197);
-
-            dataGridEnt.ColumnCount = 1;
-            dataGridEnt.Columns[0].Name = "Nombre";
-            dataGridEnt.Columns[0].Width = 150;
-            dataGridEnt.BackgroundColor = System.Drawing.Color.LightGreen;
-
+            txtNumEmp.Text = "";
         }
-
-        public void inicilizaDataGridEstado()
-        {
-
-            dataGridEnt.Size = new System.Drawing.Size(595, 304);
-            dataGridEnt.Location = new System.Drawing.Point(29, 197);
-
-            dataGridEnt.ColumnCount = 1;
-            dataGridEnt.Columns[0].Name = "Nombre";
-            dataGridEnt.Columns[0].Width = 150;
-            dataGridEnt.BackgroundColor = System.Drawing.Color.LightGreen;
-
-        }
-       
     }
 }

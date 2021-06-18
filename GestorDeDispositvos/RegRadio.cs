@@ -29,49 +29,48 @@ namespace GestorDeDispositvos
             InitializeComponent();
 
              d = new DataGridControl();
-
+            this.d.iniciaBD(0);
             d.ld.RowHeaderMouseClick += this.ld_RowHeaderMouseClick;
+
             this.Controls.Add(d.ld);
+            
 
         }
 
-
+        /*Metodo que hace referencua a la clase de datagridcontrol para poder
+         manipular la informacion proveniente del  catalogo de radios*/
         private void ld_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
 
-            try
-            {  
-                pictureBox2.Image = Image.FromFile( d.seleccionaRenglonImagen(e.RowIndex) );
+            try {pictureBox2.Image = Image.FromFile( d.seleccionaRenglonImagen(e.RowIndex) );}
+            catch {
 
-
-                if (d.seleccionaRenglonImagen(e.RowIndex) == "NULL")
+            
+                if (d.seleccionaRenglonImagen(e.RowIndex).Length  <= 1)
                 {
-                    MessageBox.Show("FFFF");
+                    
                     pictureBox2.Image = pictureBox2.ErrorImage;
-                    pictureBox2.Refresh();
+                    
                 }
-
-
-
-                pictureBox2.Refresh();
             }
-            catch { }
+
+            pictureBox2.Refresh();
         }
         private void RegRadio_Load(object sender, EventArgs e)
         {
-            double porcentaje = 0.3;
+            double porcentajeAnch = 0.5, porcentajeAlt = 0.3;
 
             this.Height = Screen.FromControl(this).Bounds.Height -
-                         Convert.ToInt32(Screen.FromControl(this).Bounds.Height * porcentaje);
+                         Convert.ToInt32(Screen.FromControl(this).Bounds.Height * porcentajeAlt);
 
             this.Width = Screen.FromControl(this).Bounds.Width -
-                         Convert.ToInt32(Screen.FromControl(this).Bounds.Width * porcentaje);
+                         Convert.ToInt32(Screen.FromControl(this).Bounds.Width * porcentajeAnch);
             this.CenterToScreen();
 
 
             this.ShowIcon = false;
             this.pictureBxIni();
-
+            this.pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
 
         }
 
@@ -79,8 +78,10 @@ namespace GestorDeDispositvos
         y estados para el catolgo de radios*/
         public void pictureBxIni()
         {
-
-            this.pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
+            
+            //this.pictureBox1.SizeMode  
+          
+            this.pictureBox2.SizeMode = PictureBoxSizeMode.AutoSize;
 
             if (pictureBox2.Image != null)
             {
@@ -158,6 +159,11 @@ namespace GestorDeDispositvos
         {
             guardarImg();
             
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

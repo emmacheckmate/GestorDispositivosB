@@ -11,6 +11,12 @@ namespace GestorDeDispositvos
 {
     class DataGridControl
     {
+        /*Atributos para la clase: index es es la posicion del renglon 
+         tama es el tamaño de la cuadricula del datagridview, point indica la posicion 
+        dentro del area del formulario, ld es el datagrid view que se encarga de mover 
+        y direccionar la informacion dentro de la base de datos
+        baseDatos se encarga de abrir y hacer una conexión con la base de 
+        datos */
         private int index = -1;
         public Size tama;
         public Point p;
@@ -39,54 +45,44 @@ namespace GestorDeDispositvos
         /*Constructor del objeto del drig*/
         public DataGridControl()
         {
-            DataTable t = new DataTable();
-
-            baseDatos = new BDSQL();
-
-            
-            t = this.baseDatos.leeRegistros(this.baseDatos.listaQry[0]);
-
+            baseDatos = new BDSQL();  
             tama = new Size(300, 200);
-            p = new Point(250, 150);
+            p = new Point(20, 150);
             ld = new DataGridView();
-            
-
-            ld.DataSource = t;
-            inicilizaDataGrid();
-
-
+            this.inicilizaDataGrid();
 
         }
 
-        /*Este metodo configura el formato de los datagrid */
-        public void inicilizaDataGrid()
+        /*Se le manda como parametro el indice de la lista del Qry 
+         del predeterminado para las consultas mas comunes en el sitema*/
+        public void iniciaBD( int numQry)
         {
-            
-                ld.Size = tama;
-                ld.Location = p;
-                ld.BackgroundColor = System.Drawing.Color.PeachPuff;
-                ld.BringToFront();
-                ld.ReadOnly = true;
-          
+            DataTable t = new DataTable();
+            t = this.baseDatos.leeRegistros(this.baseDatos.listaQry[ numQry ]);
+            ld.DataSource = t;
+        }
 
+        /*Este metodo configura el formato de los datagrid */
+        public void inicilizaDataGrid(){
+            ld.Size = tama;
+            ld.Location = p;
+            ld.BackgroundColor = Color.FromArgb(255, 192, 128);
+            ld.BringToFront();
+            ld.ReadOnly = true;
+         
         }
 
         public string seleccionaRenglonImagen( int i )
         {
-            string ima = "";
-            var cell = this.ld.Rows[ i ].Cells[ 1 ];
-
-            ima = cell.Value.ToString();
-            if ( ima.Length == 0) { ima = "NULL"; }
-            
-            return ima;
+            var cell = this.ld.Rows[i].Cells[1];
+            return cell.Value.ToString();
         }
 
-        public void seleccionaRenglonLlave(int i)
+        public string seleccionaRenglonLlave(int i)
         {
 
             var cell = this.ld.Rows[i].Cells[0];
-            //MessageBox.Show(cell.Value.ToString());
+            return cell.Value.ToString() ;
         }
 
         /*Este metodo configura el formato de los datagrid */

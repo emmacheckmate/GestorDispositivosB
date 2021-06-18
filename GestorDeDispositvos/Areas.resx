@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="btnGuardar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="button4.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABkAAAAaCAIAAADNH2CaAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAW
         JQAAFiUBSVIk8AAAAhhJREFUSEutlOtL21Achv3X6qYm2mlSL3Fo66WltLOCiMMLiG7iCkOFgiAiiOwC
@@ -133,7 +133,7 @@
         ea8QyaXrGigq5xwFLku2XppeAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="btnBuscar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="button3.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABoAAAAZCAIAAACgvKk3AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAW
         JQAAFiUBSVIk8AAAAgtJREFUSEutk9kvA1EUh/1vdqrWonZaS8dWSdUDEiRe8OKBhEgQIryISGml8UBC
@@ -148,7 +148,7 @@
         AjE7AIgAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="btnQuitar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="button2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAB0AAAAXCAIAAAB4atM+AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAW
         JQAAFiUBSVIk8AAAA4hJREFUSEudVfdPU1EY7X+kvyAIlFFaSherjDBUIIJVCCpBRAwQo0YSIFhkL0Hh
@@ -169,7 +169,7 @@
         mVvwBNMz87t79IVkaNlhPP0DcJZZ1zlzy48AAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="btnAlta.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="button1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAB4AAAAZCAIAAACpVwlNAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAW
         JQAAFiUBSVIk8AAAA81JREFUSEu1lelPE0EYxvmL0E+KHG2hF72WQilYqUAImgjxwIPGKAjIqYCAIpp4

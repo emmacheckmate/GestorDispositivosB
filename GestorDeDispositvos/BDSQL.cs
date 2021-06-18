@@ -16,18 +16,19 @@ namespace GestorDeDispositvos
     */
     class BDSQL
     {
+        /*Lista de combox que se encarga de mostrar la informacion de 
+         los catalogos, da se encargar de hacer la instancia y la cadena de conexion 
+        dt se encarga */
+        private List<ComboBox> lcb;
         private SqlDataAdapter da;
-        private DataTable dt; 
+        private DataTable dt;
 
-        public List<DataGridViewRow> ldgv;
+      
         public string nombreEquipo;
-
-        
 
         public List<string> listaQry;
         string cadenacnx = "";
 
-        
         private string Query;
         private string llaveQry;
         private string tablaQry;
@@ -36,16 +37,17 @@ namespace GestorDeDispositvos
 
         public List<string> lAt;
 
+        public List<ComboBox> lcbGS { get { return this.lcb; } set { this.lcb = value; } }
         public string valorabuscarGS { get { return this.valuesQry; } set { this.valuesQry = value; } }
         public string valueQryGS { get { return this.valuesQry; } set { this.valuesQry = value; } }
         public string tablaQryGS { get { return this.tablaQry; } set { this.tablaQry = value; } }
         public string llaveGS { get { return this.llaveQry; } set { this.llaveQry = value; } }
         public SqlDataAdapter gsda { get { return this.da; } set { this.da = value; } }
-        public DataTable gsdt { get { return this.dt; } set { this.dt = value;  } }
-        public List<DataGridViewRow> ldgvGS { get { return ldgv; } set { this.ldgv = value; } }
+        public DataTable gsdt { get { return this.dt; } set { this.dt = value; } }
+     
         public List<string> gslAt { get { return lAt; } set { this.lAt = value; } }
 
-        
+
         public string nombEq
         { get { return this.nombreEquipo; } set { this.nombreEquipo = value; } }
 
@@ -59,14 +61,11 @@ namespace GestorDeDispositvos
             set { this.cadenacnx = value; }
         }
 
-
-        /*Constructor del  objeto para el objeto que va a controlar todas las consultas y 
-         los objetos relacionados con la base de datos*/
-        public BDSQL()
+        public BDSQL(int modoReportes)
         {
             dt = new DataTable();
-             da = new SqlDataAdapter();
-
+            da = new SqlDataAdapter();
+            lcb = new List<ComboBox>();
 
             cadenacnx = "Data Source=" + Environment.MachineName.ToString() +
                                  "\\" +
@@ -77,8 +76,65 @@ namespace GestorDeDispositvos
             iniciaListaQuery();
         }
 
+
+        /*Constructor del  objeto para el objeto que va a controlar todas las consultas y 
+         los objetos relacionados con la base de datos*/
+        public BDSQL()
+        {
+            dt = new DataTable();
+            da = new SqlDataAdapter();
+            lcb = new List<ComboBox>();
+
+            cadenacnx = "Data Source=" + Environment.MachineName.ToString() +
+                                 "\\" +
+                                "SQLEXPRESS;Initial Catalog=dbGestDisp;Integrated Security=True";
+
+            listaQry = new List<string>();
+            lAt = new List<string>();
+            iniciaListaQuery();
+        }
+
+        /*Se inicializa la lista de los combox para
+         * mostrar todos los catalogos de las tablas*/
+        public void iniCBLista() 
+        {
+            for (int i = 0; i < 5; i++) {
+                this.lcbGS.Add( new ComboBox());
+            }
+        }
+
+        /*Este metodo se utiliza para llenar los valores de los combobox
+         con todos los registros de cada una de las tables*/
+        public void llenaCatalogos()
+        {
+            DataGridView ld = new DataGridView();
+
+            DataTable d = this.leeRegistros("");
+            ld.DataSource = d;
+
+            /*Se ingresa a la lista de los combos y 
+             * los catalogos que va ser cargados en }
+             * dentro de cada combo*/
+            for (int j = 0; j < this.lcbGS.Count; j++)
+            {
+                for (int i = 0; i < ld.Rows.Count; i++)
+                {
+                    /*Se pasa la informacion del datable al
+                    datagridview para solo obtener los nombres  */
+                    this.lcbGS[j].Items.Add(ld.Rows[i].Cells[1].ToString()); 
+                }
+            }
+            
+
+            // cell.Value.ToString();
+
+        }
         /*Inicializa la lista de combos para los catalogos */
 
+        
+        /*Se cargan las consultas mas importantes para el sistema
+         dentro de una lista y hacer mas rapido la solicitud y 
+        carga de información  */
         public void iniciaListaQuery()
         {
             /*Carga de los catalogos de empleados, areas, tipos de dispositivos
@@ -125,8 +181,7 @@ namespace GestorDeDispositvos
             List<string> renglon = new List<string>();
             SqlDataAdapter da = new SqlDataAdapter(qry, this.cdncnxSG);
             DataTable dt = new DataTable();
-             da.Fill(dt); 
-             
+            da.Fill(dt); 
             return dt;
         }
 

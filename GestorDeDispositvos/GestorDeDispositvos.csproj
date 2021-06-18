@@ -170,6 +170,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Areas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Areas.Designer.cs">
+      <DependentUpon>Areas.cs</DependentUpon>
+    </Compile>
     <Compile Include="BDSQL.cs" />
     <Compile Include="CrudEmp.cs">
       <SubType>Form</SubType>
@@ -184,6 +190,18 @@
       <DependentUpon>CrudRadio.cs</DependentUpon>
     </Compile>
     <Compile Include="DataGridControl.cs" />
+    <Compile Include="Dispositivos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dispositivos.Designer.cs">
+      <DependentUpon>Dispositivos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Estados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Estados.Designer.cs">
+      <DependentUpon>Estados.cs</DependentUpon>
+    </Compile>
     <Compile Include="Impresion.cs" />
     <Compile Include="Principal.cs">
       <SubType>Form</SubType>
@@ -199,12 +217,24 @@
     <Compile Include="RegRadio.Designer.cs">
       <DependentUpon>RegRadio.cs</DependentUpon>
     </Compile>
+    <Compile Include="Sucursales.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sucursales.Designer.cs">
+      <DependentUpon>Sucursales.cs</DependentUpon>
+    </Compile>
     <Compile Include="Validaciones.cs" />
+    <EmbeddedResource Include="Areas.resx">
+      <DependentUpon>Areas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CrudEmp.resx">
       <DependentUpon>CrudEmp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CrudRadio.resx">
       <DependentUpon>CrudRadio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Estados.resx">
+      <DependentUpon>Estados.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Principal.resx">
       <DependentUpon>Principal.cs</DependentUpon>
@@ -221,6 +251,9 @@
     </Compile>
     <EmbeddedResource Include="RegRadio.resx">
       <DependentUpon>RegRadio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sucursales.resx">
+      <DependentUpon>Sucursales.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -242,6 +275,12 @@
   <ItemGroup>
     <Content Include="logo %281%29 %281%29.ico" />
     <Content Include="logo small.ico" />
+    <None Include="Resources\baner1.png" />
+    <None Include="Resources\logoRadio.fw.png" />
+    <None Include="Resources\mano.png" />
+    <None Include="Resources\icono.png" />
+    <None Include="Resources\logoDisp.fw.png" />
+    <None Include="Resources\baner.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Data.SqlClient.SNI.2.0.0\build\net46\Microsoft.Data.SqlClient.SNI.targets" Condition="Exists('..\packages\Microsoft.Data.SqlClient.SNI.2.0.0\build\net46\Microsoft.Data.SqlClient.SNI.targets')" />
