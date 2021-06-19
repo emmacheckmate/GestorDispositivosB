@@ -130,7 +130,7 @@ namespace GestorDeDispositvos
             this.Controls.Add(this.panel1);
             this.Name = "Principal";
             this.ShowIcon = false;
-            this.Text = "Administrador de Dispositivos";
+            this.Text = "Administrador de Dispositivos B8";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

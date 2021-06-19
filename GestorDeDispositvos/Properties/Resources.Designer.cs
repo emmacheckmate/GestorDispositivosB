@@ -63,6 +63,16 @@ namespace GestorDeDispositvos.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _315_3159440_employee_icon_png_transparent_png {
+            get {
+                object obj = ResourceManager.GetObject("315-3159440_employee-icon-png-transparent-png", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap baner {
             get {
                 object obj = ResourceManager.GetObject("baner", resourceCulture);
@@ -116,6 +126,26 @@ namespace GestorDeDispositvos.Properties {
         internal static System.Drawing.Bitmap mano {
             get {
                 object obj = ResourceManager.GetObject("mano", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap radio {
+            get {
+                object obj = ResourceManager.GetObject("radio", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap tipos {
+            get {
+                object obj = ResourceManager.GetObject("tipos", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

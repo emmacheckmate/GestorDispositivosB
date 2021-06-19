@@ -55,11 +55,14 @@ namespace GestorDeDispositvos
 
         /*Se le manda como parametro el indice de la lista del Qry 
          del predeterminado para las consultas mas comunes en el sitema*/
-        public void iniciaBD( int numQry)
+        public void iniciaBD(int numQry)
         {
             DataTable t = new DataTable();
-            t = this.baseDatos.leeRegistros(this.baseDatos.listaQry[ numQry ]);
+            t = this.baseDatos.leeRegistros(this.baseDatos.listaQry[numQry]);
             ld.DataSource = t;
+            ld.ClearSelection();
+            ld.CurrentCell = null;
+          
         }
 
         /*Este metodo configura el formato de los datagrid */
@@ -69,13 +72,21 @@ namespace GestorDeDispositvos
             ld.BackgroundColor = Color.FromArgb(255, 192, 128);
             ld.BringToFront();
             ld.ReadOnly = true;
-         
+            
+
         }
 
         public string seleccionaRenglonImagen( int i )
         {
             var cell = this.ld.Rows[i].Cells[1];
             return cell.Value.ToString();
+        }
+
+        public string seleccionaNombreLlave()
+        {
+            
+            var cell = this.ld.Columns[ 0 ].Name;
+            return cell.ToString();
         }
 
         public string seleccionaRenglonLlave(int i)

@@ -42,22 +42,22 @@ namespace GestorDeDispositvos
         private void ld_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
 
-            try {pictureBox2.Image = Image.FromFile( d.seleccionaRenglonImagen(e.RowIndex) );}
+            try {pictureBox2.Image = Image.FromFile( d.seleccionaRenglonImagen(e.RowIndex) );
+                MessageBox.Show(d.seleccionaNombreLlave());
+            }
             catch {
 
             
-                if (d.seleccionaRenglonImagen(e.RowIndex).Length  <= 1)
-                {
-                    
+                if (d.seleccionaRenglonImagen(e.RowIndex).Length  <= 1){   
                     pictureBox2.Image = pictureBox2.ErrorImage;
-                    
-                }
+                    }
             }
 
             pictureBox2.Refresh();
         }
         private void RegRadio_Load(object sender, EventArgs e)
         {
+            
             double porcentajeAnch = 0.5, porcentajeAlt = 0.3;
 
             this.Height = Screen.FromControl(this).Bounds.Height -
@@ -71,6 +71,7 @@ namespace GestorDeDispositvos
             this.ShowIcon = false;
             this.pictureBxIni();
             this.pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
+            this.pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
 
         }
 
@@ -110,7 +111,10 @@ namespace GestorDeDispositvos
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-
+            
+            MessageBox.Show(d.ld.CurrentCell.RowIndex.ToString());
+            try {   }
+            catch { }
         }
         /*Metodo que se encarga de dar ubicacion a las imagenes de sistema
         la ubicacion  oficial va a ser C:/sistemaDispostivosBeta8*/
@@ -162,6 +166,11 @@ namespace GestorDeDispositvos
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btnAlta_Click(object sender, EventArgs e)
         {
 
         }

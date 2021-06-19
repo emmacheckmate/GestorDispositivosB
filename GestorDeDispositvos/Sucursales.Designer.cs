@@ -126,16 +126,17 @@ namespace GestorDeDispositvos
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(76, 47);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(126, 20);
+            this.label2.Size = new System.Drawing.Size(185, 25);
             this.label2.TabIndex = 36;
-            this.label2.Text = "Numero de radio";
+            this.label2.Text = "Nombre Sucursal:";
             // 
             // txtNombEmp
             // 
-            this.txtNombEmp.Location = new System.Drawing.Point(226, 40);
+            this.txtNombEmp.Location = new System.Drawing.Point(267, 45);
             this.txtNombEmp.Name = "txtNombEmp";
             this.txtNombEmp.Size = new System.Drawing.Size(176, 26);
             this.txtNombEmp.TabIndex = 35;
@@ -144,6 +145,7 @@ namespace GestorDeDispositvos
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.panel1.Controls.Add(this.pictureBox3);
+            this.panel1.Controls.Add(this.txtNombEmp);
             this.panel1.Location = new System.Drawing.Point(0, 2);
             this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel1.Name = "panel1";
@@ -182,12 +184,13 @@ namespace GestorDeDispositvos
             this.Controls.Add(this.btnQuitar);
             this.Controls.Add(this.btnAlta);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.txtNombEmp);
             this.Controls.Add(this.panel1);
             this.Name = "sucursales";
-            this.Text = "sucursales";
+            this.ShowIcon = false;
+            this.Text = "Catalogo Sucursales";
             this.Load += new System.EventHandler(this.sucursales_Load);
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

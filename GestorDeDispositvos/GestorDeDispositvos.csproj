@@ -233,6 +233,9 @@
     <EmbeddedResource Include="CrudRadio.resx">
       <DependentUpon>CrudRadio.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Dispositivos.resx">
+      <DependentUpon>Dispositivos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Estados.resx">
       <DependentUpon>Estados.cs</DependentUpon>
     </EmbeddedResource>
@@ -275,6 +278,9 @@
   <ItemGroup>
     <Content Include="logo %281%29 %281%29.ico" />
     <Content Include="logo small.ico" />
+    <None Include="Resources\radio.png" />
+    <None Include="Resources\tipos.png" />
+    <None Include="Resources\315-3159440_employee-icon-png-transparent-png.png" />
     <None Include="Resources\baner1.png" />
     <None Include="Resources\logoRadio.fw.png" />
     <None Include="Resources\mano.png" />

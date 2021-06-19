@@ -271,3 +271,4 @@ C:\Users\Sistemas_B8\Documents\GitHub\GestorDispositivosB\GestorDeDispositvos\ob
 C:\Users\Sistemas_B8\Documents\GitHub\GestorDispositivosB\GestorDeDispositvos\obj\Debug\GestorDeDispositvos.sucursales.resources
 C:\Users\Sistemas_B8\Documents\GitHub\GestorDispositivosB\GestorDeDispositvos\obj\Debug\GestorDeDispositvos.Areas.resources
 C:\Users\Sistemas_B8\Documents\GitHub\GestorDispositivosB\GestorDeDispositvos\obj\Debug\GestorDeDispositvos.Estados.resources
+C:\Users\Sistemas_B8\Documents\GitHub\GestorDispositivosB\GestorDeDispositvos\obj\Debug\GestorDeDispositvos.Dispositivos.resources

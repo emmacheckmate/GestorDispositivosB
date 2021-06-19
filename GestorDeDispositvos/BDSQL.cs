@@ -32,14 +32,16 @@ namespace GestorDeDispositvos
         private string Query;
         private string llaveQry;
         private string tablaQry;
-        private string valuesQry;
-        private string valorabuscar;
+        private string valueQry;
+        private string valorNuevo;
+
+       
 
         public List<string> lAt;
 
+        public string valorNuevoGS { get { return this.valorNuevo; } set { this.valorNuevo = value; } }
         public List<ComboBox> lcbGS { get { return this.lcb; } set { this.lcb = value; } }
-        public string valorabuscarGS { get { return this.valuesQry; } set { this.valuesQry = value; } }
-        public string valueQryGS { get { return this.valuesQry; } set { this.valuesQry = value; } }
+        public string valueQryGS { get { return this.valueQry; } set { this.valueQry = value; } }
         public string tablaQryGS { get { return this.tablaQry; } set { this.tablaQry = value; } }
         public string llaveGS { get { return this.llaveQry; } set { this.llaveQry = value; } }
         public SqlDataAdapter gsda { get { return this.da; } set { this.da = value; } }
@@ -74,6 +76,7 @@ namespace GestorDeDispositvos
             listaQry = new List<string>();
             lAt = new List<string>();
             iniciaListaQuery();
+            iniCBLista();
         }
 
 
@@ -146,18 +149,19 @@ namespace GestorDeDispositvos
             listaQry.Add("SELECT * FROM catEmp");
             listaQry.Add("SELECT * FROM catSucursal");
 
-            /*Consultas para la insercion de datos */
+            /*Consultas para la insercion, actualizacion de datos para los radios */
             listaQry.Add("INSERT INTO catRadio (idRadio) VALUES(" + "'" + this.valueQryGS + "'" + ")");
+
+            //UPDATE para la catologo de radios
+            listaQry.Add("UPDATE catRadio SET"+this.llaveGS+"='"+this.valueQryGS+"'"+
+                                               
+                         "WHERE"+this.llaveGS +"='"+this.valorNuevoGS +"'" );
 
             /*Consulta para obtener el nombre de los atributos*/
             listaQry.Add("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS " +
                                                     "Where TABLE_NAME='catSucursal' " +
                                                     "ORDER BY ORDINAL_POSITION ");
 
-            /*Consulta para tablas que tienen  llaves de tipo entero*/
-            listaQry.Add("SELECT "+ this.llaveGS + 
-                         "FROM" + this.tablaQry +
-                         "WHERE " + this.llaveGS  + this.valorabuscarGS);
 
 
         }

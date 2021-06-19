@@ -28,7 +28,7 @@ namespace GestorDeDispositvos
 
         private void CrudEmp_Load(object sender, EventArgs e)
         {
-         
+            this.pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             double porcentajeAnch = 0.5, porcentajeAlt = 0.3;
 
             this.Height = Screen.FromControl(this).Bounds.Height -

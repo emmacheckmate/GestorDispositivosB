@@ -1,0 +1,1 @@
+UPDATE catRadio SET idRadio ='RTWE1278',codigoQR ='c:/codigoqr.jpg' where idRadio='RTDE1278'

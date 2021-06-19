@@ -19,6 +19,7 @@ namespace GestorDeDispositvos
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             double porcentaje = 0.5;
 
             this.Height = Screen.FromControl(this).Bounds.Height -
@@ -35,7 +36,10 @@ namespace GestorDeDispositvos
 
         private void button1_Click(object sender, EventArgs e)
         {
-           
+            CrudRadio c = new CrudRadio();
+            this.Hide();
+            c.Closed += (s, args) => this.Close();
+            c.Show();
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)

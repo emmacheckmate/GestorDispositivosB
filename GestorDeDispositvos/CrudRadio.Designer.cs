@@ -248,7 +248,7 @@ namespace GestorDeDispositvos
             this.Controls.Add(this.panel1);
             this.Name = "CrudRadio";
             this.ShowIcon = false;
-            this.Text = "CrudRadio";
+            this.Text = "Administración y control de radios";
             this.Load += new System.EventHandler(this.CrudRadio_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
