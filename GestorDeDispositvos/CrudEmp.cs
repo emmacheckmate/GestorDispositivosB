@@ -24,6 +24,7 @@ namespace GestorDeDispositvos
 
             //   d.ld.RowHeaderMouseClick += this.ld_RowHeaderMouseClick;
             this.Controls.Add(d.ld);
+            
         }
 
         private void CrudEmp_Load(object sender, EventArgs e)

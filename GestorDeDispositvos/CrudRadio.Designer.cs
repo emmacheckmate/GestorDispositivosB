@@ -125,7 +125,7 @@ namespace GestorDeDispositvos
             // 
             // dateTimePicker2
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(752, 125);
+            this.dateTimePicker2.Location = new System.Drawing.Point(267, 26);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(339, 26);
             this.dateTimePicker2.TabIndex = 7;
@@ -133,7 +133,7 @@ namespace GestorDeDispositvos
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(574, 130);
+            this.label8.Location = new System.Drawing.Point(64, 31);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(150, 20);
             this.label8.TabIndex = 13;

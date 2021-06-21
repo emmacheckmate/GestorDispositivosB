@@ -76,7 +76,7 @@ namespace GestorDeDispositvos
             listaQry = new List<string>();
             lAt = new List<string>();
             iniciaListaQuery();
-            iniCBLista();
+           
         }
 
 
@@ -97,44 +97,6 @@ namespace GestorDeDispositvos
             iniciaListaQuery();
         }
 
-        /*Se inicializa la lista de los combox para
-         * mostrar todos los catalogos de las tablas*/
-        public void iniCBLista() 
-        {
-            for (int i = 0; i < 5; i++) {
-                this.lcbGS.Add( new ComboBox());
-            }
-        }
-
-        /*Este metodo se utiliza para llenar los valores de los combobox
-         con todos los registros de cada una de las tables*/
-        public void llenaCatalogos()
-        {
-            DataGridView ld = new DataGridView();
-
-            DataTable d = this.leeRegistros("");
-            ld.DataSource = d;
-
-            /*Se ingresa a la lista de los combos y 
-             * los catalogos que va ser cargados en }
-             * dentro de cada combo*/
-            for (int j = 0; j < this.lcbGS.Count; j++)
-            {
-                for (int i = 0; i < ld.Rows.Count; i++)
-                {
-                    /*Se pasa la informacion del datable al
-                    datagridview para solo obtener los nombres  */
-                    this.lcbGS[j].Items.Add(ld.Rows[i].Cells[1].ToString()); 
-                }
-            }
-            
-
-            // cell.Value.ToString();
-
-        }
-        /*Inicializa la lista de combos para los catalogos */
-
-        
         /*Se cargan las consultas mas importantes para el sistema
          dentro de una lista y hacer mas rapido la solicitud y 
         carga de información  */

@@ -13,15 +13,24 @@ namespace GestorDeDispositvos
 {
     public partial class CrudRadio : Form
     {
+        ComboControl cbc;
 
-        DataGridView dataGridEnt ; 
         public CrudRadio()
         {
+            cbc = new ComboControl();
+            
             InitializeComponent();
+            cbc.iniCBLista();
+            for (int i = 0; i < 5; i++)
+            {
+                panel1.Controls.Add(cbc.lcbGS[i]);
+                panel1.Controls.Add(cbc.llbGS[i]);
+            }
         }
 
         private void CrudRadio_Load(object sender, EventArgs e)
         {
+            
             panel1.BackColor = Color.FromArgb(255, 192, 128);
             
 

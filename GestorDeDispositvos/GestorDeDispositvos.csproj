@@ -177,6 +177,7 @@
       <DependentUpon>Areas.cs</DependentUpon>
     </Compile>
     <Compile Include="BDSQL.cs" />
+    <Compile Include="ComboControl.cs" />
     <Compile Include="CrudEmp.cs">
       <SubType>Form</SubType>
     </Compile>

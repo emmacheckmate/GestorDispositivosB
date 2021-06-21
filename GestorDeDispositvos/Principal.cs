@@ -12,9 +12,12 @@ namespace GestorDeDispositvos
 {
     public partial class Principal : Form
     {
+        ComboControl cbc;
         public Principal()
         {
             InitializeComponent();
+            cbc = new ComboControl();
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -32,6 +35,9 @@ namespace GestorDeDispositvos
             button1.BackgroundImageLayout = ImageLayout.Center;
             button2.BackgroundImageLayout = ImageLayout.Center;
             this.pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+
+
+
         }
 
         private void button1_Click(object sender, EventArgs e)
