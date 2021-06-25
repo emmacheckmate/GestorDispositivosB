@@ -203,6 +203,12 @@
     <Compile Include="Estados.Designer.cs">
       <DependentUpon>Estados.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormDinamico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDinamico.Designer.cs">
+      <DependentUpon>FormDinamico.cs</DependentUpon>
+    </Compile>
     <Compile Include="Impresion.cs" />
     <Compile Include="Principal.cs">
       <SubType>Form</SubType>
@@ -217,6 +223,12 @@
     </Compile>
     <Compile Include="RegRadio.Designer.cs">
       <DependentUpon>RegRadio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SeleccionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SeleccionForm.Designer.cs">
+      <DependentUpon>SeleccionForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Sucursales.cs">
       <SubType>Form</SubType>
@@ -240,6 +252,9 @@
     <EmbeddedResource Include="Estados.resx">
       <DependentUpon>Estados.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormDinamico.resx">
+      <DependentUpon>FormDinamico.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Principal.resx">
       <DependentUpon>Principal.cs</DependentUpon>
     </EmbeddedResource>
@@ -255,6 +270,9 @@
     </Compile>
     <EmbeddedResource Include="RegRadio.resx">
       <DependentUpon>RegRadio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SeleccionForm.resx">
+      <DependentUpon>SeleccionForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Sucursales.resx">
       <DependentUpon>Sucursales.cs</DependentUpon>
@@ -279,6 +297,9 @@
   <ItemGroup>
     <Content Include="logo %281%29 %281%29.ico" />
     <Content Include="logo small.ico" />
+    <None Include="Resources\cotrol management1.png" />
+    <None Include="Resources\cotrol management.png" />
+    <None Include="Resources\catalogos.png" />
     <None Include="Resources\radio.png" />
     <None Include="Resources\tipos.png" />
     <None Include="Resources\315-3159440_employee-icon-png-transparent-png.png" />

@@ -32,6 +32,9 @@ namespace GestorDeDispositvos
         {
             
             panel1.BackColor = Color.FromArgb(255, 192, 128);
+            panel1.Controls.Add(groupBox1);
+            groupBox1.SendToBack();
+            this.CenterToScreen();
             
 
 
@@ -50,6 +53,43 @@ namespace GestorDeDispositvos
         private void button1_Click(object sender, EventArgs e)
         {
             txtNumEmp.Text = "";
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+                    }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            SeleccionForm sf;
+            sf = new SeleccionForm();
+            sf.ShowDialog();
+            this.control
+          //  ResetAllControlsBackColor( System.Windows.Forms.Control );
+        }
+        // Reset all the controls to the user's default Control color. 
+        private void ResetAllControlsBackColor(Control control)
+        {
+            control.BackColor = SystemColors.Control;
+            control.ForeColor = SystemColors.ControlText;
+            if (control.HasChildren)
+            {
+                // Recursively call this method for each child control.
+                foreach (Control childControl in control.Controls)
+                {
+                    ResetAllControlsBackColor(childControl);
+                }
+            }
         }
     }
 }

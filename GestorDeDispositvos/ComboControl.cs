@@ -28,7 +28,7 @@ namespace GestorDeDispositvos
             string[] arr = new string[] { "Número de Radio", "Reponsable encargado ", "Sucursal", "Área", "Condición del radio:" };
 
             Point p = new Point(200, 50);
-            int x = 600, y = 150;
+            int x = 400, y = 150;
             
             for (int i = 0; i < 5; i++)
             {
