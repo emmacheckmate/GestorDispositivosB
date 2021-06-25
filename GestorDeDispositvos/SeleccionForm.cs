@@ -29,13 +29,10 @@ namespace GestorDeDispositvos
             int index = this.listBox1.SelectedIndex;
             if (index != System.Windows.Forms.ListBox.NoMatches)
             {
-                MessageBox.Show(index.ToString());
+             //   MessageBox.Show(index.ToString());
                 fd = new FormDinamico( index );
-                
-                fd.RefToForm1 = this;
-                this.Visible = false;
-                this.Hide();
-                fd.Show();
+           
+                fd.ShowDialog();
 
             }
         }

@@ -35,9 +35,42 @@ namespace GestorDeDispositvos {
 
             this.Controls.Add(d.ld);
 
+            
+
             InitializeComponent();
+            panel1.Controls.Add(pictureBox3);
         }
 
+        public void eligeCatalogo(int op)
+        {
+            switch (op)
+            {
+                case 0:
+                    this.Text = "Catalogo Radios";
+                    break;
+
+                case 1:
+                    
+                    this.Text = "Catalogo Áreas";
+                    break;
+
+
+                case 3:
+                    this.Text = "Catalogo de Estados";
+                    break;
+
+                case 4:
+                    this.Text = "Catalogo de Empleados";
+                    break;
+
+                case 5:
+                    this.Text = "Catalogo de Sucursales";
+                    break;
+            }
+
+            d.ld.RowHeaderMouseClick += this.ld_RowHeaderMouseClick;
+            this.Controls.Add(d.ld);
+        }
         /*Metodo que hace referencua a la clase de datagridcontrol para poder
  manipular la informacion proveniente del  catalogo de radios*/
         private void ld_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -63,19 +96,25 @@ namespace GestorDeDispositvos {
 
         private void FormDinamico_Load(object sender, EventArgs e)
         {
-            this.Text = this.numCatGS.ToString();
+            ;
+            eligeCatalogo(this.numCatGS);
             this.CenterToScreen();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
-            this.RefToForm1.Show();
+           
         }
 
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

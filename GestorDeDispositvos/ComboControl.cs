@@ -10,7 +10,8 @@ namespace GestorDeDispositvos
         private BDSQL bd;
         public List<ComboBox> lcb;
         public List<Label> llb;
-      
+        public List<Label> llbGS { get { return this.llb; } set { this.llb = value; } }
+
         public ComboControl()
         {
             llb = new List<Label>();
@@ -18,7 +19,7 @@ namespace GestorDeDispositvos
             lcb = new List<ComboBox>();
         }
 
-        public List< Label > llbGS { get { return this.llb; } set { this.llb = value; } }
+       
         public List<ComboBox> lcbGS { get { return this.lcb; } set { this.lcb = value; } }
 
         /*Se inicializa la lista de los combox para
@@ -38,16 +39,18 @@ namespace GestorDeDispositvos
                 this.lcbGS[ i ].Location = new Point(x, y);
                 this.lcbGS[ i ].BringToFront();
                 this.llbGS[ i ].Location = new Point(x, y-15);
+                this.llbGS[i].BackColor=   Color.FromArgb(255, 224, 192);
 
                 y += 40;
             }
-            
 
+            
+           
         }
 
         /*Este metodo se utiliza para llenar los valores de los combobox
          con todos los registros de cada una de las tables*/
-        public void llenaCatalogos()
+        public void llenaCatalogooos()
         {
             DataGridView ld = new DataGridView();
 

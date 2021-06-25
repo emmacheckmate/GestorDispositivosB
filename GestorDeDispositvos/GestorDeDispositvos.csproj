@@ -297,6 +297,13 @@
   <ItemGroup>
     <Content Include="logo %281%29 %281%29.ico" />
     <Content Include="logo small.ico" />
+    <None Include="Resources\salir.png" />
+    <None Include="Resources\eliminar2.png" />
+    <None Include="Resources\eliminar1.png" />
+    <None Include="Resources\buscar.png" />
+    <None Include="Resources\guardar.png" />
+    <None Include="Resources\agregar.png" />
+    <None Include="Resources\eliminar.png" />
     <None Include="Resources\cotrol management1.png" />
     <None Include="Resources\cotrol management.png" />
     <None Include="Resources\catalogos.png" />

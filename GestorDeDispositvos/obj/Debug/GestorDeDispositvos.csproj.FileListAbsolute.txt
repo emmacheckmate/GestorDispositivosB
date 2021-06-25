@@ -278,3 +278,5 @@ C:\Users\link2\OneDrive\Documentos\GitHub\GestorDispositivosB\GestorDeDispositvo
 C:\Users\link2\OneDrive\Documentos\GitHub\GestorDispositivosB\GestorDeDispositvos\obj\Debug\GestorDeDispositvos.exe
 C:\Users\link2\OneDrive\Documentos\GitHub\GestorDispositivosB\GestorDeDispositvos\obj\Debug\GestorDeDispositvos.pdb
 C:\Users\link2\OneDrive\Documentos\GitHub\GestorDispositivosB\GestorDeDispositvos\obj\Debug\GestorDeDispositvos.FormDinamico.resources
+C:\Users\Sistemas_B8\Documents\GitHub\GestorDispositivosB\GestorDeDispositvos\obj\Debug\GestorDeDispositvos.FormDinamico.resources
+C:\Users\Sistemas_B8\Documents\GitHub\GestorDispositivosB\GestorDeDispositvos\obj\Debug\GestorDeDispositvos.SeleccionForm.resources

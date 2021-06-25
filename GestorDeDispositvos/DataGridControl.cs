@@ -23,6 +23,10 @@ namespace GestorDeDispositvos
         public DataGridView ld;
         public BDSQL baseDatos;
 
+        public List<Label> llb;
+        public List<Label> llbGS { get { return this.llb; } set { this.llb = value; } }
+
+
         /*Metodo para pasar el valor del indice del datagtird */
         public Size getSetIndiceDG
         {
@@ -37,22 +41,55 @@ namespace GestorDeDispositvos
             get { return this.tama; }
             set { this.tama = value; }
         }
-        
+
         /*Este metodo es para asignar la posicion del  datagrid */
         public Point getSetP
-        { get { return this.p;  } set { this.p = value;  }   }
+        { get { return this.p; } set { this.p = value; } }
 
         /*Constructor del objeto del drig*/
         public DataGridControl()
         {
-            baseDatos = new BDSQL();  
-            tama = new Size(300, 200);
-            p = new Point(20, 150);
+            baseDatos = new BDSQL();
+            tama = new Size(800, 300);
+            p = new Point(15, 200);
             ld = new DataGridView();
             this.inicilizaDataGrid();
 
+            llb = new List<Label> ();
+          //  iniLabels();
+
         }
 
+        public void iniLabels()
+        {
+            //Catalogo  de 
+            this.llbGS.Add(new Label());
+            this.llbGS[0].Text = "Número de Serie:";
+            this.llbGS.Add(new Label());
+            this.llbGS[1].Text = "Código QR:";
+
+            //Catalogo de empleados
+            this.llbGS.Add(new Label());
+            this.llbGS[2].Text = "Número de asignación:";
+            this.llbGS.Add(new Label());
+            this.llbGS[3].Text = "Nombre:";
+
+            //Sucursales solo van a utilizarse como B6..etc
+            this.llbGS.Add(new Label());
+            this.llbGS[4].Text = "Código:";
+
+            //Estados
+            this.llbGS.Add(new Label());
+            this.llbGS[5].Text = "Codigo:";
+
+            this.llbGS.Add(new Label());
+            this.llbGS[5].Text = "Diagnostico:";
+        }
+
+        public void eligeEtiquetas()
+        {
+
+        }
         /*Se le manda como parametro el indice de la lista del Qry 
          del predeterminado para las consultas mas comunes en el sitema*/
         public void iniciaBD(int numQry)
@@ -62,7 +99,6 @@ namespace GestorDeDispositvos
             ld.DataSource = t;
             ld.ClearSelection();
             ld.CurrentCell = null;
-          
         }
 
         /*Este metodo configura el formato de los datagrid */
@@ -72,8 +108,6 @@ namespace GestorDeDispositvos
             ld.BackgroundColor = Color.FromArgb(255, 192, 128);
             ld.BringToFront();
             ld.ReadOnly = true;
-            
-
         }
 
         public string seleccionaRenglonImagen( int i )

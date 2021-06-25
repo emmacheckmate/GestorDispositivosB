@@ -35,7 +35,13 @@ namespace GestorDeDispositvos
             panel1.Controls.Add(groupBox1);
             groupBox1.SendToBack();
             this.CenterToScreen();
-            
+            button1.BackgroundImageLayout = ImageLayout.Stretch;
+            button2.BackgroundImageLayout = ImageLayout.Stretch;
+            button3.BackgroundImageLayout = ImageLayout.Stretch;
+            button4.BackgroundImageLayout = ImageLayout.Stretch;
+            button5.BackgroundImageLayout = ImageLayout.Stretch;
+
+
 
 
         }
@@ -74,7 +80,7 @@ namespace GestorDeDispositvos
             SeleccionForm sf;
             sf = new SeleccionForm();
             sf.ShowDialog();
-            this.control
+          
           //  ResetAllControlsBackColor( System.Windows.Forms.Control );
         }
         // Reset all the controls to the user's default Control color. 
