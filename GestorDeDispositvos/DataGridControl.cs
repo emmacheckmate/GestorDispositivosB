@@ -23,7 +23,7 @@ namespace GestorDeDispositvos
         public DataGridView ld;
         public BDSQL baseDatos;
 
-        public List<Label> llb;
+        private List<Label> llb;
         public List<Label> llbGS { get { return this.llb; } set { this.llb = value; } }
 
 
@@ -50,22 +50,37 @@ namespace GestorDeDispositvos
         public DataGridControl()
         {
             baseDatos = new BDSQL();
-            tama = new Size(800, 300);
-            p = new Point(15, 200);
+            tama = new Size(500, 300);
+            p = new Point(15, 250);
             ld = new DataGridView();
             this.inicilizaDataGrid();
-
+            
             llb = new List<Label> ();
-          //  iniLabels();
+            this.iniLabels();
+
 
         }
 
         public void iniLabels()
         {
-            //Catalogo  de 
-            this.llbGS.Add(new Label());
+            Label l = new Label();
+            Label l2 = new Label();
+            l.Size = new System.Drawing.Size(300, 30);
+            l.Location = new System.Drawing.Point(15, 50);
+            l.ForeColor = Color.Black;
+            l.Font = new Font("Arial", 10, FontStyle.Bold);
+            l.BringToFront();
+
+            l2.Location = new System.Drawing.Point(15, 80);
+            l2.ForeColor = Color.Black;
+            l2.Font = new Font("Arial", 10, FontStyle.Bold);
+            l2.BringToFront();
+
+            //Catalogo  de radios 
+
+            this.llbGS.Add( l );
             this.llbGS[0].Text = "Número de Serie:";
-            this.llbGS.Add(new Label());
+            this.llbGS.Add( l2 );
             this.llbGS[1].Text = "Código QR:";
 
             //Catalogo de empleados
@@ -83,13 +98,10 @@ namespace GestorDeDispositvos
             this.llbGS[5].Text = "Codigo:";
 
             this.llbGS.Add(new Label());
-            this.llbGS[5].Text = "Diagnostico:";
+            this.llbGS[6].Text = "Diagnostico:";
+          
         }
 
-        public void eligeEtiquetas()
-        {
-
-        }
         /*Se le manda como parametro el indice de la lista del Qry 
          del predeterminado para las consultas mas comunes en el sitema*/
         public void iniciaBD(int numQry)
@@ -116,6 +128,16 @@ namespace GestorDeDispositvos
             return cell.Value.ToString();
         }
 
+        public List<string> seleccionaInformacion(int  i )
+        {
+            List<string> t = new List<string>();
+
+            t.Add(this.ld.Rows[i].Cells[0].Value.ToString());
+            t.Add(this.ld.Rows[i].Cells[1].Value.ToString());
+
+            return t;
+        }
+
         public string seleccionaNombreLlave()
         {
             
@@ -138,7 +160,6 @@ namespace GestorDeDispositvos
 
             for (int i = 0; i < this.baseDatos.lAt.Count(); i++)
             {
-
                 ld.Columns[i].Name = this.baseDatos.lAt[i];
             }
 
