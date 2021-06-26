@@ -224,6 +224,12 @@
     <Compile Include="RegRadio.Designer.cs">
       <DependentUpon>RegRadio.cs</DependentUpon>
     </Compile>
+    <Compile Include="ReportesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportesForm.Designer.cs">
+      <DependentUpon>ReportesForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="SeleccionForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -270,6 +276,9 @@
     </Compile>
     <EmbeddedResource Include="RegRadio.resx">
       <DependentUpon>RegRadio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportesForm.resx">
+      <DependentUpon>ReportesForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SeleccionForm.resx">
       <DependentUpon>SeleccionForm.cs</DependentUpon>
