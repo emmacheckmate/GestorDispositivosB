@@ -31,6 +31,9 @@ namespace GestorDeDispositvos
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDinamico));
             this.panel2 = new System.Windows.Forms.Panel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnGuardarPIc = new System.Windows.Forms.Button();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -45,13 +48,10 @@ namespace GestorDeDispositvos
             this.button1 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnGuardarPIc = new System.Windows.Forms.Button();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
@@ -64,6 +64,38 @@ namespace GestorDeDispositvos
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(328, 352);
             this.panel2.TabIndex = 57;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.ErrorImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.ErrorImage")));
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.InitialImage = null;
+            this.pictureBox2.Location = new System.Drawing.Point(43, 28);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(237, 234);
+            this.pictureBox2.TabIndex = 58;
+            this.pictureBox2.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(83, 324);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(158, 25);
+            this.label1.TabIndex = 60;
+            this.label1.Text = "Guardar Imagen ";
+            // 
+            // btnGuardarPIc
+            // 
+            this.btnGuardarPIc.BackColor = System.Drawing.Color.White;
+            this.btnGuardarPIc.Image = ((System.Drawing.Image)(resources.GetObject("btnGuardarPIc.Image")));
+            this.btnGuardarPIc.Location = new System.Drawing.Point(121, 279);
+            this.btnGuardarPIc.Name = "btnGuardarPIc";
+            this.btnGuardarPIc.Size = new System.Drawing.Size(75, 42);
+            this.btnGuardarPIc.TabIndex = 59;
+            this.btnGuardarPIc.UseVisualStyleBackColor = false;
             // 
             // pictureBox3
             // 
@@ -131,6 +163,7 @@ namespace GestorDeDispositvos
             this.button4.Size = new System.Drawing.Size(44, 42);
             this.button4.TabIndex = 61;
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // label9
             // 
@@ -216,38 +249,6 @@ namespace GestorDeDispositvos
             this.panel1.Size = new System.Drawing.Size(1174, 218);
             this.panel1.TabIndex = 56;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(83, 324);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(158, 25);
-            this.label1.TabIndex = 60;
-            this.label1.Text = "Guardar Imagen ";
-            // 
-            // btnGuardarPIc
-            // 
-            this.btnGuardarPIc.BackColor = System.Drawing.Color.White;
-            this.btnGuardarPIc.Image = ((System.Drawing.Image)(resources.GetObject("btnGuardarPIc.Image")));
-            this.btnGuardarPIc.Location = new System.Drawing.Point(121, 279);
-            this.btnGuardarPIc.Name = "btnGuardarPIc";
-            this.btnGuardarPIc.Size = new System.Drawing.Size(75, 42);
-            this.btnGuardarPIc.TabIndex = 59;
-            this.btnGuardarPIc.UseVisualStyleBackColor = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.ErrorImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.ErrorImage")));
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.InitialImage = null;
-            this.pictureBox2.Location = new System.Drawing.Point(43, 28);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(237, 234);
-            this.pictureBox2.TabIndex = 58;
-            this.pictureBox2.TabStop = false;
-            // 
             // FormDinamico
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -262,10 +263,10 @@ namespace GestorDeDispositvos
             this.Load += new System.EventHandler(this.FormDinamico_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }

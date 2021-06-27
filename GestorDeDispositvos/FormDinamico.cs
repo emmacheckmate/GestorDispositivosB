@@ -111,18 +111,18 @@ namespace GestorDeDispositvos {
             
             try
             {
-                if (this.numCatGS == 0)
-                {
-                    d.seleccionaInformacion(e.RowIndex);
+                d.getSetIndiceDG = e.RowIndex;
+                d.seleccionaInformacion(this.d.getSetIndiceDG);
+                if (this.numCatGS == 0) {
+                    pictureBox2.Image = Image.FromFile(d.seleccionaRenglonImagen(this.d.getSetIndiceDG )); }
 
-                    pictureBox2.Image = Image.FromFile(d.seleccionaRenglonImagen(e.RowIndex));
-                }
                 textBox1.Text = d.seleccionaInformacion(e.RowIndex)[0].ToString();
                 textBox2.Text = d.seleccionaInformacion(e.RowIndex)[1].ToString();
 
             }
             catch
             {
+                
                 if (d.seleccionaRenglonImagen(e.RowIndex).Length <= 1 && this.numCatGS == 0)
                     
                 {
@@ -173,6 +173,29 @@ namespace GestorDeDispositvos {
         private void button1_Click_1(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+
+        /*Boton Guardar: */
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (
+            d.getSetIndiceDG == -1
+            )
+            {
+                MessageBox.Show(d.ld.CurrentCell.RowIndex.ToString());
+                MessageBox.Show("No hay registro seleccionado", "Información",
+                                   MessageBoxButtons.OK,
+                                   MessageBoxIcon.Exclamation);
+
+                
+            }
+            else {
+                d.insertaReg(textBox1.Text,
+                             textBox2.Text, this.numCatGS);
+            }
+         
+            
         }
     }
 }

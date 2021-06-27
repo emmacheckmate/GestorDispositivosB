@@ -16,7 +16,7 @@ namespace GestorDeDispositvos
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormDinamico( 1 ));
+            Application.Run(new FormDinamico( 0 ));
         }
     }
 }

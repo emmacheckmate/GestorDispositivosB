@@ -23,10 +23,11 @@ namespace GestorDeDispositvos
         private SqlDataAdapter da;
         private DataTable dt;
 
-      
+
         public string nombreEquipo;
 
         public List<string> listaQry;
+        public List<string> listTablas;
         string cadenacnx = "";
 
         private string Query;
@@ -35,9 +36,8 @@ namespace GestorDeDispositvos
         private string valueQry;
         private string valorNuevo;
 
-       
 
-        public List<string> lAt;
+        public List<string> gsTablas { get { return this.listTablas; } set { this.listTablas = value; } }
 
         public string valorNuevoGS { get { return this.valorNuevo; } set { this.valorNuevo = value; } }
         public List<ComboBox> lcbGS { get { return this.lcb; } set { this.lcb = value; } }
@@ -46,8 +46,9 @@ namespace GestorDeDispositvos
         public string llaveGS { get { return this.llaveQry; } set { this.llaveQry = value; } }
         public SqlDataAdapter gsda { get { return this.da; } set { this.da = value; } }
         public DataTable gsdt { get { return this.dt; } set { this.dt = value; } }
-     
-        public List<string> gslAt { get { return lAt; } set { this.lAt = value; } }
+
+        public List<string> gsListQry { get { return this.listaQry;  } set { this.listaQry = value; } }
+
 
 
         public string nombEq
@@ -74,9 +75,10 @@ namespace GestorDeDispositvos
                                 "SQLEXPRESS;Initial Catalog=dbGestDisp;Integrated Security=True";
 
             listaQry = new List<string>();
-            lAt = new List<string>();
+            listTablas = new List<string>();
+            listaTablas();
             iniciaListaQuery();
-           
+
         }
 
 
@@ -93,8 +95,21 @@ namespace GestorDeDispositvos
                                 "SQLEXPRESS;Initial Catalog=dbGestDisp;Integrated Security=True";
 
             listaQry = new List<string>();
-            lAt = new List<string>();
+            listTablas = new List<string>();
+            listaTablas();
             iniciaListaQuery();
+        }
+
+        public void listaTablas()
+        {
+            this.gsTablas.Add("catRadio");
+            this.gsTablas.Add("catArea");
+
+            this.gsTablas.Add("catDisp");
+            this.gsTablas.Add("catEdo");
+
+            this.gsTablas.Add("catEmp");
+            this.gsTablas.Add("catSucursal");
         }
 
         /*Se cargan las consultas mas importantes para el sistema
@@ -112,7 +127,7 @@ namespace GestorDeDispositvos
             listaQry.Add("SELECT * FROM catSucursal");
 
             /*Consultas para la insercion, actualizacion de datos para los radios */
-            listaQry.Add("INSERT INTO catRadio (idRadio) VALUES(" + "'" + this.valueQryGS + "'" + ")");
+            listaQry.Add("INSERT INTO catRadio ("+this.llaveGS+") VALUES(" + "'" + this.valueQryGS + "'" + ")"); //6
 
             //UPDATE para la catologo de radios
             listaQry.Add("UPDATE catRadio SET"+this.llaveGS+"='"+this.valueQryGS+"'"+
@@ -148,6 +163,16 @@ namespace GestorDeDispositvos
             SqlDataAdapter da = new SqlDataAdapter(qry, this.cdncnxSG);
             DataTable dt = new DataTable();
             da.Fill(dt); 
+            return dt;
+        }
+
+
+        public DataTable actualizaReg(string qry)
+        {
+            List<string> renglon = new List<string>();
+            SqlDataAdapter da = new SqlDataAdapter(qry, this.cdncnxSG);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
             return dt;
         }
 
