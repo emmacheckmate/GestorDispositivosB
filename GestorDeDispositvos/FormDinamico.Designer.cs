@@ -96,6 +96,7 @@ namespace GestorDeDispositvos
             this.btnGuardarPIc.Size = new System.Drawing.Size(75, 42);
             this.btnGuardarPIc.TabIndex = 59;
             this.btnGuardarPIc.UseVisualStyleBackColor = false;
+            this.btnGuardarPIc.Click += new System.EventHandler(this.btnGuardarPIc_Click);
             // 
             // pictureBox3
             // 

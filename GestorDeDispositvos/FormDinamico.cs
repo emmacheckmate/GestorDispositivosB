@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace GestorDeDispositvos { 
 
@@ -200,5 +201,93 @@ namespace GestorDeDispositvos {
          
             
         }
+
+        public void guardarImg()
+        {
+
+            var path = new Uri(
+    System.IO.Path.GetDirectoryName(
+        System.Reflection.Assembly.GetExecutingAssembly().CodeBase)
+    ).LocalPath;
+            MessageBox.Show(Directory.GetCurrentDirectory());
+
+            SaveFileDialog sv = new SaveFileDialog();
+
+            sv.Title = "Imagen con codigo QR";
+            sv.InitialDirectory = path;
+            rutaCarpeta = path;
+
+            sv.Filter = "Imagenes (*.jpg  *.bmp *.gif )|*.jpg *.bmp *.gif ";
+            sv.DefaultExt = "";
+            sv.AddExtension = true;
+            if (DialogResult.OK == sv.ShowDialog())
+            {
+                nombreArchivo = sv.FileName;
+
+                
+                
+                string folderName = Directory.GetCurrentDirectory();
+                
+                string pathString = System.IO.Path.Combine(folderName, nombreArchivo.Remove(nombreArchivo.Length - 3, 3));
+                string directorioCombinado = Path.GetFullPath(System.IO.Path.Combine(folderName, nombreArchivo.Remove(nombreArchivo.Length - 3, 3)));
+
+                this.directorioBase = directorioCombinado;
+                //se le agrega el archivo concatenado que se va a escribrir
+                string Dir_diccionario = directorioCombinado += "\\" + Path.GetFileName(sv.FileName); ;
+                MessageBox.Show(Dir_diccionario);
+
+                if (!System.IO.Directory.Exists(pathString))
+                {
+                    System.IO.Directory.CreateDirectory(pathString);
+                }
+
+               
+            }
+            else
+            {
+
+            }
+            sv.Dispose();
+
+        }
+
+        private void btnGuardarPIc_Click(object sender, EventArgs e)
+        {
+
+            SaveFileDialog sv = new SaveFileDialog();
+            string fileToCopy = "c:\\archivo.txt";
+            string destinationDirectory = "c:\\myDestinationFolder\\";
+
+            var path =new Uri(
+                                System.IO.Path.GetDirectoryName(
+                                System.Reflection.Assembly.GetExecutingAssembly().CodeBase)
+                              ).LocalPath;
+
+            sv.Title = "Imagen con codigo QR";
+            sv.InitialDirectory = path;
+            rutaCarpeta = path;
+
+            sv.Filter = "Imagenes (*.jpg  *.bmp *.gif )|*.jpg *.bmp *.gif ";
+            sv.DefaultExt = "";
+            sv.AddExtension = true;
+            if (DialogResult.OK == sv.ShowDialog())
+            {
+                nombreArchivo = sv.FileName;
+            }
+
+                string carpetaParaGuardar = System.IO.Path.Combine(path, "Imagenes");
+
+            MessageBox.Show(carpetaParaGuardar);
+
+            if (!Directory.Exists( carpetaParaGuardar))
+            {
+                Directory.CreateDirectory(carpetaParaGuardar);
+            }if (DialogResult.OK == sv.ShowDialog())
+            {
+                nombreArchivo = sv.FileName;
+
+          //  File.Copy(fileToCopy, destinationDirectory + Path.GetFileName(fileToCopy));
+            //guardarImg();
+        }
     }
-}
+

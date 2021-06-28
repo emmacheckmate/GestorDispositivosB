@@ -139,9 +139,10 @@ namespace GestorDeDispositvos
         {
             List<string> t = new List<string>();
 
-            t.Add(this.ld.Rows[i].Cells[0].Value.ToString());
-            t.Add(this.ld.Rows[i].Cells[1].Value.ToString());
-
+            for(int j = 0; j < this.ld.Columns.Count; j++ )
+            {
+                t.Add(this.ld.Rows[i].Cells[j].Value.ToString());
+            }
             return t;
         }
 
@@ -165,31 +166,19 @@ namespace GestorDeDispositvos
             List<string> t = new List<string>();
             if (this.getSetIndiceDG != -1)
             {
-                foreach (DataGridViewRow row in ld.SelectedRows)
-                {
+                foreach (DataGridViewRow row in ld.SelectedRows){
                     t.Add(row.Cells[0].Value.ToString());
                     t.Add(row.Cells[1].Value.ToString());
-
                 }
             }
             return t;
         }
-        public void insertaReg(string txtb1, string txtb2, int indiceCatalogo )
-        {
-            //listaQry.Add("INSERT INTO catRadio ("+this.llaveGS+") VALUES(" + "'" + this.valueQryGS + "'" + ")"); //6
-            //this.gsListQry[ indiceCatalogo] 
-            //INSERT INTO "catRadio"("idRadio", "codigoQR") values('ABCD123', 'c:/imagen.jpg');
+        public void insertaReg(string txtb1, string txtb2, int indiceCatalogo ){
             this.getSetBD.valueQryGS = "\u0027" + txtb1+"\u0027" + ","+ "\u0027" + txtb2 + "\u0027";
-          //  MessageBox.Show(txtb1 + "," + txtb2);
             this.getSetBD.llaveGS = seleccionaRenglonLlave(this.getSetIndiceDG );
 
-
-
-            foreach(DataGridViewColumn s in this.ld.Columns)
-            {
-                
-                this.getSetBD.gsvalues += s.Name.ToString() +",";
-            }
+            foreach (DataGridViewColumn s in this.ld.Columns) {                
+                this.getSetBD.gsvalues += s.Name.ToString() +","; }
 
             
             this.getSetBD.gsvalues= this.getSetBD.gsvalues.TrimEnd(',');
@@ -200,12 +189,6 @@ namespace GestorDeDispositvos
             string Qry = "INSERT INTO " + this.getSetBD.gsTablas[indiceCatalogo] +
                 " ("+ this.getSetBD.gsvalues + ") "+
              "VALUES (" + this.getSetBD.valueQryGS + ");" ;
-
-
-            MessageBox.Show(Qry);
-                
-
-
         }
 
     }
