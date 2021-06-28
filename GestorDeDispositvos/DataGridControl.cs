@@ -159,18 +159,47 @@ namespace GestorDeDispositvos
             return cell.Value.ToString();
         }
 
+        public List<string> manda_datos()
+        {
+            
+            List<string> t = new List<string>();
+            if (this.getSetIndiceDG != -1)
+            {
+                foreach (DataGridViewRow row in ld.SelectedRows)
+                {
+                    t.Add(row.Cells[0].Value.ToString());
+                    t.Add(row.Cells[1].Value.ToString());
+
+                }
+            }
+            return t;
+        }
         public void insertaReg(string txtb1, string txtb2, int indiceCatalogo )
         {
             //listaQry.Add("INSERT INTO catRadio ("+this.llaveGS+") VALUES(" + "'" + this.valueQryGS + "'" + ")"); //6
             //this.gsListQry[ indiceCatalogo] 
             //INSERT INTO "catRadio"("idRadio", "codigoQR") values('ABCD123', 'c:/imagen.jpg');
-            this.getSetBD.valueQryGS = txtb1 +","+ txtb2;
-            MessageBox.Show(txtb1 + "," + txtb2);
+            this.getSetBD.valueQryGS = "\u0027" + txtb1+"\u0027" + ","+ "\u0027" + txtb2 + "\u0027";
+          //  MessageBox.Show(txtb1 + "," + txtb2);
             this.getSetBD.llaveGS = seleccionaRenglonLlave(this.getSetIndiceDG );
 
-            string Qry = "INSERT INTO"+ this.getSetBD.gsTablas[ indiceCatalogo ] +
-                         "(\u0022"+this.getSetBD.llaveGS+")\u0022"+
-                         "VALUES";
+
+
+            foreach(DataGridViewColumn s in this.ld.Columns)
+            {
+                
+                this.getSetBD.gsvalues += s.Name.ToString() +",";
+            }
+
+            
+            this.getSetBD.gsvalues= this.getSetBD.gsvalues.TrimEnd(',');
+
+
+            /*insert into catRadio(idRadio, codigoQR) values('ABC123','c:/imagen.jpg');*/
+
+            string Qry = "INSERT INTO " + this.getSetBD.gsTablas[indiceCatalogo] +
+                " ("+ this.getSetBD.gsvalues + ") "+
+             "VALUES (" + this.getSetBD.valueQryGS + ");" ;
 
 
             MessageBox.Show(Qry);

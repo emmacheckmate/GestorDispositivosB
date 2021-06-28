@@ -34,12 +34,12 @@ namespace GestorDeDispositvos
         private string llaveQry;
         private string tablaQry;
         private string valueQry;
-        private string valorNuevo;
+        private string values;
 
 
         public List<string> gsTablas { get { return this.listTablas; } set { this.listTablas = value; } }
 
-        public string valorNuevoGS { get { return this.valorNuevo; } set { this.valorNuevo = value; } }
+        public string gsvalues { get { return this.values; } set { this.values = value; } }
         public List<ComboBox> lcbGS { get { return this.lcb; } set { this.lcb = value; } }
         public string valueQryGS { get { return this.valueQry; } set { this.valueQry = value; } }
         public string tablaQryGS { get { return this.tablaQry; } set { this.tablaQry = value; } }
@@ -130,7 +130,7 @@ namespace GestorDeDispositvos
             listaQry.Add("INSERT INTO catRadio ("+this.llaveGS+") VALUES(" + "'" + this.valueQryGS + "'" + ")"); //6
 
             //UPDATE para la catologo de radios
-            listaQry.Add("UPDATE catRadio SET"+this.llaveGS+"='"+this.valueQryGS+"'"+
+         /*   listaQry.Add("UPDATE catRadio SET"+this.llaveGS+"='"+this.valueQryGS+"'"+
                                                
                          "WHERE"+this.llaveGS +"='"+this.valorNuevoGS +"'" );
 

@@ -113,21 +113,24 @@ namespace GestorDeDispositvos {
             {
                 d.getSetIndiceDG = e.RowIndex;
                 d.seleccionaInformacion(this.d.getSetIndiceDG);
+                textBox1.Text = d.seleccionaInformacion(this.d.getSetIndiceDG)[0].ToString();
+                textBox2.Text = d.seleccionaInformacion(this.d.getSetIndiceDG)[1].ToString();
+
                 if (this.numCatGS == 0) {
                     pictureBox2.Image = Image.FromFile(d.seleccionaRenglonImagen(this.d.getSetIndiceDG )); }
 
-                textBox1.Text = d.seleccionaInformacion(e.RowIndex)[0].ToString();
-                textBox2.Text = d.seleccionaInformacion(e.RowIndex)[1].ToString();
+                
+                
 
             }
             catch
             {
-                
+                /*
                 if (d.seleccionaRenglonImagen(e.RowIndex).Length <= 1 && this.numCatGS == 0)
                     
                 {
                     pictureBox2.Image = pictureBox2.ErrorImage;
-                }
+                }*/
             }
             pictureBox2.Refresh();
         }
