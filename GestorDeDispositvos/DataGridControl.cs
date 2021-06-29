@@ -173,22 +173,46 @@ namespace GestorDeDispositvos
             }
             return t;
         }
-        public void insertaReg(string txtb1, string txtb2, int indiceCatalogo ){
-            this.getSetBD.valueQryGS = "\u0027" + txtb1+"\u0027" + ","+ "\u0027" + txtb2 + "\u0027";
-            this.getSetBD.llaveGS = seleccionaRenglonLlave(this.getSetIndiceDG );
+        public void insertaReg(string txtb1, string txtb2, int indiceCatalogo) {
+            this.getSetBD.valueQryGS = "\u0027" + txtb1 + "\u0027" + "," + "\u0027" + txtb2 + "\u0027";
 
-            foreach (DataGridViewColumn s in this.ld.Columns) {                
-                this.getSetBD.gsvalues += s.Name.ToString() +","; }
 
-            
+            foreach (DataGridViewColumn s in this.ld.Columns) {
+                this.getSetBD.gsvalues += s.Name.ToString() + ","; }
+
+            this.getSetBD.llaveGS = this.ld.Columns[ 0 ].Name;
             this.getSetBD.gsvalues= this.getSetBD.gsvalues.TrimEnd(',');
 
 
             /*insert into catRadio(idRadio, codigoQR) values('ABC123','c:/imagen.jpg');*/
 
             string Qry = "INSERT INTO " + this.getSetBD.gsTablas[indiceCatalogo] +
-                " ("+ this.getSetBD.gsvalues + ") "+
-             "VALUES (" + this.getSetBD.valueQryGS + ");" ;
+                         " ("+ this.getSetBD.gsvalues + ") "+
+                         " VALUES (" + this.getSetBD.valueQryGS + ");" ;
+
+            this.getSetBD.actualizaReg(Qry);
+        }
+        public void eliminaReg(string txtb1, string txtb2, int indiceCatalogo)
+        {
+            this.getSetBD.valueQryGS = "\u0027" + txtb1 + "\u0027" + "," + "\u0027" + txtb2 + "\u0027";
+
+
+            foreach (DataGridViewColumn s in this.ld.Columns)
+            {
+                this.getSetBD.gsvalues += s.Name.ToString() + ",";
+            }
+
+            this.getSetBD.llaveGS = this.ld.Columns[0].Name;
+            this.getSetBD.gsvalues = this.getSetBD.gsvalues.TrimEnd(',');
+
+
+            /*insert into catRadio(idRadio, codigoQR) values('ABC123','c:/imagen.jpg');*/
+
+            string Qry = "INSERT INTO " + this.getSetBD.gsTablas[indiceCatalogo] +
+                         " (" + this.getSetBD.gsvalues + ") " +
+                         " VALUES (" + this.getSetBD.valueQryGS + ");";
+
+            this.getSetBD.actualizaReg(Qry);
         }
 
     }

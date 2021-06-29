@@ -131,6 +131,7 @@ namespace GestorDeDispositvos
             this.button5.Size = new System.Drawing.Size(43, 42);
             this.button5.TabIndex = 58;
             this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button2
             // 
@@ -142,6 +143,7 @@ namespace GestorDeDispositvos
             this.button2.Size = new System.Drawing.Size(47, 42);
             this.button2.TabIndex = 59;
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 

@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 
-namespace GestorDeDispositvos { 
+namespace GestorDeDispositvos {
 
-    
+
     public partial class FormDinamico : Form
     {
         string rutaCompleta = "";
@@ -26,18 +26,18 @@ namespace GestorDeDispositvos {
         public Form RefToForm1 { get; set; }
         private int numCatalogo = -1;
         public int numCatGS { get { return this.numCatalogo; } set { this.numCatalogo = value; } }
-        public FormDinamico( int n )
+        public FormDinamico(int n)
         {
             this.numCatGS = n;
 
             d = new DataGridControl();
-            this.d.iniciaBD(0);
+            this.d.iniciaBD( n );
             d.ld.RowHeaderMouseClick += this.ld_RowHeaderMouseClick;
 
             this.Controls.Add(d.ld);
             InitializeComponent();
             panel1.Controls.Add(pictureBox3);
-            
+
         }
 
         public void eligeCatalogo(int op)
@@ -47,16 +47,16 @@ namespace GestorDeDispositvos {
                 case 0:
                     this.Text = "Catalogo Radios";
                     this.Controls.Add(this.d.llbGS.ElementAt(0));
-                    this.Controls.Add(this.d.llbGS.ElementAt( 1 ));
+                    this.Controls.Add(this.d.llbGS.ElementAt(1));
 
-                    panel1.Controls.Add(this.d.llbGS.ElementAt( 0 ) );
-                    panel1.Controls.Add(this.d.llbGS.ElementAt( 1 ));
+                    panel1.Controls.Add(this.d.llbGS.ElementAt(0));
+                    panel1.Controls.Add(this.d.llbGS.ElementAt(1));
                     this.pictureBox2.Visible = true;
 
                     break;
 
                 case 1:
-                    
+
                     this.Text = "Catalogo Áreas";
 
                     this.Controls.Add(this.d.llbGS.ElementAt(0));
@@ -100,16 +100,12 @@ namespace GestorDeDispositvos {
             this.Controls.Add(d.ld);
         }
 
-        public void pasapanel (int i )
-        {
-
-        }
 
         /*Metodo que hace referencua a la clase de datagridcontrol para poder
         manipular la informacion proveniente del  catalogo de radios*/
         private void ld_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            
+
             try
             {
                 d.getSetIndiceDG = e.RowIndex;
@@ -118,10 +114,10 @@ namespace GestorDeDispositvos {
                 textBox2.Text = d.seleccionaInformacion(this.d.getSetIndiceDG)[1].ToString();
 
                 if (this.numCatGS == 0) {
-                    pictureBox2.Image = Image.FromFile(d.seleccionaRenglonImagen(this.d.getSetIndiceDG )); }
+                    pictureBox2.Image = Image.FromFile(d.seleccionaRenglonImagen(this.d.getSetIndiceDG)); }
 
-                
-                
+
+
 
             }
             catch
@@ -160,13 +156,13 @@ namespace GestorDeDispositvos {
             this.CenterToScreen();
             this.pictureBxIni();
             this.pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
-           
+
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
-           
+
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -183,32 +179,19 @@ namespace GestorDeDispositvos {
         /*Boton Guardar: */
         private void button4_Click(object sender, EventArgs e)
         {
-            if (
-            d.getSetIndiceDG == -1
-            )
-            {
-                MessageBox.Show(d.ld.CurrentCell.RowIndex.ToString());
-                MessageBox.Show("No hay registro seleccionado", "Información",
-                                   MessageBoxButtons.OK,
-                                   MessageBoxIcon.Exclamation);
-
-                
-            }
-            else {
-                d.insertaReg(textBox1.Text,
-                             textBox2.Text, this.numCatGS);
-            }
-         
             
+
+
         }
 
         public void guardarImg()
         {
 
             var path = new Uri(
-    System.IO.Path.GetDirectoryName(
-        System.Reflection.Assembly.GetExecutingAssembly().CodeBase)
-    ).LocalPath;
+            System.IO.Path.GetDirectoryName(
+            System.Reflection.Assembly.GetExecutingAssembly().CodeBase)
+            ).LocalPath;
+
             MessageBox.Show(Directory.GetCurrentDirectory());
 
             SaveFileDialog sv = new SaveFileDialog();
@@ -224,10 +207,10 @@ namespace GestorDeDispositvos {
             {
                 nombreArchivo = sv.FileName;
 
-                
-                
+
+
                 string folderName = Directory.GetCurrentDirectory();
-                
+
                 string pathString = System.IO.Path.Combine(folderName, nombreArchivo.Remove(nombreArchivo.Length - 3, 3));
                 string directorioCombinado = Path.GetFullPath(System.IO.Path.Combine(folderName, nombreArchivo.Remove(nombreArchivo.Length - 3, 3)));
 
@@ -241,7 +224,7 @@ namespace GestorDeDispositvos {
                     System.IO.Directory.CreateDirectory(pathString);
                 }
 
-               
+
             }
             else
             {
@@ -258,7 +241,7 @@ namespace GestorDeDispositvos {
             string fileToCopy = "c:\\archivo.txt";
             string destinationDirectory = "c:\\myDestinationFolder\\";
 
-            var path =new Uri(
+            var path = new Uri(
                                 System.IO.Path.GetDirectoryName(
                                 System.Reflection.Assembly.GetExecutingAssembly().CodeBase)
                               ).LocalPath;
@@ -275,19 +258,46 @@ namespace GestorDeDispositvos {
                 nombreArchivo = sv.FileName;
             }
 
-                string carpetaParaGuardar = System.IO.Path.Combine(path, "Imagenes");
+            string carpetaParaGuardar = System.IO.Path.Combine(path, "Imagenes");
 
             MessageBox.Show(carpetaParaGuardar);
 
-            if (!Directory.Exists( carpetaParaGuardar))
+            if (!Directory.Exists(carpetaParaGuardar))
             {
                 Directory.CreateDirectory(carpetaParaGuardar);
-            }if (DialogResult.OK == sv.ShowDialog())
+            }
+            if (DialogResult.OK == sv.ShowDialog())
             {
                 nombreArchivo = sv.FileName;
 
-          //  File.Copy(fileToCopy, destinationDirectory + Path.GetFileName(fileToCopy));
-            //guardarImg();
+                //  File.Copy(fileToCopy, destinationDirectory + Path.GetFileName(fileToCopy));
+                //guardarImg();
+            }
+        }
+
+        /*Boton de insertar nuevo registro*/
+        private void button5_Click(object sender, EventArgs e)
+        {
+            if ( textBox1.Text == "" || textBox2.Text == "" ){
+                
+                MessageBox.Show("Campos incompletos", "Atención",
+                                   MessageBoxButtons.OK,
+                                   MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                d.insertaReg(textBox1.Text,
+                             textBox2.Text, this.numCatGS);
+                d.iniciaBD(this.numCatGS);
+                textBox1.Clear();
+                textBox2.Clear();
+            }
+
+        }
+        /*boton de eliminar registro */
+        private void button2_Click(object sender, EventArgs e)
+        {
+
         }
     }
-
+    }

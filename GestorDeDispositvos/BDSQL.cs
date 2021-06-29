@@ -125,22 +125,6 @@ namespace GestorDeDispositvos
             listaQry.Add("SELECT * FROM catEdo");
             listaQry.Add("SELECT * FROM catEmp");
             listaQry.Add("SELECT * FROM catSucursal");
-
-            /*Consultas para la insercion, actualizacion de datos para los radios */
-            listaQry.Add("INSERT INTO catRadio ("+this.llaveGS+") VALUES(" + "'" + this.valueQryGS + "'" + ")"); //6
-
-            //UPDATE para la catologo de radios
-         /*   listaQry.Add("UPDATE catRadio SET"+this.llaveGS+"='"+this.valueQryGS+"'"+
-                                               
-                         "WHERE"+this.llaveGS +"='"+this.valorNuevoGS +"'" );
-
-            /*Consulta para obtener el nombre de los atributos*/
-            listaQry.Add("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS " +
-                                                    "Where TABLE_NAME='catSucursal' " +
-                                                    "ORDER BY ORDINAL_POSITION ");
-
-
-
         }
 
         /*Carga la conexion de los datos y  la tabla que se va a utilizar*/
@@ -171,8 +155,24 @@ namespace GestorDeDispositvos
         {
             List<string> renglon = new List<string>();
             SqlDataAdapter da = new SqlDataAdapter(qry, this.cdncnxSG);
+            
             DataTable dt = new DataTable();
-            da.Fill(dt);
+            FormDinamico f;
+            
+
+
+            
+                
+            try
+            {
+                da.Fill(dt);
+            }
+            catch {
+                MessageBox.Show("Número de serie repetido", "",
+                               MessageBoxButtons.OK,
+                               MessageBoxIcon.Error);
+            }
+
             return dt;
         }
 
