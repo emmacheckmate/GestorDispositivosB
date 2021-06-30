@@ -148,6 +148,25 @@ namespace GestorDeDispositvos
             return dt;
         }
 
+        public List<string> buscaRegistros(string qry)
+        {
+            List<string> registros = new List<string>();
+            SqlDataAdapter da = new SqlDataAdapter(qry, this.cdncnxSG);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+
+
+            foreach (DataColumn col in dt.Columns)
+            {
+                foreach (DataRow row in dt.Rows)
+                {
+                    registros.Add(row[col.ColumnName].ToString());
+                    MessageBox.Show(row[col.ColumnName].ToString());
+                }
+            }
+
+            return registros;
+        }
 
         public DataTable actualizaReg(string qry)
         {
@@ -166,6 +185,32 @@ namespace GestorDeDispositvos
                                MessageBoxIcon.Information);
             }
             catch {
+                MessageBox.Show("Número de serie repetido", "",
+                               MessageBoxButtons.OK,
+                               MessageBoxIcon.Error);
+            }
+
+            return dt;
+        }
+
+        public DataTable eliminaReg(string qry)
+        {
+            List<string> renglon = new List<string>();
+            SqlDataAdapter da = new SqlDataAdapter(qry, this.cdncnxSG);
+
+            DataTable dt = new DataTable();
+            FormDinamico f;
+
+            try
+            {
+
+                da.Fill(dt);
+                MessageBox.Show("Registro Eliminado correctamente", "",
+                               MessageBoxButtons.OK,
+                               MessageBoxIcon.Information);
+            }
+            catch
+            {
                 MessageBox.Show("Número de serie repetido", "",
                                MessageBoxButtons.OK,
                                MessageBoxIcon.Error);

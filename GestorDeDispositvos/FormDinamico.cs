@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using Microsoft.VisualBasic;
 
 namespace GestorDeDispositvos {
 
@@ -297,7 +298,35 @@ namespace GestorDeDispositvos {
         /*boton de eliminar registro */
         private void button2_Click(object sender, EventArgs e)
         {
+            if (textBox1.Text == "" )
+            {
 
+                MessageBox.Show("Clave vacia", "Atención",
+                                   MessageBoxButtons.OK,
+                                   MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                d.eliminaReg(textBox1.Text,
+                             textBox2.Text, this.numCatGS);
+
+                d.iniciaBD(this.numCatGS);
+                textBox1.Clear();
+                textBox2.Clear();
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            d.buscarReg(this.numCatGS);
+
+            
+            textBox1.Text= d.buscarReg(this.numCatGS)[0];
+         /*   if (textBox1.Ted.buscarReg(this.numCatGS).Count == 2)
+            {
+                textBox2.Text = d.buscarReg(this.numCatGS)[1];
+            }
+         */
         }
     }
     }

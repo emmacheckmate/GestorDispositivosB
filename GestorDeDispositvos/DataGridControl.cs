@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Data;
+using Microsoft.VisualBasic;
 
 namespace GestorDeDispositvos
 {
@@ -231,26 +232,45 @@ namespace GestorDeDispositvos
 
         public void eliminaReg(string txtb1, string txtb2, int indiceCatalogo)
         {
-            this.getSetBD.valueQryGS = "\u0027" + txtb1 + "\u0027" + "," + "\u0027" + txtb2 + "\u0027";
+            this.getSetBD.valueQryGS = "\u0027" + txtb1 + "\u0027";
 
-
-            foreach (DataGridViewColumn s in this.ld.Columns)
-            {
-                this.getSetBD.gsvalues += s.Name.ToString() + ",";
-            }
+            
 
             this.getSetBD.llaveGS = this.ld.Columns[0].Name;
-            this.getSetBD.gsvalues = this.getSetBD.gsvalues.TrimEnd(',');
+            this.getSetBD.gsvalues = this.ld.Columns[0].Name +" = "+ "\u0027" + txtb1 + "\u0027";
 
 
             /*insert into catRadio(idRadio, codigoQR) values('ABC123','c:/imagen.jpg');*/
 
-            string Qry = "INSERT INTO " + this.getSetBD.gsTablas[indiceCatalogo] +
-                         " (" + this.getSetBD.gsvalues + ") " +
-                         " VALUES (" + this.getSetBD.valueQryGS + ");";
-
-            this.getSetBD.actualizaReg(Qry);
+            string Qry = "DELETE FROM " + this.getSetBD.gsTablas[indiceCatalogo] +
+                         " WHERE " + this.getSetBD.gsvalues    +"; " ;
+           
+            this.getSetBD.eliminaReg(Qry);
         }
 
+        public List<string> buscarReg(int indiceCatalogo)
+        {
+            string Qry = "";
+            List<string> l = new List<string>();
+
+            string s = Interaction.InputBox("Escribir " + this.ld.Columns[0].Name, "Buscar");
+            if (s != "")
+            {
+                Qry = "SELECT * " +
+                      " FROM " + this.getSetBD.gsTablas[indiceCatalogo] +
+                      " WHERE " + this.ld.Columns[0].Name + " = " +
+                      "'" + s + "';";
+                
+                return l;
+
+            }
+            else
+            {
+                MessageBox.Show("Ingresar clave a buscar");
+                //this.baseDatos.buscaRegistros( Qry  );
+
+                return l;
+            }
+        }
     }
 }
