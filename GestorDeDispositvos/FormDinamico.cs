@@ -114,20 +114,11 @@ namespace GestorDeDispositvos {
                 textBox2.Text = d.seleccionaInformacion(this.d.getSetIndiceDG)[1].ToString();
 
                 if (this.numCatGS == 0) {
-                    pictureBox2.Image = Image.FromFile(d.seleccionaRenglonImagen(this.d.getSetIndiceDG)); }
-
-
-
-
+                    pictureBox2.Image = Image.FromFile(d.seleccionaRenglonImagen(this.d.getSetIndiceDG)); };
             }
             catch
             {
-                /*
-                if (d.seleccionaRenglonImagen(e.RowIndex).Length <= 1 && this.numCatGS == 0)
-                    
-                {
-                    pictureBox2.Image = pictureBox2.ErrorImage;
-                }*/
+
             }
             pictureBox2.Refresh();
         }
@@ -159,29 +150,38 @@ namespace GestorDeDispositvos {
 
         }
 
+        /*Cerra Ventana*/
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
-
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        /* */
         private void button1_Click_1(object sender, EventArgs e)
         {
             this.Close();
         }
 
 
-        /*Boton Guardar: */
+        /*Boton Actualizar / Guardar : */
         private void button4_Click(object sender, EventArgs e)
         {
-            
+            if (textBox1.Text == "" )
+            {
 
+                MessageBox.Show("La Clave no puede ir vacia", "Atención",
+                                   MessageBoxButtons.OK,
+                                   MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                d.updateReg(textBox1.Text,
+                             textBox2.Text, this.numCatGS);
 
+                d.iniciaBD(this.numCatGS);
+                textBox1.Clear();
+                textBox2.Clear();
+            }
         }
 
         public void guardarImg()

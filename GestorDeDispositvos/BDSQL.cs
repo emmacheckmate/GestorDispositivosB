@@ -134,9 +134,7 @@ namespace GestorDeDispositvos
             SqlDataAdapter da = new SqlDataAdapter(qry, this.cdncnxSG);
             DataTable dt = new DataTable();
 
-             da.Fill(this.gsdt);  
-         //   MessageBox.Show("No se pudo encontrar base de datos"); 
-          
+             da.Fill(this.gsdt);         
         }
 
 
@@ -159,13 +157,13 @@ namespace GestorDeDispositvos
             DataTable dt = new DataTable();
             FormDinamico f;
             
-
-
-            
-                
             try
             {
+
                 da.Fill(dt);
+                MessageBox.Show("Registro Insertado correctamente", "",
+                               MessageBoxButtons.OK,
+                               MessageBoxIcon.Information);
             }
             catch {
                 MessageBox.Show("Número de serie repetido", "",

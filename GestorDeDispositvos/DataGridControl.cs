@@ -176,6 +176,7 @@ namespace GestorDeDispositvos
         public void insertaReg(string txtb1, string txtb2, int indiceCatalogo) {
             this.getSetBD.valueQryGS = "\u0027" + txtb1 + "\u0027" + "," + "\u0027" + txtb2 + "\u0027";
 
+            this.getSetBD.gsvalues = "";
 
             foreach (DataGridViewColumn s in this.ld.Columns) {
                 this.getSetBD.gsvalues += s.Name.ToString() + ","; }
@@ -192,6 +193,42 @@ namespace GestorDeDispositvos
 
             this.getSetBD.actualizaReg(Qry);
         }
+        public void configPrincipal()
+        {
+            this.getSetBD.gsvalues = "";
+        }
+        public void updateReg(string txtb1, string txtb2, int indiceCatalogo)
+        {
+            List<string> nombre = new List<string>();
+            List<string> txtbx = new List<string>();
+            txtbx.Clear();
+            txtbx.Add(txtb1);
+            txtbx.Add(txtb2);
+            MessageBox.Show(txtbx.Count.ToString());
+            this.getSetBD.gsvalues = "";
+            foreach (DataGridViewColumn s in this.ld.Columns)
+            {
+                nombre.Add (s.Name.ToString());
+            }
+
+            for (int cont = 0; cont < nombre.Count; cont++)
+            {
+                this.getSetBD.gsvalues += " " + nombre[cont] + " = " + "'" + txtbx[cont] +"'"+ ",";
+            }
+
+
+            this.getSetBD.gsvalues = this.getSetBD.gsvalues.TrimEnd(',');
+            this.getSetBD.llaveGS = this.ld.Columns[0].Name;
+            
+
+            string Qry = "UPDATE " + this.getSetBD.gsTablas[indiceCatalogo]  +"\n"+
+                         " SET " + this.getSetBD.gsvalues + "\n" +
+                         " WHERE " + this.getSetBD.llaveGS + " = " +
+                         "'"+this.seleccionaRenglonLlave(this.getSetIndiceDG)+"'" + ";";
+            
+            this.getSetBD.actualizaReg(Qry);
+        }
+
         public void eliminaReg(string txtb1, string txtb2, int indiceCatalogo)
         {
             this.getSetBD.valueQryGS = "\u0027" + txtb1 + "\u0027" + "," + "\u0027" + txtb2 + "\u0027";
