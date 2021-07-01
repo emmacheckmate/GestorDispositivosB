@@ -1,0 +1,5 @@
+CREATE TABLE catEdo (
+    codigo_estado int NOT NULL identity,
+    nombre varchar(20) NOT NULL,
+    PRIMARY KEY (codigo_estado)
+);

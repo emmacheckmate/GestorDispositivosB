@@ -88,26 +88,26 @@ namespace GestorDeDispositvos
 
             //Catalogo  de radios 
 
-            this.llbGS.Add(l);
+            this.llbGS.Add( l );
             this.llbGS[0].Text = "Número de Serie:";
-            this.llbGS.Add(l2);
+            this.llbGS.Add( l2 );
             this.llbGS[1].Text = "Código QR:";
 
             //Catalogo de empleados
-            this.llbGS.Add(new Label());
+            this.llbGS.Add( l );
             this.llbGS[2].Text = "Número de asignación:";
-            this.llbGS.Add(new Label());
+            this.llbGS.Add( l2 );
             this.llbGS[3].Text = "Nombre:";
 
             //Sucursales solo van a utilizarse como B6..etc
-            this.llbGS.Add(new Label());
+            this.llbGS.Add( l );
             this.llbGS[4].Text = "Código:";
 
             //Estados
-            this.llbGS.Add(new Label());
+            this.llbGS.Add( l );
             this.llbGS[5].Text = "Codigo:";
 
-            this.llbGS.Add(new Label());
+            this.llbGS.Add( l );
             this.llbGS[6].Text = "Diagnostico:";
 
         }
