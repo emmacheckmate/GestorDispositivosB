@@ -320,13 +320,13 @@ namespace GestorDeDispositvos {
         {
             d.buscarReg(this.numCatGS);
 
-            
-            textBox1.Text= d.buscarReg(this.numCatGS)[0];
-         /*   if (textBox1.Ted.buscarReg(this.numCatGS).Count == 2)
+
+            textBox1.Text = d.GSltxt[0];
+            if (d.GSltxt.Count == 2)
             {
-                textBox2.Text = d.buscarReg(this.numCatGS)[1];
+                textBox2.Text = d.GSltxt[1];
             }
-         */
+
         }
     }
     }

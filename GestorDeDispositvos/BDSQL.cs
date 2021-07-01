@@ -148,11 +148,12 @@ namespace GestorDeDispositvos
             return dt;
         }
 
-        public List<string> buscaRegistros(string qry)
+        public List<string> buscaRegistros(string qry, string datoBuscar, int i)
         {
             List<string> registros = new List<string>();
             SqlDataAdapter da = new SqlDataAdapter(qry, this.cdncnxSG);
             DataTable dt = new DataTable();
+            DataTable dt2 = new DataTable();
             da.Fill(dt);
 
 
@@ -161,7 +162,6 @@ namespace GestorDeDispositvos
                 foreach (DataRow row in dt.Rows)
                 {
                     registros.Add(row[col.ColumnName].ToString());
-                    MessageBox.Show(row[col.ColumnName].ToString());
                 }
             }
 

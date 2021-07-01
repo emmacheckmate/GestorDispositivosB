@@ -23,8 +23,10 @@ namespace GestorDeDispositvos
         public Point p;
         public DataGridView ld;
         public BDSQL baseDatos;
-
+        public List<string> ltxt;
         private List<Label> llb;
+
+        public List<string> GSltxt { get { return this.ltxt; } set { this.ltxt = value; } }
         public List<Label> llbGS { get { return this.llb; } set { this.llb = value; } }
 
         public DataGridView gsDataGrid { get { return this.ld; } set { this.ld = value; } }
@@ -205,7 +207,7 @@ namespace GestorDeDispositvos
             txtbx.Clear();
             txtbx.Add(txtb1);
             txtbx.Add(txtb2);
-            MessageBox.Show(txtbx.Count.ToString());
+           
             this.getSetBD.gsvalues = "";
             foreach (DataGridViewColumn s in this.ld.Columns)
             {
@@ -251,17 +253,35 @@ namespace GestorDeDispositvos
         public List<string> buscarReg(int indiceCatalogo)
         {
             string Qry = "";
-            List<string> l = new List<string>();
-
             string s = Interaction.InputBox("Escribir " + this.ld.Columns[0].Name, "Buscar");
-            if (s != "")
+
+           
+            if (!String.IsNullOrEmpty( s ))
             {
+                //s = Interaction.InputBox("Escribir " + this.ld.Columns[0].Name, "Buscar");
                 Qry = "SELECT * " +
                       " FROM " + this.getSetBD.gsTablas[indiceCatalogo] +
                       " WHERE " + this.ld.Columns[0].Name + " = " +
                       "'" + s + "';";
-                
-                return l;
+                this.GSltxt = this.getSetBD.buscaRegistros(Qry, s, indiceCatalogo);
+                foreach (DataGridViewRow row in this.ld.Rows)
+                {
+                    for (int index = 0; index < ld.ColumnCount - 1; index++)
+                    {
+                        DataGridViewCell cell = row.Cells[index];
+                        if (cell.Value == DBNull.Value || cell.Value == null)
+                            continue;
+                        if (cell.Value.ToString().Contains( this.GSltxt[0]) )
+                        {
+                          
+                            this.ld.ClearSelection();
+                            this.ld.Rows[row.Index].Selected = true;
+                            this.getSetIndiceDG = row.Index;
+                        }
+                    }
+                }
+
+                            return this.GSltxt;
 
             }
             else
@@ -269,7 +289,7 @@ namespace GestorDeDispositvos
                 MessageBox.Show("Ingresar clave a buscar");
                 //this.baseDatos.buscaRegistros( Qry  );
 
-                return l;
+                return null;
             }
         }
     }
