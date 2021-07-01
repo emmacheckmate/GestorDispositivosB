@@ -30,16 +30,29 @@ namespace GestorDeDispositvos
 
         private void CrudRadio_Load(object sender, EventArgs e)
         {
+            MessageBox.Show(this.dateTimePicker2.Value.ToString() ); 
+
             
+
             panel1.BackColor = Color.FromArgb(255, 192, 128);
             panel1.Controls.Add(groupBox1);
             groupBox1.SendToBack();
             this.CenterToScreen();
+
             button1.BackgroundImageLayout = ImageLayout.Stretch;
             button2.BackgroundImageLayout = ImageLayout.Stretch;
             button3.BackgroundImageLayout = ImageLayout.Stretch;
             button4.BackgroundImageLayout = ImageLayout.Stretch;
             button5.BackgroundImageLayout = ImageLayout.Stretch;
+
+            ///this.SetBounds(20, 20, 300, 300);
+            this.FormBorderStyle = FormBorderStyle.FixedDialog;
+
+            // Display the form with no grip since form is not resizable.
+            this.SizeGripStyle = SizeGripStyle.Hide;
+
+            this.MinimizeBox = false;
+            this.MaximizeBox = false;
 
 
 
@@ -100,6 +113,13 @@ namespace GestorDeDispositvos
 
         private void label10_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void button6_Click_1(object sender, EventArgs e)
+        {
+            ReportesForm r = new ReportesForm();
+            r.ShowDialog();
 
         }
     }

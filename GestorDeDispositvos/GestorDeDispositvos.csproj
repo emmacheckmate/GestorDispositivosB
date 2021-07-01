@@ -178,12 +178,6 @@
     </Compile>
     <Compile Include="BDSQL.cs" />
     <Compile Include="ComboControl.cs" />
-    <Compile Include="CrudEmp.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CrudEmp.Designer.cs">
-      <DependentUpon>CrudEmp.cs</DependentUpon>
-    </Compile>
     <Compile Include="CrudRadio.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -196,12 +190,6 @@
     </Compile>
     <Compile Include="Dispositivos.Designer.cs">
       <DependentUpon>Dispositivos.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Estados.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Estados.Designer.cs">
-      <DependentUpon>Estados.cs</DependentUpon>
     </Compile>
     <Compile Include="FormDinamico.cs">
       <SubType>Form</SubType>
@@ -236,27 +224,15 @@
     <Compile Include="SeleccionForm.Designer.cs">
       <DependentUpon>SeleccionForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Sucursales.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Sucursales.Designer.cs">
-      <DependentUpon>Sucursales.cs</DependentUpon>
-    </Compile>
     <Compile Include="Validaciones.cs" />
     <EmbeddedResource Include="Areas.resx">
       <DependentUpon>Areas.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CrudEmp.resx">
-      <DependentUpon>CrudEmp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CrudRadio.resx">
       <DependentUpon>CrudRadio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dispositivos.resx">
       <DependentUpon>Dispositivos.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Estados.resx">
-      <DependentUpon>Estados.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormDinamico.resx">
       <DependentUpon>FormDinamico.cs</DependentUpon>
@@ -282,9 +258,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SeleccionForm.resx">
       <DependentUpon>SeleccionForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Sucursales.resx">
-      <DependentUpon>Sucursales.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

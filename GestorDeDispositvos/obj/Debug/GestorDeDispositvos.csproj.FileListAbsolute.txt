@@ -9,7 +9,6 @@ C:\Users\link2\source\repos\GestorDeDispositvos\GestorDeDispositvos\obj\Debug\Ge
 C:\Users\link2\source\repos\GestorDeDispositvos\GestorDeDispositvos\obj\Debug\GestorDeDispositvos.pdb
 C:\Users\link2\source\repos\GestorDeDispositvos\GestorDeDispositvos\obj\Debug\GestorDeDispositvos.Principal.resources
 C:\Users\Sistemas_B8\Documents\GitHub\GestorDispositivosB\GestorDeDispositvos\obj\Debug\GestorDeDispositvos.csproj.AssemblyReference.cache
-C:\Users\Sistemas_B8\Documents\GitHub\GestorDispositivosB\GestorDeDispositvos\obj\Debug\GestorDeDispositvos.CrudEmp.resources
 C:\Users\Sistemas_B8\Documents\GitHub\GestorDispositivosB\GestorDeDispositvos\obj\Debug\GestorDeDispositvos.Principal.resources
 C:\Users\Sistemas_B8\Documents\GitHub\GestorDispositivosB\GestorDeDispositvos\obj\Debug\GestorDeDispositvos.Properties.Resources.resources
 C:\Users\Sistemas_B8\Documents\GitHub\GestorDispositivosB\GestorDeDispositvos\obj\Debug\GestorDeDispositvos.csproj.GenerateResource.cache
@@ -138,9 +137,7 @@ C:\Users\Sistemas_B8\Documents\GitHub\GestorDispositivosB\GestorDeDispositvos\bi
 C:\Users\Sistemas_B8\Documents\GitHub\GestorDispositivosB\GestorDeDispositvos\bin\Debug\zh-Hans\Microsoft.Data.SqlClient.resources.dll
 C:\Users\Sistemas_B8\Documents\GitHub\GestorDispositivosB\GestorDeDispositvos\bin\Debug\zh-Hant\Microsoft.Data.SqlClient.resources.dll
 C:\Users\Sistemas_B8\Documents\GitHub\GestorDispositivosB\GestorDeDispositvos\obj\Debug\GestorDeDispositvos.csproj.CopyComplete
-C:\Users\Sistemas_B8\Documents\GitHub\GestorDispositivosB\GestorDeDispositvos\obj\Debug\GestorDeDispositvos.sucursales.resources
 C:\Users\Sistemas_B8\Documents\GitHub\GestorDispositivosB\GestorDeDispositvos\obj\Debug\GestorDeDispositvos.Areas.resources
-C:\Users\Sistemas_B8\Documents\GitHub\GestorDispositivosB\GestorDeDispositvos\obj\Debug\GestorDeDispositvos.Estados.resources
 C:\Users\Sistemas_B8\Documents\GitHub\GestorDispositivosB\GestorDeDispositvos\obj\Debug\GestorDeDispositvos.Dispositivos.resources
 C:\Users\link2\OneDrive\Documentos\GitHub\GestorDispositivosB\GestorDeDispositvos\bin\Debug\GestorDeDispositvos.exe.config
 C:\Users\link2\OneDrive\Documentos\GitHub\GestorDispositivosB\GestorDeDispositvos\bin\Debug\GestorDeDispositvos.exe

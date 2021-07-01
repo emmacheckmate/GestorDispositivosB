@@ -16,5 +16,10 @@ namespace GestorDeDispositvos
         {
             InitializeComponent();
         }
+
+        private void ReportesForm_Load(object sender, EventArgs e)
+        {
+            this.CenterToScreen();
+        }
     }
 }
