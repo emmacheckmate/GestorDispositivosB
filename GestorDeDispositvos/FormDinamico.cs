@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.IO;
 using Microsoft.VisualBasic;
 
+
 namespace GestorDeDispositvos {
 
 
@@ -41,59 +42,45 @@ namespace GestorDeDispositvos {
 
         }
 
+        public void configuraPanel(int i, int j, string titulo)
+        {
+            this.Controls.Add(this.d.llbGS.ElementAt(0));
+            this.Controls.Add(this.d.llbGS.ElementAt(1));
+
+            panel1.Controls.Add(this.d.llbGS[0]);
+            panel1.Controls.Add(this.d.llbGS[1]);
+            this.Text = titulo;
+        }
+
         public void eligeCatalogo(int op)
         {
+            MessageBox.Show(op.ToString());
             switch (op)
             {
+                
+                
                 case 0:
-                    this.Text = "Catalogo Radios";
-                    this.Controls.Add(this.d.llbGS.ElementAt(0));
-                    this.Controls.Add(this.d.llbGS.ElementAt(1));
+                    
+                    
+                    configuraPanel(0, 1 , "Radios");
 
-                    panel1.Controls.Add(this.d.llbGS.ElementAt(0));
-                    panel1.Controls.Add(this.d.llbGS.ElementAt(1));
                     this.pictureBox2.Visible = true;
 
                     break;
 
                 case 1:
-
-                    this.Text = "Catalogo Áreas";
-
-                    this.Controls.Add(this.d.llbGS.ElementAt(0));
-                    this.Controls.Add(this.d.llbGS.ElementAt(1));
-
-                    panel1.Controls.Add(this.d.llbGS.ElementAt(0));
-                    panel1.Controls.Add(this.d.llbGS.ElementAt(1));
-
+                    //configuraPanel(2, 3, "Responsables/Encargado de Radio");
+                    break;
+                case 2:
+                    //configuraPanel(2, 3, "Sucursales");
                     break;
 
-
                 case 3:
-                    this.Text = "Catalogo de Estados";
-
-                    this.Controls.Add(this.d.llbGS.ElementAt(2));
-                    this.Controls.Add(this.d.llbGS.ElementAt(3));
-
-                    panel1.Controls.Add(this.d.llbGS.ElementAt(2));
-                    panel1.Controls.Add(this.d.llbGS.ElementAt(3));
+                    //configuraPanel(4, 5, "Sucursales");
                     break;
 
                 case 4:
-                    this.Text = "Catalogo de Empleados";
-
-                    this.Controls.Add(this.d.llbGS.ElementAt(4));
-                    this.Controls.Add(this.d.llbGS.ElementAt(5));
-
-                    panel1.Controls.Add(this.d.llbGS.ElementAt(4));
-                    panel1.Controls.Add(this.d.llbGS.ElementAt(5));
-                    break;
-
-                case 5:
-                    this.Text = "Catalogo de Sucursales";
-
-                    this.Controls.Add(this.d.llbGS.ElementAt(6));
-                    panel1.Controls.Add(this.d.llbGS.ElementAt(6));
+                    //configuraPanel(6, 5,"Estados");
                     break;
             }
 

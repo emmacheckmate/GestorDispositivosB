@@ -27,6 +27,8 @@ namespace GestorDeDispositvos
         public string nombreEquipo;
 
         public List<string> listaQry;
+        public List<string> listaQry2;
+
         public List<string> listTablas;
         string cadenacnx = "";
 
@@ -64,22 +66,7 @@ namespace GestorDeDispositvos
             set { this.cadenacnx = value; }
         }
 
-        public BDSQL(int modoReportes)
-        {
-            dt = new DataTable();
-            da = new SqlDataAdapter();
-            lcb = new List<ComboBox>();
-
-            cadenacnx = "Data Source=" + Environment.MachineName.ToString() +
-                                 "\\" +
-                                "SQLEXPRESS;Initial Catalog=dbGestDisp;Integrated Security=True";
-
-            listaQry = new List<string>();
-            listTablas = new List<string>();
-            listaTablas();
-            iniciaListaQuery();
-
-        }
+        
 
 
         /*Constructor del  objeto para el objeto que va a controlar todas las consultas y 
@@ -95,6 +82,9 @@ namespace GestorDeDispositvos
                                 "SQLEXPRESS;Initial Catalog=dbGestDisp;Integrated Security=True";
 
             listaQry = new List<string>();
+
+            listaQry2 = new List<string>();
+
             listTablas = new List<string>();
             listaTablas();
             iniciaListaQuery();
@@ -103,13 +93,11 @@ namespace GestorDeDispositvos
         public void listaTablas()
         {
             this.gsTablas.Add("catRadio");
-            this.gsTablas.Add("catArea");
-
-            this.gsTablas.Add("catDisp");
-            this.gsTablas.Add("catEdo");
-
             this.gsTablas.Add("catEmp");
             this.gsTablas.Add("catSucursal");
+            this.gsTablas.Add("catArea");
+            
+            this.gsTablas.Add("catEdo");
         }
 
         /*Se cargan las consultas mas importantes para el sistema
@@ -120,11 +108,16 @@ namespace GestorDeDispositvos
             /*Carga de los catalogos de empleados, areas, tipos de dispositivos
              * y estado del dispostivo y sucursales */
             listaQry.Add("SELECT * FROM catRadio");
-            listaQry.Add("SELECT * FROM catArea");
-            listaQry.Add("SELECT * FROM catDisp");
-            listaQry.Add("SELECT * FROM catEdo");
             listaQry.Add("SELECT * FROM catEmp");
             listaQry.Add("SELECT * FROM catSucursal");
+
+            listaQry.Add("SELECT * FROM catArea");
+            listaQry.Add("SELECT * FROM catEdo");
+
+            listaQry.Add("SELECT * FROM catDisp");
+            
+            
+            
         }
 
         /*Carga la conexion de los datos y  la tabla que se va a utilizar*/
@@ -154,6 +147,7 @@ namespace GestorDeDispositvos
             SqlDataAdapter da = new SqlDataAdapter(qry, this.cdncnxSG);
             DataTable dt = new DataTable();
             DataTable dt2 = new DataTable();
+            MessageBox.Show(qry);
             da.Fill(dt);
 
 

@@ -21,11 +21,14 @@ namespace GestorDeDispositvos
             
             InitializeComponent();
             cbc.iniCBLista();
+            cbc.llenaCatalogooos();
             for (int i = 0; i < 5; i++)
             {
                 panel1.Controls.Add(cbc.lcbGS[i]);
                 panel1.Controls.Add(cbc.llbGS[i]);
             }
+
+
         }
 
         private void CrudRadio_Load(object sender, EventArgs e)
@@ -54,7 +57,7 @@ namespace GestorDeDispositvos
             this.MinimizeBox = false;
             this.MaximizeBox = false;
 
-
+          
 
 
         }

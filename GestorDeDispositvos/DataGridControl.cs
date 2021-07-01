@@ -88,28 +88,32 @@ namespace GestorDeDispositvos
 
             //Catalogo  de radios 
 
-            this.llbGS.Add( l );
+            this.llbGS.Add(l);
             this.llbGS[0].Text = "Número de Serie:";
             this.llbGS.Add( l2 );
             this.llbGS[1].Text = "Código QR:";
 
+       //     Application.OpenForms["FormDinamico"].Controls.Add(this.llbGS[0]);
+         //   Application.OpenForms["FormDinamico"].Controls.Add(this.llbGS[1]);
             //Catalogo de empleados
-            this.llbGS.Add( l );
+        /*     this.llbGS.Add( l );
             this.llbGS[2].Text = "Número de asignación:";
             this.llbGS.Add( l2 );
             this.llbGS[3].Text = "Nombre:";
-
+            
             //Sucursales solo van a utilizarse como B6..etc
-            this.llbGS.Add( l );
+           /* this.llbGS.Add( l);
             this.llbGS[4].Text = "Código:";
+            this.llbGS.Add(l);
+            this.llbGS[5].Text = "Nombre:";
+
 
             //Estados
             this.llbGS.Add( l );
             this.llbGS[5].Text = "Codigo:";
 
-            this.llbGS.Add( l );
-            this.llbGS[6].Text = "Diagnostico:";
-
+                    
+            */
         }
 
         /*Se le manda como parametro el indice de la lista del Qry 
@@ -241,9 +245,6 @@ namespace GestorDeDispositvos
             this.getSetBD.llaveGS = this.ld.Columns[0].Name;
             this.getSetBD.gsvalues = this.ld.Columns[0].Name +" = "+ "\u0027" + txtb1 + "\u0027";
 
-
-            /*insert into catRadio(idRadio, codigoQR) values('ABC123','c:/imagen.jpg');*/
-
             string Qry = "DELETE FROM " + this.getSetBD.gsTablas[indiceCatalogo] +
                          " WHERE " + this.getSetBD.gsvalues    +"; " ;
            
@@ -258,11 +259,22 @@ namespace GestorDeDispositvos
            
             if (!String.IsNullOrEmpty( s ))
             {
+                
                 //s = Interaction.InputBox("Escribir " + this.ld.Columns[0].Name, "Buscar");
-                Qry = "SELECT * " +
-                      " FROM " + this.getSetBD.gsTablas[indiceCatalogo] +
-                      " WHERE " + this.ld.Columns[0].Name + " = " +
-                      "'" + s + "';";
+                if (indiceCatalogo == 4)
+                {
+                    Qry = "SELECT * " +
+                          " FROM " + this.getSetBD.gsTablas[indiceCatalogo] +
+                          " WHERE " + this.ld.Columns[0].Name + " = " +
+                          "" + s + ";";
+                }
+                else 
+                {
+                    Qry = "SELECT * " +
+                    " FROM " + this.getSetBD.gsTablas[indiceCatalogo] +
+                    " WHERE " + this.ld.Columns[0].Name + " = " +
+                    "'" + s + "';";
+                }
                 this.GSltxt = this.getSetBD.buscaRegistros(Qry, s, indiceCatalogo);
                 foreach (DataGridViewRow row in this.ld.Rows)
                 {
