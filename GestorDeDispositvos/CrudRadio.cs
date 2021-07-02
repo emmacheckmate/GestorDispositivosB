@@ -11,8 +11,10 @@ using System.Data.SqlClient;
 
 namespace GestorDeDispositvos
 {
+    
     public partial class CrudRadio : Form
     {
+        DataGridControl d;
         ComboControl cbc;
 
         public CrudRadio()
@@ -21,23 +23,39 @@ namespace GestorDeDispositvos
             
             InitializeComponent();
             cbc.iniCBLista();
-            cbc.llenaCatalogooos();
+            cbc.llenaCatalogos( );
             for (int i = 0; i < 5; i++)
             {
                 panel1.Controls.Add(cbc.lcbGS[i]);
                 panel1.Controls.Add(cbc.llbGS[i]);
             }
 
+            d = new DataGridControl();
+            this.da
+            this.d.iniciaBD(n);
+            d.ld.RowHeaderMouseClick += this.ld_RowHeaderMouseClick;
+
+            this.Controls.Add(d.ld);
 
         }
 
+        public void inicializa_tooltip()
+        {
+            ToolTip toolTip1 = new ToolTip();
+
+            toolTip1.ShowAlways = true;
+            toolTip1.SetToolTip(txtNumEmp, "Se genera automaticamente al crear un reporte.");
+
+        }
         private void CrudRadio_Load(object sender, EventArgs e)
         {
+            this.inicializa_tooltip();
+            label2.Text = "Administrador" + "\nde Catalogos";
+
+
+            txtNumEmp.TabStop = true;
+
             this.dateTimePicker2.Value = new DateTime(2012, 05, 28);
-             //MessageBox.Show(this.dateTimePicker2.Value.ToString()          ); 
-
-
-
             panel1.BackColor = Color.FromArgb(255, 192, 128);
             panel1.Controls.Add(groupBox1);
             groupBox1.SendToBack();
@@ -52,7 +70,7 @@ namespace GestorDeDispositvos
             ///this.SetBounds(20, 20, 300, 300);
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
 
-            // Display the form with no grip since form is not resizable.
+          
             this.SizeGripStyle = SizeGripStyle.Hide;
 
             this.MinimizeBox = false;
@@ -97,23 +115,8 @@ namespace GestorDeDispositvos
             SeleccionForm sf;
             sf = new SeleccionForm();
             sf.ShowDialog();
-          
-          //  ResetAllControlsBackColor( System.Windows.Forms.Control );
         }
-        // Reset all the controls to the user's default Control color. 
-        private void ResetAllControlsBackColor(Control control)
-        {
-            control.BackColor = SystemColors.Control;
-            control.ForeColor = SystemColors.ControlText;
-            if (control.HasChildren)
-            {
-                // Recursively call this method for each child control.
-                foreach (Control childControl in control.Controls)
-                {
-                    ResetAllControlsBackColor(childControl);
-                }
-            }
-        }
+        
 
         private void label10_Click(object sender, EventArgs e)
         {

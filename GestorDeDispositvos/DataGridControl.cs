@@ -21,7 +21,7 @@ namespace GestorDeDispositvos
         private int index = -1;
         public Size tama;
         public Point p;
-        public DataGridView ld;
+        public DataGridView ld, gdvReportes;
         public BDSQL baseDatos;
         public List<string> ltxt;
         private List<Label> llb;
@@ -67,7 +67,7 @@ namespace GestorDeDispositvos
             this.inicilizaDataGrid();
             llb = new List<Label>();
             this.iniLabels();
-
+            gdvReportes = new DataGridView();
 
         }
 
@@ -91,29 +91,7 @@ namespace GestorDeDispositvos
             this.llbGS.Add(l);
            
             this.llbGS.Add( l2 );
-           
-
-            //     Application.OpenForms["FormDinamico"].Controls.Add(this.llbGS[0]);
-            //   Application.OpenForms["FormDinamico"].Controls.Add(this.llbGS[1]);
-            //Catalogo de empleados
-            /*     this.llbGS.Add( l );
-                this.llbGS[2].Text = "Número de asignación:";
-                this.llbGS.Add( l2 );
-                this.llbGS[3].Text = "Nombre:";
-
-                //Sucursales solo van a utilizarse como B6..etc
-               /* this.llbGS.Add( l);
-                this.llbGS[4].Text = "Código:";
-                this.llbGS.Add(l);
-                this.llbGS[5].Text = "Nombre:";
-
-
-                //Estados
-                this.llbGS.Add( l );
-                this.llbGS[5].Text = "Codigo:";
-
-
-                */
+          
         }
 
         public void texto_labels(string txt1 , string txt2)
@@ -132,6 +110,12 @@ namespace GestorDeDispositvos
             ld.ClearSelection();
             ld.CurrentCell = null;
         }
+
+        public void inicializaDGReportes()
+        {
+            ld.ColumnCount = 4;
+        }
+
 
         /*Este metodo configura el formato de los datagrid */
         public void inicilizaDataGrid() {

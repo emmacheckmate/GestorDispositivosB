@@ -33,7 +33,7 @@ namespace GestorDeDispositvos
             string[] arr = new string[] { "Número de Radio", "Reponsable encargado ", "Sucursal", "Área", "Condición del radio:" };
 
             Point p = new Point(200, 50);
-            int x = 400, y = 150;
+            int x = 40, y = 190;
 
             Random r = new Random();
 
@@ -41,6 +41,7 @@ namespace GestorDeDispositvos
             {
                 this.llbGS.Add(new Label());
                 this.llbGS[ i ].Text = arr[ i ];
+                
                 this.lcbGS.Add(new ComboBox());
                 this.lcbGS2.Add(new ComboBox());
                 this.lcbGS[ i ].Location = new Point(x, y);
@@ -48,29 +49,34 @@ namespace GestorDeDispositvos
                 this.llbGS[ i ].Location = new Point(x, y-15);
                 this.llbGS[i].BackColor=   Color.FromArgb(255, 224, 192);
                 this.lcbGS[i].ForeColor = System.Drawing.Color.Black;
+
+                this.lcbGS[i].Size = new System.Drawing.Size(180, 26);
+
                 this.lcbGS[i].BackColor = Color.FromArgb(r.Next(20, 244), 140, 63);
                 this.lcbGS[i].Font = new Font("Arial", 7, FontStyle.Bold);
 
 
-                y += 40;
+                y += 35;
             }
-          
 
-
-
+            this.lcbGS[ 0 ].Text = "Elegir";
+            this.lcbGS[ 1 ].Text = "Seleccionar";
+            this.lcbGS[ 2 ].Text = "Establecer";
+            this.lcbGS[ 3 ].Text = "Indicar";
+            this.lcbGS[ 4 ].Text = "Asignar";
+            this.lcbGS[0].TabIndex = 8;
+            this.lcbGS[1].TabIndex = 9;
+            this.lcbGS[2].TabIndex = 10;
+            this.lcbGS[3].TabIndex = 11;
+            this.lcbGS[4].TabIndex = 12;
         }
 
         /*Este metodo se utiliza para llenar los valores de los combobox
          con todos los registros de cada una de las tables*/
-        public void llenaCatalogooos()
+        public void llenaCatalogos()
         {
             DataTable d = new DataTable();
             
-            
-            
-            
-            
-
             /*Se ingresa a la lista de los combos y 
              * los catalogos que va ser cargados en }
              * dentro de cada combo*/
@@ -92,10 +98,14 @@ namespace GestorDeDispositvos
 
                     }
 
-                    this.lcbGS[i].Items.Add(s[0]);
-                    if (d.Columns.Count == 2)
+
+                    if ( d.Columns.Count == 2 && i != 0 )
                     {
-                        this.lcbGS2[i].Items.Add(s[1]);
+                        this.lcbGS[i].Items.Add(s[1]);
+                    }
+                    else 
+                    {
+                        this.lcbGS[i].Items.Add(s[0]);
                     }
                 }
             }
