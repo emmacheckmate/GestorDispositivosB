@@ -42,27 +42,27 @@ namespace GestorDeDispositvos {
 
         }
 
-        public void configuraPanel(int i, int j, string titulo)
+        public void configuraPanel( string titulo)
         {
-            this.Controls.Add(this.d.llbGS.ElementAt(0));
-            this.Controls.Add(this.d.llbGS.ElementAt(1));
-
-            panel1.Controls.Add(this.d.llbGS[0]);
-            panel1.Controls.Add(this.d.llbGS[1]);
+            this.Controls.Add(this.d.llbGS[ 0 ]);
+            this.Controls.Add(this.d.llbGS[ 1 ]);
+ 
+            panel1.Controls.Add(this.d.llbGS[ 0 ]);
+            panel1.Controls.Add(this.d.llbGS[1 ]);
             this.Text = titulo;
         }
 
         public void eligeCatalogo(int op)
         {
-            MessageBox.Show(op.ToString());
+            
             switch (op)
             {
                 
                 
                 case 0:
                     
-                    
-                    configuraPanel(0, 1 , "Radios");
+                    this.d.texto_labels("Nombre: ", "Codigo QR:");
+                    configuraPanel("Radios");
 
                     this.pictureBox2.Visible = true;
 
@@ -70,17 +70,25 @@ namespace GestorDeDispositvos {
 
                 case 1:
                     //configuraPanel(2, 3, "Responsables/Encargado de Radio");
+
+                    this.d.texto_labels("Nombre: ", "Codigo de Asignacion:");
+                    configuraPanel("Encargados");
+
                     break;
                 case 2:
-                    //configuraPanel(2, 3, "Sucursales");
+                 
+                    this.d.texto_labels("Codigo: ", "Nombre:");
+                    configuraPanel("Sucursales");
                     break;
 
                 case 3:
-                    //configuraPanel(4, 5, "Sucursales");
+                    this.d.texto_labels("Codigo: ", "Nombre:");
+                    configuraPanel("Areas");
                     break;
 
                 case 4:
-                    //configuraPanel(6, 5,"Estados");
+                    this.d.texto_labels("Codigo: ", "Nombre:");
+                    configuraPanel("Estados");
                     break;
             }
 
@@ -130,8 +138,9 @@ namespace GestorDeDispositvos {
         }
         private void FormDinamico_Load(object sender, EventArgs e)
         {
+           
             this.pictureBox2.Visible = false;
-            eligeCatalogo(this.numCatGS);
+            eligeCatalogo( this.numCatGS );
             this.CenterToScreen();
             this.pictureBxIni();
             this.pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;

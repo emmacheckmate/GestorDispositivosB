@@ -33,9 +33,10 @@ namespace GestorDeDispositvos
 
         private void CrudRadio_Load(object sender, EventArgs e)
         {
-            MessageBox.Show(this.dateTimePicker2.Value.ToString() ); 
+            this.dateTimePicker2.Value = new DateTime(2012, 05, 28);
+             //MessageBox.Show(this.dateTimePicker2.Value.ToString()          ); 
 
-            
+
 
             panel1.BackColor = Color.FromArgb(255, 192, 128);
             panel1.Controls.Add(groupBox1);

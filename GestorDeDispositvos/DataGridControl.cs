@@ -89,31 +89,37 @@ namespace GestorDeDispositvos
             //Catalogo  de radios 
 
             this.llbGS.Add(l);
-            this.llbGS[0].Text = "Número de Serie:";
+           
             this.llbGS.Add( l2 );
-            this.llbGS[1].Text = "Código QR:";
+           
 
-       //     Application.OpenForms["FormDinamico"].Controls.Add(this.llbGS[0]);
-         //   Application.OpenForms["FormDinamico"].Controls.Add(this.llbGS[1]);
+            //     Application.OpenForms["FormDinamico"].Controls.Add(this.llbGS[0]);
+            //   Application.OpenForms["FormDinamico"].Controls.Add(this.llbGS[1]);
             //Catalogo de empleados
-        /*     this.llbGS.Add( l );
-            this.llbGS[2].Text = "Número de asignación:";
-            this.llbGS.Add( l2 );
-            this.llbGS[3].Text = "Nombre:";
-            
-            //Sucursales solo van a utilizarse como B6..etc
-           /* this.llbGS.Add( l);
-            this.llbGS[4].Text = "Código:";
-            this.llbGS.Add(l);
-            this.llbGS[5].Text = "Nombre:";
+            /*     this.llbGS.Add( l );
+                this.llbGS[2].Text = "Número de asignación:";
+                this.llbGS.Add( l2 );
+                this.llbGS[3].Text = "Nombre:";
+
+                //Sucursales solo van a utilizarse como B6..etc
+               /* this.llbGS.Add( l);
+                this.llbGS[4].Text = "Código:";
+                this.llbGS.Add(l);
+                this.llbGS[5].Text = "Nombre:";
 
 
-            //Estados
-            this.llbGS.Add( l );
-            this.llbGS[5].Text = "Codigo:";
+                //Estados
+                this.llbGS.Add( l );
+                this.llbGS[5].Text = "Codigo:";
 
-                    
-            */
+
+                */
+        }
+
+        public void texto_labels(string txt1 , string txt2)
+        {
+            this.llbGS[0].Text = txt1;
+            this.llbGS[1].Text = txt2;
         }
 
         /*Se le manda como parametro el indice de la lista del Qry 
