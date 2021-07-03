@@ -24,18 +24,16 @@ namespace GestorDeDispositvos
             InitializeComponent();
             cbc.iniCBLista();
             cbc.llenaCatalogos( );
-            for (int i = 0; i < 5; i++)
-            {
-                panel1.Controls.Add(cbc.lcbGS[i]);
-                panel1.Controls.Add(cbc.llbGS[i]);
-            }
+            
 
             d = new DataGridControl();
-            this.da
-            this.d.iniciaBD(n);
-            d.ld.RowHeaderMouseClick += this.ld_RowHeaderMouseClick;
+           // this.da
+           // this.d.iniciaBD(n);
+         //   d.ld.RowHeaderMouseClick += this.ld_RowHeaderMouseClick;
 
             this.Controls.Add(d.ld);
+            this.Controls.Add(this.d.dgvReportes);
+            panel1.Controls.Add(this.d.dgvReportes);
 
         }
 
@@ -47,45 +45,59 @@ namespace GestorDeDispositvos
             toolTip1.SetToolTip(txtNumEmp, "Se genera automaticamente al crear un reporte.");
 
         }
-        private void CrudRadio_Load(object sender, EventArgs e)
+
+        public void inicializa_texto() 
         {
-            this.inicializa_tooltip();
             label2.Text = "Administrador" + "\nde Catalogos";
-
-
             txtNumEmp.TabStop = true;
+        }
 
-            this.dateTimePicker2.Value = new DateTime(2012, 05, 28);
+        public void configura_paneles()
+        {
             panel1.BackColor = Color.FromArgb(255, 192, 128);
             panel1.Controls.Add(groupBox1);
-            groupBox1.SendToBack();
-            this.CenterToScreen();
+            for (int i = 0; i < 5; i++)
+            {
+                // Lista de comboboxes
+                panel1.Controls.Add(cbc.lcbGS[i]);
 
+                // Lista de etiquetas
+                panel1.Controls.Add(cbc.llbGS[i]);
+            }
+        }
+
+
+        public void configura_iconos()
+        {
             button1.BackgroundImageLayout = ImageLayout.Stretch;
             button2.BackgroundImageLayout = ImageLayout.Stretch;
             button3.BackgroundImageLayout = ImageLayout.Stretch;
             button4.BackgroundImageLayout = ImageLayout.Stretch;
             button5.BackgroundImageLayout = ImageLayout.Stretch;
+        }
+        private void CrudRadio_Load(object sender, EventArgs e)
+        {
+            this.inicializa_texto();
+            this.inicializa_tooltip();
+            this.configura_iconos();
+            this.configura_paneles();
 
-            ///this.SetBounds(20, 20, 300, 300);
+            this.dateTimePicker2.Value = new DateTime(2012, 05, 28);
+
+            this.Width = 872;
+            this.Height = 467;
+             
+
+            groupBox1.SendToBack();
+            this.CenterToScreen();
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
-
-          
             this.SizeGripStyle = SizeGripStyle.Hide;
-
             this.MinimizeBox = false;
             this.MaximizeBox = false;
 
-          
-
-
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-           
-        }
-
+ 
         private void button2_Click(object sender, EventArgs e)
         {
 
@@ -100,16 +112,6 @@ namespace GestorDeDispositvos
         {
                     }
 
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
         private void button5_Click(object sender, EventArgs e)
         {
             SeleccionForm sf;
@@ -117,12 +119,6 @@ namespace GestorDeDispositvos
             sf.ShowDialog();
         }
         
-
-        private void label10_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void button6_Click_1(object sender, EventArgs e)
         {
             ReportesForm r = new ReportesForm();

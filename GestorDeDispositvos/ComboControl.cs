@@ -33,7 +33,7 @@ namespace GestorDeDispositvos
             string[] arr = new string[] { "Número de Radio", "Reponsable encargado ", "Sucursal", "Área", "Condición del radio:" };
 
             Point p = new Point(200, 50);
-            int x = 40, y = 190;
+            int x = 25, y = 190;
 
             Random r = new Random();
 

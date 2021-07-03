@@ -61,7 +61,7 @@ namespace GestorDeDispositvos
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.btnGuardarPIc);
             this.panel2.Location = new System.Drawing.Point(496, 168);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(219, 229);
             this.panel2.TabIndex = 57;
@@ -76,6 +76,7 @@ namespace GestorDeDispositvos
             this.pictureBox2.Size = new System.Drawing.Size(158, 152);
             this.pictureBox2.TabIndex = 58;
             this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // label1
             // 
@@ -93,7 +94,7 @@ namespace GestorDeDispositvos
             this.btnGuardarPIc.BackColor = System.Drawing.Color.White;
             this.btnGuardarPIc.Image = ((System.Drawing.Image)(resources.GetObject("btnGuardarPIc.Image")));
             this.btnGuardarPIc.Location = new System.Drawing.Point(81, 181);
-            this.btnGuardarPIc.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnGuardarPIc.Margin = new System.Windows.Forms.Padding(2);
             this.btnGuardarPIc.Name = "btnGuardarPIc";
             this.btnGuardarPIc.Size = new System.Drawing.Size(50, 27);
             this.btnGuardarPIc.TabIndex = 59;
@@ -104,7 +105,7 @@ namespace GestorDeDispositvos
             // 
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
             this.pictureBox3.Location = new System.Drawing.Point(347, 2);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(433, 65);
             this.pictureBox3.TabIndex = 0;
@@ -113,7 +114,7 @@ namespace GestorDeDispositvos
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(147, 50);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(122, 20);
             this.textBox1.TabIndex = 60;
@@ -121,7 +122,7 @@ namespace GestorDeDispositvos
             // textBox2
             // 
             this.textBox2.Location = new System.Drawing.Point(147, 79);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(2);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(122, 20);
             this.textBox2.TabIndex = 61;
@@ -132,7 +133,7 @@ namespace GestorDeDispositvos
             this.button5.BackgroundImage = global::GestorDeDispositvos.Properties.Resources.agregar;
             this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.button5.Location = new System.Drawing.Point(497, 29);
-            this.button5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button5.Margin = new System.Windows.Forms.Padding(2);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(29, 27);
             this.button5.TabIndex = 58;
@@ -145,7 +146,7 @@ namespace GestorDeDispositvos
             this.button2.BackgroundImage = global::GestorDeDispositvos.Properties.Resources.eliminar1;
             this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button2.Location = new System.Drawing.Point(539, 29);
-            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(31, 27);
             this.button2.TabIndex = 59;
@@ -158,7 +159,7 @@ namespace GestorDeDispositvos
             this.button3.BackgroundImage = global::GestorDeDispositvos.Properties.Resources.buscar;
             this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.button3.Location = new System.Drawing.Point(583, 29);
-            this.button3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button3.Margin = new System.Windows.Forms.Padding(2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(27, 27);
             this.button3.TabIndex = 60;
@@ -171,7 +172,7 @@ namespace GestorDeDispositvos
             this.button4.BackgroundImage = global::GestorDeDispositvos.Properties.Resources.guardar;
             this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.button4.Location = new System.Drawing.Point(624, 29);
-            this.button4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button4.Margin = new System.Windows.Forms.Padding(2);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(29, 27);
             this.button4.TabIndex = 61;
@@ -228,7 +229,7 @@ namespace GestorDeDispositvos
             this.button1.BackgroundImage = global::GestorDeDispositvos.Properties.Resources.salir;
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.button1.Location = new System.Drawing.Point(674, 29);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(29, 27);
             this.button1.TabIndex = 66;

@@ -19,9 +19,9 @@ namespace GestorDeDispositvos
         baseDatos se encarga de abrir y hacer una conexión con la base de 
         datos */
         private int index = -1;
-        public Size tama;
-        public Point p;
-        public DataGridView ld, gdvReportes;
+        public Size tama, tama2 ;
+        public Point p, p2 ;
+        public DataGridView ld, dgvReportes;
         public BDSQL baseDatos;
         public List<string> ltxt;
         private List<Label> llb;
@@ -63,12 +63,21 @@ namespace GestorDeDispositvos
             baseDatos = new BDSQL();
             tama = new Size(500, 300);
             p = new Point(15, 250);
+
+            tama2 = new Size(452, 239 );
+            p2 = new Point( 326 , 157 );
             ld = new DataGridView();
-            this.inicilizaDataGrid();
+            dgvReportes = new DataGridView();
+            this.inicilizaDataGrid( ld , p, tama );
+
+            this.inicilizaDataGrid( dgvReportes, p2, tama2);
+
+            //326, 157
+
             llb = new List<Label>();
             this.iniLabels();
-            gdvReportes = new DataGridView();
-
+            
+            //1225
         }
 
         public void iniLabels()
@@ -118,12 +127,14 @@ namespace GestorDeDispositvos
 
 
         /*Este metodo configura el formato de los datagrid */
-        public void inicilizaDataGrid() {
-            ld.Size = tama;
-            ld.Location = p;
-            ld.BackgroundColor = Color.FromArgb(255, 192, 128);
-            ld.BringToFront();
-            ld.ReadOnly = true;
+        public void inicilizaDataGrid( DataGridView d , Point Loc, Size Tam ) {
+            d.Size = Tam;
+            d.Location = Loc;
+            d.BackgroundColor = Color.FromArgb(255, 192, 128);
+            d.BringToFront();
+            d.ReadOnly = true;
+
+            //326, 157
         }
 
         public string seleccionaRenglonImagen(int i)
