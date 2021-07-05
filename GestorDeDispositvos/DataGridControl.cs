@@ -62,6 +62,8 @@ namespace GestorDeDispositvos
             this.iniLabels();
             ini_datagrid_reportes();
 
+
+
         }
 
         /*Metodo de inicialziacion de las etiquetas de los nombres de los aributos }
@@ -101,8 +103,15 @@ namespace GestorDeDispositvos
             DataTable t = new DataTable();
             t = this.baseDatos.leeRegistros(this.baseDatos.listaQry[numQry]);
             ld.DataSource = t;
+            this.cambia_colores(ld);
+            
+            ld.RowsDefaultCellStyle.BackColor = Color.NavajoWhite;
+            ld.BackgroundColor = Color.DarkSlateGray;
             ld.ClearSelection();
             ld.CurrentCell = null;
+            
+
+            
         }
 
         /*Este metodo configura el formato de los datagrid */
@@ -113,7 +122,6 @@ namespace GestorDeDispositvos
             d.BringToFront();
             d.ReadOnly = true;
 
-            //326, 157
         }
 
         /*Inicializa el datagrid para los reportes de los radios 
@@ -134,6 +142,7 @@ namespace GestorDeDispositvos
 
             this.dgvReportes.GridColor = Color.Coral;
 
+            this.ld.GridColor = Color.Coral;
             this.inicializa_tamaColumnas();
 
             this.dgvReportes.Columns[0].Name = "FOLIO";
@@ -176,16 +185,16 @@ namespace GestorDeDispositvos
 
         }
         /*Cambia el color de todos los renglonnes de los datagridview*/
-        void cambia_colores( DataGridView dt )
+        void cambia_colores( DataGridView dt)
         {
+            
             foreach (DataGridViewRow row in dt.Rows)
             {
                 foreach (DataGridViewCell cell in row.Cells)
                 {
                     cell.Style.BackColor = Color.FromArgb(100, 200, 100);
-                }
+                }   
             }
-
         }
 
         /*Inicializa el tamaño */
@@ -198,10 +207,24 @@ namespace GestorDeDispositvos
             this.dgvReportes.Columns[5].Width = 70;
             this.dgvReportes.Columns[6].Width = 50;
         }
+
+        /*Envia la ruta de la imagen del codigo QR */
         public string seleccionaRenglonImagen(int i)
         {
             var cell = this.ld.Rows[i].Cells[1];
             return cell.Value.ToString();
+        }
+
+        public List<string> seleccionaRenglonReportes(int i)
+        {
+            List<string> l = new List<string>();
+
+            DataGridViewRow renglon = new DataGridViewRow();
+
+            for (int j = 0; j < this.dgvReportes.Rows[i].Cells.Count; j++){
+                l.Add(this.dgvReportes.Rows[i].Cells[ j ].Value.ToString() );
+            }
+            return l;
         }
 
         public List<string> seleccionaInformacion(int i)
@@ -317,10 +340,8 @@ namespace GestorDeDispositvos
             string s = Interaction.InputBox("Escribir " + this.ld.Columns[0].Name, "Buscar");
 
            
-            if (!String.IsNullOrEmpty( s ))
-            {
+            if (!String.IsNullOrEmpty( s )){
                 
-                //s = Interaction.InputBox("Escribir " + this.ld.Columns[0].Name, "Buscar");
                 if (indiceCatalogo == 4)
                 {
                     Qry = "SELECT * " +

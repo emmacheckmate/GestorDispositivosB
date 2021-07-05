@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Drawing.Printing;    
 
 namespace GestorDeDispositvos
 {
@@ -29,13 +30,22 @@ namespace GestorDeDispositvos
             d = new DataGridControl();
            // this.da
            // this.d.iniciaBD(n);
-         //   d.ld.RowHeaderMouseClick += this.ld_RowHeaderMouseClick;
+
+            d.dgvReportes.RowHeaderMouseClick += this.dgvReportes_RowHeaderMouseClick;
             this.Controls.Add(d.ld);
             this.Controls.Add(this.d.dgvReportes);
             panel1.Controls.Add(this.d.dgvReportes);
 
         }
 
+        public void dgvReportes_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            try
+            {
+                d.seleccionaRenglonReportes(e.RowIndex);
+            }
+            catch{  }
+        }
         public void inicializa_tooltip()
         {
             ToolTip toolTip1 = new ToolTip();
@@ -123,6 +133,33 @@ namespace GestorDeDispositvos
         {
             ReportesForm r = new ReportesForm();
             r.ShowDialog();
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            PrintDialog PrintDialog = new PrintDialog();
+            PrintDialog.ShowDialog();
+            string name = PrintDialog.PrinterSettings.PrinterName;
+
+            string s = "string to print";
+
+            PrintDocument p = new PrintDocument();
+            p.PrintPage += delegate (object sender1, PrintPageEventArgs e1)
+            {
+                e1.Graphics.DrawString(s, new Font("Times New Roman", 12), new SolidBrush(Color.Black), 
+                                          new RectangleF(0, 0, p.DefaultPageSettings.PrintableArea.Width, 
+                                          p.DefaultPageSettings.PrintableArea.Height));
+
+            };
+            try
+            {
+                p.Print();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Exception Occured While Printing", ex);
+            }
 
         }
     }
