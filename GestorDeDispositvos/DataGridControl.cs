@@ -19,67 +19,53 @@ namespace GestorDeDispositvos
         baseDatos se encarga de abrir y hacer una conexión con la base de 
         datos */
         private int index = -1;
-        public Size tama, tama2 ;
-        public Point p, p2 ;
+        public Size tama, tama2;
+        public Point p, p2;
         public DataGridView ld, dgvReportes;
         public BDSQL baseDatos;
         public List<string> ltxt;
         private List<Label> llb;
 
+        /*Metodo de get set de los valores de una lista de los textbox de los catalogos*/
         public List<string> GSltxt { get { return this.ltxt; } set { this.ltxt = value; } }
+
+        /*Lista de los nombres nombres de los nombres de los catalogos*/
         public List<Label> llbGS { get { return this.llb; } set { this.llb = value; } }
 
+        /*Metodo get set de la cuadricula de los datos para manipular los registros de 
+         la base de datos*/
         public DataGridView gsDataGrid { get { return this.ld; } set { this.ld = value; } }
 
 
         /*Metodo para pasar el valor del indice del datagtird */
-        public int getSetIndiceDG
-        {
-            get { return this.index; }
-            set { this.index = value; }
-        }
+        public int getSetIndiceDG { get { return this.index; } set { this.index = value; } }
 
-        public BDSQL getSetBD
-        {
-            get { return this.baseDatos; }
+        /*Get set de la clase de base de datos que se encarga la manipulacion de 
+         los regisros de la base de datos */
+        public BDSQL getSetBD { get { return this.baseDatos; } set { this.baseDatos = value; } }
 
-            set { this.baseDatos = value; }
-        }
-
-        /*Metodo de asignacion del tamaño para el  data grid */
-        public Size getSetSize
-        {
-            get { return this.tama; }
-            set { this.tama = value; }
-        }
-
-        /*Este metodo es para asignar la posicion del  datagrid */
-        public Point getSetP
-        { get { return this.p; } set { this.p = value; } }
 
         /*Constructor del objeto del drig*/
-        public DataGridControl()
-        {
+        public DataGridControl() {
             baseDatos = new BDSQL();
-            tama = new Size(500, 300);
-            p = new Point(15, 250);
+            tama = new Size(450, 300);
+            p = new Point(15, 169);
 
-            tama2 = new Size(452, 239 );
-            p2 = new Point( 326 , 157 );
+            tama2 = new Size(700, 239);
+            p2 = new Point(305, 157);
             ld = new DataGridView();
             dgvReportes = new DataGridView();
-            this.inicilizaDataGrid( ld , p, tama );
-
-            this.inicilizaDataGrid( dgvReportes, p2, tama2);
-
-            //326, 157
+            this.inicilizaDataGrid(ld, p, tama, Color.FromArgb(255, 192, 128));
+            this.inicilizaDataGrid(dgvReportes, p2, tama2, Color.FromArgb(100, 50, 28));
 
             llb = new List<Label>();
             this.iniLabels();
-            
-            //1225
+            ini_datagrid_reportes();
+
         }
 
+        /*Metodo de inicialziacion de las etiquetas de los nombres de los aributos }
+         de la tabla de la base de datos*/
         public void iniLabels()
         {
             Label l = new Label();
@@ -95,15 +81,14 @@ namespace GestorDeDispositvos
             l2.Font = new Font("Arial", 10, FontStyle.Bold);
             l2.BringToFront();
 
-            //Catalogo  de radios 
-
             this.llbGS.Add(l);
-           
-            this.llbGS.Add( l2 );
-          
+            this.llbGS.Add(l2);
         }
 
-        public void texto_labels(string txt1 , string txt2)
+        /*Parametros para la entrada de información para los 
+         atributos de las tablas de los catalogos para formar 
+        la consulta dentro de la base de datos*/
+        public void texto_labels(string txt1, string txt2)
         {
             this.llbGS[0].Text = txt1;
             this.llbGS[1].Text = txt2;
@@ -120,23 +105,99 @@ namespace GestorDeDispositvos
             ld.CurrentCell = null;
         }
 
-        public void inicializaDGReportes()
-        {
-            ld.ColumnCount = 4;
-        }
-
-
         /*Este metodo configura el formato de los datagrid */
-        public void inicilizaDataGrid( DataGridView d , Point Loc, Size Tam ) {
+        public void inicilizaDataGrid(DataGridView d, Point Loc, Size Tam, Color c) {
             d.Size = Tam;
             d.Location = Loc;
-            d.BackgroundColor = Color.FromArgb(255, 192, 128);
+            d.BackgroundColor = c;
             d.BringToFront();
             d.ReadOnly = true;
 
             //326, 157
         }
 
+        /*Inicializa el datagrid para los reportes de los radios 
+         establece el numero de columnas y los colores */
+        public void ini_datagrid_reportes()
+        {
+            Font f = new Font("Arial", 7.0f);
+
+            this.dgvReportes.Font = f;
+            this.dgvReportes.ColumnCount = 8;
+            this.dgvReportes.ColumnHeadersHeight = 60;
+
+
+            for (int i = 0; i < this.dgvReportes.Columns.Count; i++)
+            {
+                this.dgvReportes.Columns[i].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
+
+            this.dgvReportes.GridColor = Color.Coral;
+
+            this.inicializa_tamaColumnas();
+
+            this.dgvReportes.Columns[0].Name = "FOLIO";
+            this.dgvReportes.Columns[1].Name = "FECHA\nde\n" +
+                                                "Entrega";
+            this.dgvReportes.Columns[2].Name = "DETALLES";
+            this.dgvReportes.Columns[3].Name = "NUMERO DE RADIO";
+            this.dgvReportes.Columns[4].Name = "RESPONSABLE";
+            this.dgvReportes.Columns[5].Name = "SUCURSAL";
+            this.dgvReportes.Columns[6].Name = "ÁREA";
+            this.dgvReportes.Columns[7].Name = "CONDICION";
+
+
+            this.dgvReportes.Rows.Add("2", "05-07-21", "" +
+                                      "El radio se encontraba con la pila rota, " +
+                                      "se le rapararon las celdas , la antena y las laminas para recargar el radio "
+                                      , "7024ADB", "Emma", "Soledad", "Cajas", "Funcionando");
+
+
+            this.dgvReportes.Rows.Add("2", "05-07-21", "" +
+                                     "El radio se encontraba con la pila rota, " +
+                                     "se le rapararon las celdas , la antena y las laminas para recargar el radio "
+                                     , "7024ADB", "Emma", "Soledad", "Cajas", "Funcionando");
+
+            this.cambia_colores(this.dgvReportes);
+            this.ingresa_nombres(this.dgvReportes);
+
+        }
+        /*Estable los nombres para el datagrid de los reportes de los radios */
+        void ingresa_nombres( DataGridView d)
+        {
+            d.Columns[0].Name = "FOLIO";
+            d.Columns[1].Name = "FECHA\nDE\nENTREGA";
+            d.Columns[2].Name = "DETALLES";
+            d.Columns[3].Name = "NÚMERO DE RADIO";
+            d.Columns[4].Name = "RESPONSABLE";
+            d.Columns[5].Name = "SUCURSAL";
+            d.Columns[6].Name = "ÁREA";
+            d.Columns[7].Name = "CONDICIÓN";
+
+        }
+        /*Cambia el color de todos los renglonnes de los datagridview*/
+        void cambia_colores( DataGridView dt )
+        {
+            foreach (DataGridViewRow row in dt.Rows)
+            {
+                foreach (DataGridViewCell cell in row.Cells)
+                {
+                    cell.Style.BackColor = Color.FromArgb(100, 200, 100);
+                }
+            }
+
+        }
+
+        /*Inicializa el tamaño */
+        public void inicializa_tamaColumnas()
+        {
+            this.dgvReportes.Columns[0].Width = 50;
+            this.dgvReportes.Columns[1].Width = 55;
+            this.dgvReportes.Columns[3].Width = 60;
+            this.dgvReportes.Columns[3].Width = 50;
+            this.dgvReportes.Columns[5].Width = 70;
+            this.dgvReportes.Columns[6].Width = 50;
+        }
         public string seleccionaRenglonImagen(int i)
         {
             var cell = this.ld.Rows[i].Cells[1];
@@ -156,14 +217,12 @@ namespace GestorDeDispositvos
 
         public string seleccionaNombreLlave()
         {
-
             var cell = this.ld.Columns[0].Name;
             return cell.ToString();
         }
 
         public string seleccionaRenglonLlave(int i)
         {
-
             var cell = this.ld.Rows[i].Cells[0];
             return cell.Value.ToString();
         }

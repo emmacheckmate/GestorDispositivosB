@@ -30,7 +30,6 @@ namespace GestorDeDispositvos
            // this.da
            // this.d.iniciaBD(n);
          //   d.ld.RowHeaderMouseClick += this.ld_RowHeaderMouseClick;
-
             this.Controls.Add(d.ld);
             this.Controls.Add(this.d.dgvReportes);
             panel1.Controls.Add(this.d.dgvReportes);
@@ -84,7 +83,7 @@ namespace GestorDeDispositvos
 
             this.dateTimePicker2.Value = new DateTime(2012, 05, 28);
 
-            this.Width = 872;
+            this.Width = 1200;
             this.Height = 467;
              
 
@@ -110,7 +109,8 @@ namespace GestorDeDispositvos
 
         private void button6_Click(object sender, EventArgs e)
         {
-                    }
+
+        }
 
         private void button5_Click(object sender, EventArgs e)
         {

@@ -16,8 +16,8 @@ namespace GestorDeDispositvos
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new FormDinamico( 0 ));
-            Application.Run(new Principal() );
+            Application.Run(new CrudRadio() );
+            //Application.Run(new Principal() );
         }
     }
 }
