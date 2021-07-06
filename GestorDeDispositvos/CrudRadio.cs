@@ -160,7 +160,8 @@ namespace GestorDeDispositvos
             {
                 throw new Exception("Exception Occured While Printing", ex);
             }
-
         }
+
+
     }
 }

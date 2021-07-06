@@ -1,6 +1,6 @@
-CREATE TABLE reportesRadios
+CREATE TABLE reportesRadio
 (
-     numero_reporte int not null identity(1,1 ), 
+     numero_reporte int not null identity(1,1), 
 	 fecha_asignacion date not null,
 	 observaciones varchar(100) not null, 
 	 numero_radio nchar(8) not null,

@@ -9,8 +9,9 @@ namespace GestorDeDispositvos
     class ComboControl
     {
         private BDSQL bd;
-        public List<ComboBox> lcb , lcb2;
+        public List<ComboBox> lcb ;
         public List<Label> llb;
+        public List< List<string> > listaClaves;
         public List<Label> llbGS { get { return this.llb; } set { this.llb = value; } }
 
         public ComboControl()
@@ -18,13 +19,14 @@ namespace GestorDeDispositvos
             llb = new List<Label>();
             bd = new BDSQL();
             lcb = new List<ComboBox>();
-            lcb2 = new List<ComboBox>();
+            listaClaves = new List< List<string> >();
+           
         }
 
        
         public List<ComboBox> lcbGS { get { return this.lcb; } set { this.lcb = value; } }
 
-        public List<ComboBox> lcbGS2 { get { return this.lcb2; } set { this.lcb2 = value; } }
+        
 
         /*Se inicializa la lista de los combox para
          * mostrar todos los catalogos de las tablas*/
@@ -43,7 +45,7 @@ namespace GestorDeDispositvos
                 this.llbGS[ i ].Text = arr[ i ];
                 
                 this.lcbGS.Add(new ComboBox());
-                this.lcbGS2.Add(new ComboBox());
+                
                 this.lcbGS[ i ].Location = new Point(x, y);
                 this.lcbGS[ i ].BringToFront();
                 this.llbGS[ i ].Location = new Point(x, y-15);
@@ -83,11 +85,21 @@ namespace GestorDeDispositvos
 
 
             List<string> s = new List<string>() ;
+            List<string> s2 = new List<string>();
 
-            for (int i = 0; i < this.lcbGS.Count; i++)
-            {
-                d = bd.leeRegistros(this.bd.listaQry[ i ]);
-
+            for (int i = 0; i < this.lcbGS.Count; i++) {
+                d = bd.leeRegistros(this.bd.listaQry[i]);
+                foreach (DataColumn col in d.Columns)
+                {
+                    if (col.Ordinal == 0)
+                    {
+                        this.listaClaves.Add(new List<string>());
+                        foreach (DataRow row in d.Rows)
+                        {
+                            this.listaClaves[i].Add(row[col.Ordinal].ToString());
+                        }
+                    }
+                }
                 foreach (DataRow dtRow in d.Rows)
                 {
                     s.Clear();
@@ -95,10 +107,9 @@ namespace GestorDeDispositvos
                     foreach (DataColumn dc in d.Columns)
                     {
                         s.Add(dtRow[dc].ToString());
-
+                        
                     }
-
-
+                    
                     if ( d.Columns.Count == 2 && i != 0 )
                     {
                         this.lcbGS[i].Items.Add(s[1]);
@@ -107,12 +118,29 @@ namespace GestorDeDispositvos
                     {
                         this.lcbGS[i].Items.Add(s[0]);
                     }
+                    
                 }
+                
             }
-            
 
-        
+            //this.muestra_listaDListas();
         }
+
+        public void muestra_listaDListas()
+        {
+            string datos = "";
+            foreach (List<string> l in this.listaClaves)
+            {
+                
+                foreach(string ll in l)
+                {
+                    datos += ll + " " ;
+                }
+                datos += "\n\n";
+            }
+            //MessageBox.Show(datos);
+        }
+
         
 
 

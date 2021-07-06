@@ -115,8 +115,8 @@ namespace GestorDeDispositvos
             listaQry.Add("SELECT * FROM catEdo");
 
             listaQry.Add("SELECT * FROM catDisp");
-            
-            
+
+            listaQry.Add("SELECT * FROM reportesRadio ");
             
         }
 
@@ -168,7 +168,7 @@ namespace GestorDeDispositvos
             SqlDataAdapter da = new SqlDataAdapter(qry, this.cdncnxSG);
             
             DataTable dt = new DataTable();
-            FormDinamico f;
+            
             
             try
             {
@@ -180,6 +180,30 @@ namespace GestorDeDispositvos
             }
             catch {
                 MessageBox.Show("Número de serie repetido", "",
+                               MessageBoxButtons.OK,
+                               MessageBoxIcon.Error);
+            }
+
+            return dt;
+        }
+
+        public DataTable leeReportesRadio(string qry)
+        {
+            List<string> renglon = new List<string>();
+            SqlDataAdapter da = new SqlDataAdapter(qry, this.cdncnxSG);
+
+            DataTable dt = new DataTable();
+            
+            try
+            {
+                da.Fill(dt);
+                MessageBox.Show("Lectura de base de datos correcta", "",
+                               MessageBoxButtons.OK,
+                               MessageBoxIcon.Information);
+            }
+            catch
+            {
+                MessageBox.Show("No se pudo leer la base de datos", "",
                                MessageBoxButtons.OK,
                                MessageBoxIcon.Error);
             }

@@ -55,7 +55,7 @@ namespace GestorDeDispositvos
             p2 = new Point(305, 157);
             ld = new DataGridView();
             dgvReportes = new DataGridView();
-            this.inicilizaDataGrid(ld, p, tama, Color.FromArgb(255, 192, 128));
+            this.inicilizaDataGrid(ld, p, tama, Color.FromArgb(100, 50, 28));
             this.inicilizaDataGrid(dgvReportes, p2, tama2, Color.FromArgb(100, 50, 28));
 
             llb = new List<Label>();
@@ -106,7 +106,7 @@ namespace GestorDeDispositvos
             this.cambia_colores(ld);
             
             ld.RowsDefaultCellStyle.BackColor = Color.NavajoWhite;
-            ld.BackgroundColor = Color.DarkSlateGray;
+            ld.BackgroundColor = Color.FromArgb(100, 50, 28);
             ld.ClearSelection();
             ld.CurrentCell = null;
             
@@ -156,7 +156,7 @@ namespace GestorDeDispositvos
             this.dgvReportes.Columns[7].Name = "CONDICION";
 
 
-            this.dgvReportes.Rows.Add("2", "05-07-21", "" +
+            this.dgvReportes.Rows.Add("1", "05-07-21", "" +
                                       "El radio se encontraba con la pila rota, " +
                                       "se le rapararon las celdas , la antena y las laminas para recargar el radio "
                                       , "7024ADB", "Emma", "Soledad", "Cajas", "Funcionando");
@@ -166,6 +166,12 @@ namespace GestorDeDispositvos
                                      "El radio se encontraba con la pila rota, " +
                                      "se le rapararon las celdas , la antena y las laminas para recargar el radio "
                                      , "7024ADB", "Emma", "Soledad", "Cajas", "Funcionando");
+
+            this.dgvReportes.Rows.Add("3", "06-07-21", "" +
+                                     "El radio se encontraba con humedad, " +
+                                     "se daño la bocina, se le reemplazo"
+                                     , "7024ADB", "Emma", "Soledad", "Cajas", "Funcionando");
+
 
             this.cambia_colores(this.dgvReportes);
             this.ingresa_nombres(this.dgvReportes);
@@ -224,6 +230,7 @@ namespace GestorDeDispositvos
             for (int j = 0; j < this.dgvReportes.Rows[i].Cells.Count; j++){
                 l.Add(this.dgvReportes.Rows[i].Cells[ j ].Value.ToString() );
             }
+        
             return l;
         }
 
@@ -384,6 +391,13 @@ namespace GestorDeDispositvos
 
                 return null;
             }
+        }
+
+
+        public void muestra_reportes()
+        {
+            string Qry = "SELECT * from reportesRadio" ;
+            this.getSetBD.leeReportesRadio(Qry);
         }
     }
 }

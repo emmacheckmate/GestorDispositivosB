@@ -62,9 +62,9 @@ namespace GestorDeDispositvos
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(27, 11);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(76, 20);
+            this.label1.Size = new System.Drawing.Size(53, 20);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Número:";
+            this.label1.Text = "Folio:";
             // 
             // txtNumEmp
             // 
@@ -127,9 +127,9 @@ namespace GestorDeDispositvos
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(27, 48);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(169, 20);
+            this.label8.Size = new System.Drawing.Size(156, 20);
             this.label8.TabIndex = 13;
-            this.label8.Text = "Fecha para asignar:";
+            this.label8.Text = "Fecha de entrega:";
             // 
             // richTextBox1
             // 
