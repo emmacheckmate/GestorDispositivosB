@@ -117,7 +117,17 @@ namespace GestorDeDispositvos
             listaQry.Add("SELECT * FROM catDisp");
 
             listaQry.Add("SELECT * FROM reportesRadio ");
-            
+
+            listaQry.Add("" +
+                "select r.numero_reporte, r.fecha_asignacion, r.observaciones, a.nombre_area, r.numero_radio," +
+                 "r.sucursal, edo.nombre, emp.nombEmp " +
+                "from[dbGestDisp].[dbo].[reportesRadio] as r" +
+                "left join [dbGestDisp].[dbo].[catArea] as a on a.clave_area = r.area" +
+                "left join [dbGestDisp].[dbo].[catRadio] as cr on cr.idRadio = r.numero_radio" +
+                "left join [dbGestDisp].[dbo].[catSucursal] as su on su.idsuc = r.sucursal" +
+                "left join [dbGestDisp].[dbo].[catEdo] as edo on edo.codigo_estado = r.estado" +
+                "left join [dbGestDisp].[dbo].[catEmp] as emp on emp.numEmp = r.resp ");
+                                   
         }
 
         /*Carga la conexion de los datos y  la tabla que se va a utilizar*/
@@ -229,7 +239,7 @@ namespace GestorDeDispositvos
             }
             catch
             {
-                MessageBox.Show("Número de serie repetido", "",
+                MessageBox.Show("No se puede eliminar, información que pertenece a otros registros", "",
                                MessageBoxButtons.OK,
                                MessageBoxIcon.Error);
             }

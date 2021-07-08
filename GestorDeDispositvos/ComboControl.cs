@@ -89,19 +89,17 @@ namespace GestorDeDispositvos
 
             for (int i = 0; i < this.lcbGS.Count; i++) {
                 d = bd.leeRegistros(this.bd.listaQry[i]);
-                foreach (DataColumn col in d.Columns)
-                {
-                    if (col.Ordinal == 0)
-                    {
+
+                foreach (DataColumn col in d.Columns){
+                    if (col.Ordinal == 0){
                         this.listaClaves.Add(new List<string>());
-                        foreach (DataRow row in d.Rows)
-                        {
+                        foreach (DataRow row in d.Rows){
                             this.listaClaves[i].Add(row[col.Ordinal].ToString());
                         }
                     }
                 }
-                foreach (DataRow dtRow in d.Rows)
-                {
+
+                foreach (DataRow dtRow in d.Rows){
                     s.Clear();
 
                     foreach (DataColumn dc in d.Columns)
@@ -117,14 +115,11 @@ namespace GestorDeDispositvos
                     else 
                     {
                         this.lcbGS[i].Items.Add(s[0]);
-                    }
-                    
-                }
-                
+                    }   
+                }   
             }
-
-            //this.muestra_listaDListas();
         }
+
 
         public void muestra_listaDListas()
         {

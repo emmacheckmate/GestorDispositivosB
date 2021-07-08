@@ -42,23 +42,40 @@ namespace GestorDeDispositvos
         {
             try
             {
-                d.seleccionaRenglonReportes(e.RowIndex);
+                //d.seleccionaRenglonReportes(e.RowIndex);
+                if(d.seleccionaRenglonReportes(e.RowIndex) != null)
+                {
+                    //MessageBox.Show("Se envio informacion "+ d.seleccionaRenglonReportes(e.RowIndex).Count.ToString());
+
+
+                }
+
+
             }
             catch{  }
         }
+
+        public void copia_datos_controles(List<string> datostxt)
+        {
+            this.txtFolio.Text = "";
+            this.obsRichtxt.Text = "";
+
+            
+        }
+
         public void inicializa_tooltip()
         {
             ToolTip toolTip1 = new ToolTip();
 
             toolTip1.ShowAlways = true;
-            toolTip1.SetToolTip(txtNumEmp, "Se genera automaticamente al crear un reporte.");
+            toolTip1.SetToolTip(txtFolio, "Se genera automaticamente al crear un reporte.");
 
         }
 
         public void inicializa_texto() 
         {
             label2.Text = "Administrador" + "\nde Catalogos";
-            txtNumEmp.TabStop = true;
+            txtFolio.TabStop = true;
         }
 
         public void configura_paneles()
@@ -91,7 +108,7 @@ namespace GestorDeDispositvos
             this.configura_iconos();
             this.configura_paneles();
 
-            this.dateTimePicker2.Value = new DateTime(2012, 05, 28);
+            this.fechaAsigDatePicker.Value = new DateTime(2012, 05, 28);
 
             this.Width = 1200;
             this.Height = 467;
@@ -114,7 +131,7 @@ namespace GestorDeDispositvos
 
         private void button1_Click(object sender, EventArgs e)
         {
-            txtNumEmp.Text = "";
+            txtFolio.Text = "";
         }
 
         private void button6_Click(object sender, EventArgs e)
