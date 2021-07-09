@@ -8,7 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
-using System.Drawing.Printing;    
+using System.Drawing.Printing;
+using System.Globalization;
 
 namespace GestorDeDispositvos
 {
@@ -28,9 +29,7 @@ namespace GestorDeDispositvos
             
 
             d = new DataGridControl();
-           // this.da
-           // this.d.iniciaBD(n);
-
+           
             d.dgvReportes.RowHeaderMouseClick += this.dgvReportes_RowHeaderMouseClick;
             this.Controls.Add(d.ld);
             this.Controls.Add(this.d.dgvReportes);
@@ -42,10 +41,13 @@ namespace GestorDeDispositvos
         {
             try
             {
-                //d.seleccionaRenglonReportes(e.RowIndex);
                 if(d.seleccionaRenglonReportes(e.RowIndex) != null)
                 {
-                    //MessageBox.Show("Se envio informacion "+ d.seleccionaRenglonReportes(e.RowIndex).Count.ToString());
+                   
+                    this.pasaDatosAControles();
+                    
+
+
 
 
                 }
@@ -55,12 +57,24 @@ namespace GestorDeDispositvos
             catch{  }
         }
 
+        public void pasaDatosAControles(){ 
+            txtFolio.Text = d.GSrenglonReportes[0];
+            this.obsRichtxt.Text = d.GSrenglonReportes[ 2 ];
+            string s = "2011-03-21 08:00 ";
+
+            this.fechaAsigDatePicker.Value = new DateTime(2021, 05, 08);
+
+            MessageBox.Show("Entrada de datos");
+            
+
+
+
+            //fechaAsigDatePicker.Value = new DateTime(d.GSrenglonReportes[0]);
+        }
         public void copia_datos_controles(List<string> datostxt)
         {
             this.txtFolio.Text = "";
             this.obsRichtxt.Text = "";
-
-            
         }
 
         public void inicializa_tooltip()
@@ -103,6 +117,12 @@ namespace GestorDeDispositvos
         }
         private void CrudRadio_Load(object sender, EventArgs e)
         {
+
+
+            this.fechaAsigDatePicker.Value = DateTime.Now; 
+            this.fechaAsigDatePicker.Format = DateTimePickerFormat.Custom;
+            this.fechaAsigDatePicker.CustomFormat = DateTime.Now.ToShortDateString();
+
             this.inicializa_texto();
             this.inicializa_tooltip();
             this.configura_iconos();

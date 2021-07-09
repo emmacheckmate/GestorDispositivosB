@@ -115,8 +115,18 @@ namespace GestorDeDispositvos
             listaQry.Add("SELECT * FROM catEdo");
 
             listaQry.Add("SELECT * FROM catDisp");
-
             listaQry.Add("SELECT * FROM reportesRadio ");
+
+            /*Consultas de los IDs de todos los catalogos 
+             * de los registros*/
+            listaQry.Add("SELECT idRadio FROM catRadio WHERE");
+            listaQry.Add("SELECT id FROM numEmp WHERE");
+            listaQry.Add("SELECT id FROM catSucursal WHERE");
+            listaQry.Add("SELECT id FROM catArea WHERE");
+            listaQry.Add("SELECT id FROM catEdo WHERE");
+            listaQry.Add("SELECT id FROM catDisp WHERE");
+            
+
 
             listaQry.Add("" +
                 "select r.numero_reporte, r.fecha_asignacion, r.observaciones, a.nombre_area, r.numero_radio," +

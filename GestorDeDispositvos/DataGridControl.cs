@@ -25,6 +25,9 @@ namespace GestorDeDispositvos
         public BDSQL baseDatos;
         public List<string> ltxt;
         private List<Label> llb;
+        private List<string> renglonReportesL;
+
+        public List<string> GSrenglonReportes { get { return this.renglonReportesL; } set { this.renglonReportesL = value; } }
 
         /*Metodo de get set de los valores de una lista de los textbox de los catalogos*/
         public List<string> GSltxt { get { return this.ltxt; } set { this.ltxt = value; } }
@@ -57,7 +60,7 @@ namespace GestorDeDispositvos
             dgvReportes = new DataGridView();
             this.inicilizaDataGrid(ld, p, tama, Color.FromArgb(100, 50, 28));
             this.inicilizaDataGrid(dgvReportes, p2, tama2, Color.FromArgb(100, 50, 28));
-
+            renglonReportesL = new List<string>();
             llb = new List<Label>();
             this.iniLabels();
             ini_datagrid_reportes();
@@ -223,15 +226,14 @@ namespace GestorDeDispositvos
 
         public List<string> seleccionaRenglonReportes(int i)
         {
-            List<string> l = new List<string>();
-
+            this.GSrenglonReportes.Clear();
             DataGridViewRow renglon = new DataGridViewRow();
 
             for (int j = 0; j < this.dgvReportes.Rows[i].Cells.Count; j++){
-                l.Add(this.dgvReportes.Rows[i].Cells[ j ].Value.ToString() );
+              this.GSrenglonReportes.Add(this.dgvReportes.Rows[i].Cells[ j ].Value.ToString() );
             }
         
-            return l;
+            return this.GSrenglonReportes;
         }
 
         public List<string> seleccionaInformacion(int i)
@@ -255,6 +257,15 @@ namespace GestorDeDispositvos
         {
             var cell = this.ld.Rows[i].Cells[0];
             return cell.Value.ToString();
+        }
+
+        /*Se establece la fecha para revisar el dia en que se dio
+         el radio a otra sucursal */
+        public void revisa_fecha(DateTimePicker d)
+        {
+            
+            d.MinDate = new DateTime(1985, 6, 20);
+            d.MaxDate = DateTime.Today;
         }
 
         public List<string> manda_datos()
