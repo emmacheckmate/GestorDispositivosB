@@ -1,84 +1,125 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.IO;
-using System.Drawing;
-using System.Drawing.Printing;
+using System.Data;
 using System.Windows.Forms;
-
+using Microsoft.Reporting.WinForms;
+using System.Drawing.Printing;
+using System.Drawing;
+using System.Drawing.Imaging;
 
 namespace GestorDeDispositvos
 {
     class Impresion
     {
-        private Font printFont;
-        private StreamReader streamToPrint;
-        static string filePath;
 
-        public Impresion()
+        private int m_currentPageIndex;
+        private IList<Stream> m_streams;
+
+        // Stream que nos ayudara a contener el Report.rdlc 
+        private Stream CreateStream(string name, string fileNameExtension, Encoding encoding, string mimeType, bool willSeek)
         {
-            Printing();
+            Stream stream = new MemoryStream();
+            m_streams.Add(stream);
+            return stream;
         }
 
-        // The PrintPage event is raised for each page to be printed.
-        private void pd_PrintPage(object sender, PrintPageEventArgs ev)
+        // exportacion del archivo-reporte en formato EMF (Enhanced Metafile).
+        private void Export(LocalReport report)
         {
-            float linesPerPage = 0;
-            float yPos = 0;
-            int count = 0;
-            float leftMargin = ev.MarginBounds.Left;
-            float topMargin = ev.MarginBounds.Top;
-            String line = null;
+            //las siguientes lineas definen el tamaño de la hoja, en mi caso es de tamaño ticket
+            //los tamaños pueden ser en pulgadas(in) o en centimetros(cm), quiza aceptan mas formatos pero no los probé.
+            string deviceInfo =
+              @"<DeviceInfo>
+                <OutputFormat>EMF</OutputFormat>
+                <PageWidth>7,7cm</PageWidth>
+                <PageHeight>35,5cm</PageHeight>
+                <MarginTop>0cm</MarginTop>
+                <MarginLeft>0,2cm</MarginLeft>
+                <MarginRight>0cm</MarginRight>
+                <MarginBottom>0cm</MarginBottom>
+            </DeviceInfo>";
+            Warning[] warnings;
+            m_streams = new List<Stream>();
+            //renderizamos el reporte
+            foreach (Stream stream in m_streams)
+            { stream.Position = 0; }
+        }
 
-            // Calculate the number of lines per page.
-            linesPerPage = ev.MarginBounds.Height /
-               printFont.GetHeight(ev.Graphics);
+        // Handler para los eventos PrintPageEvents
+        private void PrintPage(object sender, PrintPageEventArgs ev)
+        {
+            Metafile pageImage = new Metafile(m_streams[m_currentPageIndex]);
 
-            // Iterate over the file, printing each line.
-            while (count < linesPerPage &&
-               ((line = streamToPrint.ReadLine()) != null))
+            // ajusta el area rectangular con margenes.
+            Rectangle adjustedRect = new Rectangle(
+                ev.PageBounds.Left - (int)ev.PageSettings.HardMarginX,
+                ev.PageBounds.Top - (int)ev.PageSettings.HardMarginY,
+                ev.PageBounds.Width,
+                ev.PageBounds.Height);
+
+            // Dibuja un fondo blanco para el reporte
+            ev.Graphics.FillRectangle(Brushes.White, adjustedRect);
+
+            // Dibuja el contenido del reporte
+            ev.Graphics.DrawImage(pageImage, adjustedRect);
+
+            // pasa a la siguiente pagina y comprueba que no se haya terminado el contenido
+            m_currentPageIndex++;
+            ev.HasMorePages = (m_currentPageIndex < m_streams.Count);
+        }
+
+        private void Print()
+        {
+            PrintDocument printDoc;
+            //busca el nombre de la impresora predeterminada
+            String printerName = ImpresoraPredeterminada();
+
+            if (m_streams == null || m_streams.Count == 0)
+                throw new Exception("Error: No hay datos que imprimir.");
+
+            printDoc = new PrintDocument();
+            printDoc.PrinterSettings.PrinterName = printerName;
+            if (!printDoc.PrinterSettings.IsValid)
             {
-                yPos = topMargin + (count * printFont.GetHeight(ev.Graphics));
-                ev.Graphics.DrawString(line, printFont, Brushes.Black,
-                   leftMargin, yPos, new StringFormat());
-                count++;
+                throw new Exception(String.Format("No puedo encontrar la impresora \"{0}\".", printerName));
             }
-
-            // If more lines exist, print another page.
-            if (line != null)
-                ev.HasMorePages = true;
             else
-                ev.HasMorePages = false;
+            {
+                printDoc.PrintPage += new PrintPageEventHandler(PrintPage);
+                m_currentPageIndex = 0;
+                printDoc.Print();
+            }
         }
 
-        // Print the file.
-        public void Printing()
+        private string ImpresoraPredeterminada()
         {
-            try
+            for (Int32 i = 0; i < PrinterSettings.InstalledPrinters.Count; i++)
             {
-                streamToPrint = new StreamReader(filePath);
-                try
-                {
-                    printFont = new Font("Arial", 10);
-                    PrintDocument pd = new PrintDocument();
-                    pd.PrintPage += new PrintPageEventHandler(pd_PrintPage);
-                    // Print the document.
-                    pd.Print();
-                }
-                finally
-                {
-                    streamToPrint.Close();
-                }
+                PrinterSettings a = new PrinterSettings();
+                a.PrinterName = PrinterSettings.InstalledPrinters[i].ToString();
+                if (a.IsDefaultPrinter)
+                { return PrinterSettings.InstalledPrinters[i].ToString(); }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            return "";
         }
 
-        // This is the main entry point for the application.
-       
+        // Exporta el reporte a un archivo .emf y lo imprime
+        public void Imprime(LocalReport rdlc)
+        {
+            Export(rdlc);
+            Print();
+        }
+
+        public void Dispose()
+        {
+            if (m_streams != null)
+            {
+                foreach (Stream stream in m_streams)
+                    stream.Close();
+                m_streams = null;
+            }
+        }
     }
 }

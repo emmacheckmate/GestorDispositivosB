@@ -49,7 +49,7 @@ namespace GestorDeDispositvos
         public SqlDataAdapter gsda { get { return this.da; } set { this.da = value; } }
         public DataTable gsdt { get { return this.dt; } set { this.dt = value; } }
 
-        public List<string> gsListQry { get { return this.listaQry;  } set { this.listaQry = value; } }
+        public List<string> gsListQry { get { return this.listaQry; } set { this.listaQry = value; } }
 
 
 
@@ -66,7 +66,7 @@ namespace GestorDeDispositvos
             set { this.cadenacnx = value; }
         }
 
-        
+
 
 
         /*Constructor del  objeto para el objeto que va a controlar todas las consultas y 
@@ -96,7 +96,7 @@ namespace GestorDeDispositvos
             this.gsTablas.Add("catEmp");
             this.gsTablas.Add("catSucursal");
             this.gsTablas.Add("catArea");
-            
+
             this.gsTablas.Add("catEdo");
         }
 
@@ -107,15 +107,27 @@ namespace GestorDeDispositvos
         {
             /*Carga de los catalogos de empleados, areas, tipos de dispositivos
              * y estado del dispostivo y sucursales */
-            listaQry.Add("SELECT * FROM catRadio");
-            listaQry.Add("SELECT * FROM catEmp");
-            listaQry.Add("SELECT * FROM catSucursal");
+            listaQry.Add("SELECT * FROM catRadio");//0
+            listaQry.Add("SELECT * FROM catEmp");//1
+            listaQry.Add("SELECT * FROM catSucursal");//2
 
-            listaQry.Add("SELECT * FROM catArea");
-            listaQry.Add("SELECT * FROM catEdo");
+            listaQry.Add("SELECT * FROM catArea");//3
+            listaQry.Add("SELECT * FROM catEdo");//4
 
-            listaQry.Add("SELECT * FROM catDisp");
-            listaQry.Add("SELECT * FROM reportesRadio ");
+            listaQry.Add("SELECT * FROM catDisp");//5
+            listaQry.Add("SELECT * FROM reportesRadio ");//6
+
+            //7
+            listaQry.Add("" +
+               "select r.numero_reporte, r.fecha_asignacion, r.observaciones, r.numero_radio, emp.nombEmp, r.sucursal, a.nombre_area, " +
+                "edo.nombre " +
+               "from[dbGestDisp].[dbo].[reportesRadio] as r " +
+               "left join [dbGestDisp].[dbo].[catRadio] as cr on cr.idRadio = r.numero_radio " +
+               "left join [dbGestDisp].[dbo].[catEmp] as emp on emp.numEmp = r.resp "+
+               "left join [dbGestDisp].[dbo].[catSucursal] as su on su.idsuc = r.sucursal " +
+               "left join [dbGestDisp].[dbo].[catArea] as a on a.clave_area = r.area " +
+               "left join [dbGestDisp].[dbo].[catEdo] as edo on edo.codigo_estado = r.estado " 
+               );
 
             /*Consultas de los IDs de todos los catalogos 
              * de los registros*/
@@ -128,15 +140,7 @@ namespace GestorDeDispositvos
             
 
 
-            listaQry.Add("" +
-                "select r.numero_reporte, r.fecha_asignacion, r.observaciones, a.nombre_area, r.numero_radio," +
-                 "r.sucursal, edo.nombre, emp.nombEmp " +
-                "from[dbGestDisp].[dbo].[reportesRadio] as r" +
-                "left join [dbGestDisp].[dbo].[catArea] as a on a.clave_area = r.area" +
-                "left join [dbGestDisp].[dbo].[catRadio] as cr on cr.idRadio = r.numero_radio" +
-                "left join [dbGestDisp].[dbo].[catSucursal] as su on su.idsuc = r.sucursal" +
-                "left join [dbGestDisp].[dbo].[catEdo] as edo on edo.codigo_estado = r.estado" +
-                "left join [dbGestDisp].[dbo].[catEmp] as emp on emp.numEmp = r.resp ");
+           
                                    
         }
 
@@ -211,19 +215,18 @@ namespace GestorDeDispositvos
         {
             List<string> renglon = new List<string>();
             SqlDataAdapter da = new SqlDataAdapter(qry, this.cdncnxSG);
-
+           
             DataTable dt = new DataTable();
-            
             try
             {
                 da.Fill(dt);
-                MessageBox.Show("Lectura de base de datos correcta", "",
+            /*    MessageBox.Show("Lectura de base de datos correcta", "",
                                MessageBoxButtons.OK,
-                               MessageBoxIcon.Information);
+                               MessageBoxIcon.Information);*/
             }
             catch
             {
-                MessageBox.Show("No se pudo leer la base de datos", "",
+                MessageBox.Show("Error de conexión a la base de datos", "",
                                MessageBoxButtons.OK,
                                MessageBoxIcon.Error);
             }

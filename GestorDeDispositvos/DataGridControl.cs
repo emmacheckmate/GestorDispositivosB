@@ -112,9 +112,6 @@ namespace GestorDeDispositvos
             ld.BackgroundColor = Color.FromArgb(100, 50, 28);
             ld.ClearSelection();
             ld.CurrentCell = null;
-            
-
-            
         }
 
         /*Este metodo configura el formato de los datagrid */
@@ -134,7 +131,6 @@ namespace GestorDeDispositvos
             Font f = new Font("Arial", 7.0f);
 
             this.dgvReportes.Font = f;
-            this.dgvReportes.ColumnCount = 8;
             this.dgvReportes.ColumnHeadersHeight = 60;
 
 
@@ -144,53 +140,33 @@ namespace GestorDeDispositvos
             }
 
             this.dgvReportes.GridColor = Color.Coral;
-
             this.ld.GridColor = Color.Coral;
-            this.inicializa_tamaColumnas();
-
-            this.dgvReportes.Columns[0].Name = "FOLIO";
-            this.dgvReportes.Columns[1].Name = "FECHA\nde\n" +
-                                                "Entrega";
-            this.dgvReportes.Columns[2].Name = "DETALLES";
-            this.dgvReportes.Columns[3].Name = "NUMERO DE RADIO";
-            this.dgvReportes.Columns[4].Name = "RESPONSABLE";
-            this.dgvReportes.Columns[5].Name = "SUCURSAL";
-            this.dgvReportes.Columns[6].Name = "ÁREA";
-            this.dgvReportes.Columns[7].Name = "CONDICION";
-
-
-            this.dgvReportes.Rows.Add("1", "05-07-21", "" +
-                                      "El radio se encontraba con la pila rota, " +
-                                      "se le rapararon las celdas , la antena y las laminas para recargar el radio "
-                                      , "7024ADB", "Emma", "Soledad", "Cajas", "Funcionando");
-
-
-            this.dgvReportes.Rows.Add("2", "05-07-21", "" +
-                                     "El radio se encontraba con la pila rota, " +
-                                     "se le rapararon las celdas , la antena y las laminas para recargar el radio "
-                                     , "7024ADB", "Emma", "Soledad", "Cajas", "Funcionando");
-
-            this.dgvReportes.Rows.Add("3", "06-07-21", "" +
-                                     "El radio se encontraba con humedad, " +
-                                     "se daño la bocina, se le reemplazo"
-                                     , "7024ADB", "Emma", "Soledad", "Cajas", "Funcionando");
-
-
             this.cambia_colores(this.dgvReportes);
-            this.ingresa_nombres(this.dgvReportes);
+            
+            this.dgvReportes.DataSource =  this.muestra_reportes();
+            
+
+           
 
         }
-        /*Estable los nombres para el datagrid de los reportes de los radios */
-        void ingresa_nombres( DataGridView d)
+       
+        public void cambia_encabezados()
         {
-            d.Columns[0].Name = "FOLIO";
-            d.Columns[1].Name = "FECHA\nDE\nENTREGA";
-            d.Columns[2].Name = "DETALLES";
-            d.Columns[3].Name = "NÚMERO DE RADIO";
-            d.Columns[4].Name = "RESPONSABLE";
-            d.Columns[5].Name = "SUCURSAL";
-            d.Columns[6].Name = "ÁREA";
-            d.Columns[7].Name = "CONDICIÓN";
+            
+            string temp = "";
+            for (int i = 0; i < this.dgvReportes.Columns.Count; i++) {
+
+                temp = this.dgvReportes.Columns[i].HeaderText;
+                foreach(var c in temp){
+                    
+                    if ( (int)c == 10  )
+                    {
+                        MessageBox.Show(c.ToString());
+                    }
+
+                }
+             }
+
 
         }
         /*Cambia el color de todos los renglonnes de los datagridview*/
@@ -405,10 +381,15 @@ namespace GestorDeDispositvos
         }
 
 
-        public void muestra_reportes()
+        public DataTable muestra_reportes()
         {
-            string Qry = "SELECT * from reportesRadio" ;
-            this.getSetBD.leeReportesRadio(Qry);
+            if (this.getSetBD.leeReportesRadio(this.baseDatos.gsListQry[7]) != null)
+                {
+                return this.getSetBD.leeReportesRadio(this.baseDatos.gsListQry[7]);
+            }
+            else return null;
+
+
         }
     }
 }
