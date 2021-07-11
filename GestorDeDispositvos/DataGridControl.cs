@@ -21,12 +21,14 @@ namespace GestorDeDispositvos
         private int index = -1;
         public Size tama, tama2;
         public Point p, p2;
-        public DataGridView ld, dgvReportes;
+        public DataGridView ld;
+        private DataGridView dgvReportes;
         public BDSQL baseDatos;
         public List<string> ltxt;
         private List<Label> llb;
         private List<string> renglonReportesL;
 
+        public DataGridView GSdgvReportes { get { return this.dgvReportes; } set { this.dgvReportes =value; } }
         public List<string> GSrenglonReportes { get { return this.renglonReportesL; } set { this.renglonReportesL = value; } }
 
         /*Metodo de get set de los valores de una lista de los textbox de los catalogos*/
@@ -59,11 +61,14 @@ namespace GestorDeDispositvos
             ld = new DataGridView();
             dgvReportes = new DataGridView();
             this.inicilizaDataGrid(ld, p, tama, Color.FromArgb(100, 50, 28));
-            this.inicilizaDataGrid(dgvReportes, p2, tama2, Color.FromArgb(100, 50, 28));
+            this.inicilizaDataGrid(this.GSdgvReportes , p2, tama2, Color.FromArgb(100, 50, 28));
+            
             renglonReportesL = new List<string>();
             llb = new List<Label>();
             this.iniLabels();
             ini_datagrid_reportes();
+            
+
 
 
 
@@ -128,40 +133,22 @@ namespace GestorDeDispositvos
          establece el numero de columnas y los colores */
         public void ini_datagrid_reportes()
         {
-            Font f = new Font("Arial", 7.0f);
-
-            this.dgvReportes.Font = f;
-            this.dgvReportes.ColumnHeadersHeight = 60;
-
-
-            for (int i = 0; i < this.dgvReportes.Columns.Count; i++)
-            {
-                this.dgvReportes.Columns[i].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            }
-
-            this.dgvReportes.GridColor = Color.Coral;
-            this.ld.GridColor = Color.Coral;
-            this.cambia_colores(this.dgvReportes);
+            this.GSdgvReportes.DataSource =  this.muestra_reportes();
             
-            this.dgvReportes.DataSource =  this.muestra_reportes();
-            
-
-           
-
         }
        
         public void cambia_encabezados()
         {
             
             string temp = "";
-            for (int i = 0; i < this.dgvReportes.Columns.Count; i++) {
+            for (int i = 0; i < this.GSdgvReportes.Columns.Count; i++) {
 
-                temp = this.dgvReportes.Columns[i].HeaderText;
+                temp = this.GSdgvReportes.Columns[i].HeaderText;
                 foreach(var c in temp){
                     
                     if ( (int)c == 10  )
                     {
-                        MessageBox.Show(c.ToString());
+                        //MessageBox.Show(c.ToString());
                     }
 
                 }
@@ -185,12 +172,12 @@ namespace GestorDeDispositvos
         /*Inicializa el tamaño */
         public void inicializa_tamaColumnas()
         {
-            this.dgvReportes.Columns[0].Width = 50;
-            this.dgvReportes.Columns[1].Width = 55;
-            this.dgvReportes.Columns[3].Width = 60;
-            this.dgvReportes.Columns[3].Width = 50;
-            this.dgvReportes.Columns[5].Width = 70;
-            this.dgvReportes.Columns[6].Width = 50;
+            this.GSdgvReportes.Columns[0].Width = 50;
+            this.GSdgvReportes.Columns[1].Width = 55;
+            this.GSdgvReportes.Columns[3].Width = 60;
+            this.GSdgvReportes.Columns[3].Width = 50;
+            this.GSdgvReportes.Columns[5].Width = 70;
+            this.GSdgvReportes.Columns[6].Width = 50;
         }
 
         /*Envia la ruta de la imagen del codigo QR */
@@ -205,8 +192,8 @@ namespace GestorDeDispositvos
             this.GSrenglonReportes.Clear();
             DataGridViewRow renglon = new DataGridViewRow();
 
-            for (int j = 0; j < this.dgvReportes.Rows[i].Cells.Count; j++){
-              this.GSrenglonReportes.Add(this.dgvReportes.Rows[i].Cells[ j ].Value.ToString() );
+            for (int j = 0; j < this.GSdgvReportes.Rows[i].Cells.Count; j++){
+              this.GSrenglonReportes.Add(this.GSdgvReportes.Rows[i].Cells[ j ].Value.ToString() );
             }
         
             return this.GSrenglonReportes;
@@ -374,8 +361,7 @@ namespace GestorDeDispositvos
             else
             {
                 MessageBox.Show("Ingresar clave a buscar");
-                //this.baseDatos.buscaRegistros( Qry  );
-
+               
                 return null;
             }
         }
@@ -386,6 +372,7 @@ namespace GestorDeDispositvos
             if (this.getSetBD.leeReportesRadio(this.baseDatos.gsListQry[7]) != null)
                 {
                 return this.getSetBD.leeReportesRadio(this.baseDatos.gsListQry[7]);
+
             }
             else return null;
 

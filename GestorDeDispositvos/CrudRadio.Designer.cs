@@ -40,6 +40,7 @@ namespace GestorDeDispositvos
             this.obsRichtxt = new System.Windows.Forms.RichTextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button7 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
@@ -51,7 +52,8 @@ namespace GestorDeDispositvos
             this.button1 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button7 = new System.Windows.Forms.Button();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+            this.button8 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -154,6 +156,7 @@ namespace GestorDeDispositvos
             // 
             this.panel1.AutoSize = true;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.button8);
             this.panel1.Controls.Add(this.button7);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.button5);
@@ -180,6 +183,16 @@ namespace GestorDeDispositvos
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1428, 626);
             this.panel1.TabIndex = 5;
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(735, 149);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(75, 42);
+            this.button7.TabIndex = 101;
+            this.button7.Text = "button7";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click_1);
             // 
             // label2
             // 
@@ -307,15 +320,19 @@ namespace GestorDeDispositvos
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Catalogos";
             // 
-            // button7
+            // printDocument1
             // 
-            this.button7.Location = new System.Drawing.Point(735, 149);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(75, 42);
-            this.button7.TabIndex = 101;
-            this.button7.Text = "button7";
-            this.button7.UseVisualStyleBackColor = true;
-            
+            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage_1);
+            // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(838, 149);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(75, 42);
+            this.button8.TabIndex = 102;
+            this.button8.Text = "button8";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // CrudRadio
             // 
@@ -361,5 +378,7 @@ namespace GestorDeDispositvos
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button7;
+        private System.Drawing.Printing.PrintDocument printDocument1;
+        private System.Windows.Forms.Button button8;
     }
 }

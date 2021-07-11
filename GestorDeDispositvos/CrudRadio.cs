@@ -13,9 +13,7 @@ using System.Drawing.Printing;
 using System.Globalization;
 using Microsoft.Reporting.WinForms;
 using System.Xml;
-
-
-
+using System.Threading;
 using System.Drawing.Imaging;
 
 
@@ -24,7 +22,8 @@ namespace GestorDeDispositvos
     
     public partial class CrudRadio : Form
     {
-        
+        private int i = 0;
+
         private int m_currentPageIndex;
         private IList< Stream > m_streams;
         DataGridControl d;
@@ -32,23 +31,63 @@ namespace GestorDeDispositvos
         Microsoft.Reporting.WinForms.ReportViewer reportViewerSales = new Microsoft.Reporting.WinForms.ReportViewer();
         Microsoft.Reporting.WinForms.ReportDataSource reportDataSourceSales = new Microsoft.Reporting.WinForms.ReportDataSource();
 
+        // Declare the dialog.
+        internal PrintPreviewDialog PrintPreviewDialog1 = new PrintPreviewDialog();
+
+        // Declare a PrintDocument object named document.
+        private System.Drawing.Printing.PrintDocument document = new System.Drawing.Printing.PrintDocument();
+
+
+
         public CrudRadio()
         {
             cbc = new ComboControl();
             InitializeComponent();
             cbc.iniCBLista();
             cbc.llenaCatalogos( );
-            
+            this.InitializePrintPreviewDialog();
 
             d = new DataGridControl();
            
-            d.dgvReportes.RowHeaderMouseClick += this.dgvReportes_RowHeaderMouseClick;
+            d.GSdgvReportes.RowHeaderMouseClick += this.dgvReportes_RowHeaderMouseClick;
             this.Controls.Add(d.ld);
-            this.Controls.Add(this.d.dgvReportes);
-            panel1.Controls.Add(this.d.dgvReportes);
-            
+            this.Controls.Add(this.d.GSdgvReportes);
+            panel1.Controls.Add(this.d.GSdgvReportes);
 
+            
         }
+
+        // Initalize the dialog.
+        private void InitializePrintPreviewDialog()
+        {
+
+            // Create a new PrintPreviewDialog using constructor.
+            this.PrintPreviewDialog1 = new PrintPreviewDialog();
+
+            //Set the size, location, and name.
+            this.PrintPreviewDialog1.ClientSize =
+                new System.Drawing.Size(400, 300);
+            this.PrintPreviewDialog1.Location =
+                new System.Drawing.Point(29, 29);
+            this.PrintPreviewDialog1.Name = "Impresion de reporte";
+
+            // Associate the event-handling method with the 
+            // document's PrintPage event.
+            this.document.PrintPage +=
+                new System.Drawing.Printing.PrintPageEventHandler
+                (this.printDocument1_PrintPage_1);
+
+            // Set the minimum size the dialog can be resized to.
+            this.PrintPreviewDialog1.MinimumSize =
+                new System.Drawing.Size(375, 250);
+
+            // Set the UseAntiAlias property to true, which will allow the 
+            // operating system to smooth fonts.
+            this.PrintPreviewDialog1.UseAntiAlias = true;
+        }
+
+
+
 
         public void dgvReportes_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
@@ -182,146 +221,133 @@ namespace GestorDeDispositvos
 
         private void button7_Click(object sender, EventArgs e)
         {
-            this.Run();
-            //this.guardarxml();
         }
 
-
-       
-
-        private DataTable LoadSalesData()
+        private void button7_Click_1(object sender, EventArgs e)
         {
-            // Create a new DataSet and read sales data file 
-            //    data.xml into the first DataTable.
+         //   this.printDocument1
+           // this.printDocument1.Print();
 
-            DataSet dataSet = new DataSet();
-            dataSet.ReadXml(@"..\..\data.xml");
-            return dataSet.Tables[0];
+        }
+
+        private void printDocument1_PrintPage_1(object sender, PrintPageEventArgs e)
+        {
+            DateTime TheDate = DateTime.Parse("January 01 2011");
+            // Thread.CurrentThread.CurrentCulture t = new CultureInfo("es-ES");
+
             
-        }
-        // Routine to provide to the report renderer, in order to
-        //    save an image for each page of the report.
-        private Stream CreateStream(string name,
-          string fileNameExtension, Encoding encoding,
-          string mimeType, bool willSeek)
-        {
-            Stream stream = new MemoryStream();
-            m_streams.Add(stream);
-            return stream;
-        }
-        // Export the given report as an EMF (Enhanced Metafile) file.
-        private void Export(LocalReport report)
-        {
-            string deviceInfo =
-              @"<DeviceInfo>
-                <OutputFormat>EMF</OutputFormat>
-                <PageWidth>8.5in</PageWidth>
-                <PageHeight>11in</PageHeight>
-                <MarginTop>0.25in</MarginTop>
-                <MarginLeft>0.25in</MarginLeft>
-                <MarginRight>0.25in</MarginRight>
-                <MarginBottom>0.25in</MarginBottom>
-            </DeviceInfo>";
-            Warning[] warnings;
-            m_streams = new List<Stream>();
-            report.Render("Image", deviceInfo, CreateStream, out warnings);
 
-            foreach (Stream stream in m_streams)
-                stream.Position = 0;
-        }
-        // Handler for PrintPageEvents
-        private void PrintPage(object sender, PrintPageEventArgs ev)
-        {
-            Metafile pageImage = new
-               Metafile(m_streams[m_currentPageIndex]);
+            //(TheDate.ToLongDateString());
 
-            // Adjust rectangular area with printer margins.
-            Rectangle adjustedRect = new Rectangle(
-                ev.PageBounds.Left - (int)ev.PageSettings.HardMarginX,
-                ev.PageBounds.Top - (int)ev.PageSettings.HardMarginY,
-                ev.PageBounds.Width,
-                ev.PageBounds.Height);
+            // La fuente que vamos a usar para imprimir.
+            Font printFont = new Font("Arial", 10);
+            Font headFont = new Font("Arial", 17);
 
-            // Draw a white background for the report
-            ev.Graphics.FillRectangle(Brushes.White, adjustedRect);
+            e.Graphics.DrawString( t , printFont, Brushes.Black, 500f, 25f);
 
-            // Draw the report content
-            ev.Graphics.DrawImage(pageImage, adjustedRect);
+            float topMargin = e.MarginBounds.Top;
+            float yPos = 800;
+            float linesPerPage = 0;
+            int count = 0;
+            string texto = "";
+            DataGridViewRow row = new DataGridViewRow();
 
-            // Prepare for the next page. Make sure we haven't hit the end.
-            m_currentPageIndex++;
-            ev.HasMorePages = (m_currentPageIndex < m_streams.Count);
-        }
+            Image image2 = Image.FromFile("c:\\logoRadio.fw.png");
 
-        private void Print()
-        {
-            if (m_streams == null || m_streams.Count == 0)
-                throw new Exception("Error: no stream to print.");
-            PrintDocument printDoc = new PrintDocument();
-            if (!printDoc.PrinterSettings.IsValid)
+            Pen pen = new Pen(Color.Black, 3);
+
+            Point[] points =
             {
-                throw new Exception("Error: cannot find the default printer.");
+                 new Point(10,  100),
+                 new Point(800, 100),
+
+             };
+
+            //Draw lines to screen.
+            e.Graphics.DrawLines(pen, points);
+
+
+            e.Graphics.DrawString("Reporte de radios", headFont, Brushes.Black, 330f, 50f);
+
+            e.Graphics.DrawImage(image2, 20f, 20f);
+
+            // Calculamos el número de líneas que caben en cada página.
+            linesPerPage = e.MarginBounds.Height / printFont.GetHeight(e.Graphics);
+
+
+            // Recorremos las filas del DataGridView hasta que llegemos
+            // a las líneas que nos caben en cada página o al final del grid.
+            while (count < linesPerPage && i < this.d.GSdgvReportes.Rows.Count)
+            {
+                List<string> t = new List<string>();
+                row = this.d.GSdgvReportes.Rows[i];
+                texto = "";
+                string celdaDato;
+                if (row != null)
+                {
+                    for (int cont = 0; cont < row.Cells.Count; cont++)
+                    {
+                        if (row.Cells[cont].Value != null) {
+                            t.Add(row.Cells[cont].Value.ToString()); }
+                        //  MessageBox.Show(texto);
+                    }
+
+                    foreach (DataGridViewCell celda in row.Cells)
+                    {
+                        if (celda.Value != null)
+                        {
+                            celdaDato = celda.Value.ToString();
+                            celdaDato = celdaDato.Replace(" ", "");
+
+                            texto += "|" + celdaDato;
+
+
+                        }
+                        //MessageBox.Show( texto );
+                    }
+                }
+
+                // Calculamos la posición en la que se escribe la línea
+                yPos = topMargin + (count * printFont.GetHeight(e.Graphics));
+                //MessageBox.Show(yPos.ToString());
+                // Escribimos la línea con el objeto Graphics
+                e.Graphics.DrawString(texto, printFont, Brushes.Black, 10, yPos);
+
+                count++;
+                i++;
             }
+
+            // Una vez fuera del bucle comprobamos si nos quedan más filas 
+            // por imprimir, si quedan saldrán en la siguente página
+
+            if (i < this.d.GSdgvReportes.Rows.Count)
+                e.HasMorePages = true;
             else
             {
-                printDoc.PrintPage += new PrintPageEventHandler(PrintPage);
-                m_currentPageIndex = 0;
-                printDoc.Print();
+                // si llegamos al final, se establece HasMorePages a 
+                // false para que se acabe la impresión
+                e.HasMorePages = false;
+
+                // Es necesario poner el contador a 0 porque, por ejemplo si se hace 
+                // una impresión desde PrintPreviewDialog, se vuelve disparar este 
+                // evento como si fuese la primera vez, y si i está con el valor de la
+                // última fila del grid no se imprime nada
+                i = 0;
             }
+            
         }
-        // Create a local report for Report.rdlc, load the data,
-        //    export the report to an .emf file, and print it.
-        private void Run()
+
+        private void button8_Click(object sender, EventArgs e)
         {
-            LocalReport report = new LocalReport();
-            report.ReportPath = @"..\..\Report.rdlc";
-            report.DataSources.Add(
-               new ReportDataSource("Sales", LoadSalesData()));
-            Export(report);
-            Print();
+            // if (TreeView1.SelectedNode != null)
+            document.DocumentName = "Reporte de Radios";
+            PrintPreviewDialog1.Document = document;
+            PrintPreviewDialog1.ShowIcon = false;
+
+            // Call the ShowDialog method. This will trigger the document's
+            //  PrintPage event.
+            PrintPreviewDialog1.ShowDialog();
         }
-
-        public void Dispose()
-        {
-            if (m_streams != null)
-            {
-                foreach (Stream stream in m_streams)
-                    stream.Close();
-                m_streams = null;
-            }
-        }
-
-        // By using this method we can convert datatable to xml
-        public string ConvertDatatableToXML(DataTable dt)
-        {
-            MemoryStream str = new MemoryStream();
-            dt.WriteXml(str, true);
-            str.Seek(0, SeekOrigin.Begin);
-            StreamReader sr = new StreamReader(str);
-            string xmlstr;
-            xmlstr = sr.ReadToEnd();
-            return (xmlstr);
-        }
-
-        public void guardarxml()
-        {
-
-            // Create the XmlDocument.
-            XmlDocument doc = new XmlDocument();
-            doc.LoadXml("<item><name>wrench</name></item>");
-
-            // Add a price element.
-            XmlElement newElem = doc.CreateElement("price");
-            newElem.InnerText = "10.95";
-            doc.DocumentElement.AppendChild(newElem);
-
-            // Save the document to a file. White space is
-            // preserved (no white space).
-            doc.PreserveWhitespace = true;
-            doc.Save("data.xml");
-        }
-
-
-
     }
-}
+    }
+
