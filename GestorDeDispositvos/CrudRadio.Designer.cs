@@ -40,6 +40,7 @@ namespace GestorDeDispositvos
             this.obsRichtxt = new System.Windows.Forms.RichTextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button8 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
@@ -53,7 +54,8 @@ namespace GestorDeDispositvos
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
-            this.button8 = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -83,7 +85,7 @@ namespace GestorDeDispositvos
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(460, 205);
+            this.label3.Location = new System.Drawing.Point(460, 170);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(55, 20);
             this.label3.TabIndex = 8;
@@ -92,7 +94,7 @@ namespace GestorDeDispositvos
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(522, 205);
+            this.label4.Location = new System.Drawing.Point(522, 170);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(52, 20);
             this.label4.TabIndex = 9;
@@ -101,7 +103,7 @@ namespace GestorDeDispositvos
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(580, 205);
+            this.label5.Location = new System.Drawing.Point(580, 170);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(59, 20);
             this.label5.TabIndex = 10;
@@ -110,7 +112,7 @@ namespace GestorDeDispositvos
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(640, 205);
+            this.label6.Location = new System.Drawing.Point(640, 170);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(68, 20);
             this.label6.TabIndex = 11;
@@ -156,6 +158,8 @@ namespace GestorDeDispositvos
             // 
             this.panel1.AutoSize = true;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.label12);
+            this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.button8);
             this.panel1.Controls.Add(this.button7);
             this.panel1.Controls.Add(this.label2);
@@ -184,13 +188,21 @@ namespace GestorDeDispositvos
             this.panel1.Size = new System.Drawing.Size(1428, 626);
             this.panel1.TabIndex = 5;
             // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(808, 113);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(44, 42);
+            this.button8.TabIndex = 102;
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(735, 149);
+            this.button7.Location = new System.Drawing.Point(727, 114);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(75, 42);
+            this.button7.Size = new System.Drawing.Size(44, 42);
             this.button7.TabIndex = 101;
-            this.button7.Text = "button7";
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click_1);
             // 
@@ -255,7 +267,7 @@ namespace GestorDeDispositvos
             this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.button4.BackgroundImage = global::GestorDeDispositvos.Properties.Resources.guardar;
             this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.button4.Location = new System.Drawing.Point(650, 149);
+            this.button4.Location = new System.Drawing.Point(650, 114);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(44, 42);
             this.button4.TabIndex = 7;
@@ -267,7 +279,7 @@ namespace GestorDeDispositvos
             this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.button3.BackgroundImage = global::GestorDeDispositvos.Properties.Resources.buscar;
             this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.button3.Location = new System.Drawing.Point(590, 149);
+            this.button3.Location = new System.Drawing.Point(590, 114);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(40, 42);
             this.button3.TabIndex = 6;
@@ -278,7 +290,7 @@ namespace GestorDeDispositvos
             this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.button2.BackgroundImage = global::GestorDeDispositvos.Properties.Resources.eliminar1;
             this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button2.Location = new System.Drawing.Point(522, 149);
+            this.button2.Location = new System.Drawing.Point(522, 114);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(46, 42);
             this.button2.TabIndex = 5;
@@ -290,7 +302,7 @@ namespace GestorDeDispositvos
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.button1.BackgroundImage = global::GestorDeDispositvos.Properties.Resources.agregar;
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.button1.Location = new System.Drawing.Point(466, 149);
+            this.button1.Location = new System.Drawing.Point(466, 114);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(44, 42);
             this.button1.TabIndex = 4;
@@ -324,15 +336,24 @@ namespace GestorDeDispositvos
             // 
             this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage_1);
             // 
-            // button8
+            // label7
             // 
-            this.button8.Location = new System.Drawing.Point(838, 149);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(75, 42);
-            this.button8.TabIndex = 102;
-            this.button8.Text = "button8";
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(480, 214);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(179, 20);
+            this.label7.TabIndex = 103;
+            this.label7.Text = "Reportes de Radios :";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(797, 170);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(65, 20);
+            this.label12.TabIndex = 105;
+            this.label12.Text = "Imprimir";
             // 
             // CrudRadio
             // 
@@ -380,5 +401,7 @@ namespace GestorDeDispositvos
         private System.Windows.Forms.Button button7;
         private System.Drawing.Printing.PrintDocument printDocument1;
         private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label12;
     }
 }

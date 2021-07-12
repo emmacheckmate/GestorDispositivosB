@@ -77,6 +77,8 @@ namespace GestorDeDispositvos
                 new System.Drawing.Printing.PrintPageEventHandler
                 (this.printDocument1_PrintPage_1);
 
+            this.document.DefaultPageSettings.Landscape = true;
+
             // Set the minimum size the dialog can be resized to.
             this.PrintPreviewDialog1.MinimumSize =
                 new System.Drawing.Size(375, 250);
@@ -225,8 +227,7 @@ namespace GestorDeDispositvos
 
         private void button7_Click_1(object sender, EventArgs e)
         {
-         //   this.printDocument1
-           // this.printDocument1.Print();
+        
 
         }
 
@@ -235,46 +236,60 @@ namespace GestorDeDispositvos
             DateTime TheDate = DateTime.Parse("January 01 2011");
             // Thread.CurrentThread.CurrentCulture t = new CultureInfo("es-ES");
 
-            
+
 
             //(TheDate.ToLongDateString());
 
             // La fuente que vamos a usar para imprimir.
-            Font printFont = new Font("Arial", 10);
+            Font printFont = new Font("Arial", 9);
             Font headFont = new Font("Arial", 17);
+            Font titleFont = new Font("Arial", 9 , FontStyle.Bold);
+            
 
-            e.Graphics.DrawString( t , printFont, Brushes.Black, 500f, 25f);
+            ////  e.Graphics.DrawString( t , printFont, Brushes.Black, 500f, 25f);
+            int xPos = 50;
+            float topMargin = e.MarginBounds.Top + 90;
+            float yPos = 200;
+            float yPosT = 150;
 
-            float topMargin = e.MarginBounds.Top;
-            float yPos = 800;
             float linesPerPage = 0;
             int count = 0;
             string texto = "";
             DataGridViewRow row = new DataGridViewRow();
+            Image image2 = Image.FromFile("c:\\images.jpg");
 
-            Image image2 = Image.FromFile("c:\\logoRadio.fw.png");
+            e.Graphics.DrawString("Número\nde Folio", titleFont , Brushes.Black, xPos, yPosT  );
 
+            e.Graphics.DrawString("Fecha\nde Asignación", titleFont, Brushes.Black, xPos+ 60 , yPosT );
+
+            e.Graphics.DrawString("Observaciones", titleFont, Brushes.Black, xPos+ 140, yPosT );
+
+            e.Graphics.DrawString("Num\nRadio", titleFont, Brushes.Black, xPos+ 290, yPosT );
+
+            e.Graphics.DrawString("Reponsable", titleFont, Brushes.Black, xPos + 320, yPosT );
+
+
+            Bitmap imageM = new Bitmap(image2, new Size(image2.Width / 2, image2.Height / 2));
             Pen pen = new Pen(Color.Black, 3);
 
-            Point[] points =
-            {
-                 new Point(10,  100),
-                 new Point(800, 100),
+            Point[] points = { new Point(50,  100), new Point(document.PrinterSettings.PaperSizes[0].Height-50, 100), };
 
-             };
+            document.DefaultPageSettings.PaperSize = document.PrinterSettings.PaperSizes[0];
+            
 
-            //Draw lines to screen.
             e.Graphics.DrawLines(pen, points);
-
-
             e.Graphics.DrawString("Reporte de radios", headFont, Brushes.Black, 330f, 50f);
-
-            e.Graphics.DrawImage(image2, 20f, 20f);
 
             // Calculamos el número de líneas que caben en cada página.
             linesPerPage = e.MarginBounds.Height / printFont.GetHeight(e.Graphics);
 
+            Rectangle r = new Rectangle( 25 , 150 , 
+                                        document.PrinterSettings.PaperSizes[0].Height - 50, 
+                                        document.PrinterSettings.PaperSizes[0].Width - 200);
+            e.Graphics.DrawRectangle(pen, r );
+            e.Graphics.DrawImage(imageM, 20f, 20f);
 
+            
             // Recorremos las filas del DataGridView hasta que llegemos
             // a las líneas que nos caben en cada página o al final del grid.
             while (count < linesPerPage && i < this.d.GSdgvReportes.Rows.Count)
@@ -289,7 +304,7 @@ namespace GestorDeDispositvos
                     {
                         if (row.Cells[cont].Value != null) {
                             t.Add(row.Cells[cont].Value.ToString()); }
-                        //  MessageBox.Show(texto);
+                        
                     }
 
                     foreach (DataGridViewCell celda in row.Cells)
@@ -298,20 +313,17 @@ namespace GestorDeDispositvos
                         {
                             celdaDato = celda.Value.ToString();
                             celdaDato = celdaDato.Replace(" ", "");
-
                             texto += "|" + celdaDato;
-
-
                         }
-                        //MessageBox.Show( texto );
+                        
                     }
                 }
 
                 // Calculamos la posición en la que se escribe la línea
                 yPos = topMargin + (count * printFont.GetHeight(e.Graphics));
-                //MessageBox.Show(yPos.ToString());
+               // MessageBox.Show(yPos.ToString());
                 // Escribimos la línea con el objeto Graphics
-                e.Graphics.DrawString(texto, printFont, Brushes.Black, 10, yPos);
+                e.Graphics.DrawString(texto, printFont, Brushes.Black, xPos, yPos);
 
                 count++;
                 i++;
@@ -350,4 +362,5 @@ namespace GestorDeDispositvos
         }
     }
     }
+
 
