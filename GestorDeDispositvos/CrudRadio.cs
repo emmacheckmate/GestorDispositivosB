@@ -19,13 +19,13 @@ using System.Drawing.Imaging;
 
 namespace GestorDeDispositvos
 {
-    
+
     public partial class CrudRadio : Form
     {
         private int i = 0;
 
         private int m_currentPageIndex;
-        private IList< Stream > m_streams;
+        private IList<Stream> m_streams;
         DataGridControl d;
         ComboControl cbc;
         Microsoft.Reporting.WinForms.ReportViewer reportViewerSales = new Microsoft.Reporting.WinForms.ReportViewer();
@@ -44,17 +44,17 @@ namespace GestorDeDispositvos
             cbc = new ComboControl();
             InitializeComponent();
             cbc.iniCBLista();
-            cbc.llenaCatalogos( );
+            cbc.llenaCatalogos();
             this.InitializePrintPreviewDialog();
 
             d = new DataGridControl();
-           
+
             d.GSdgvReportes.RowHeaderMouseClick += this.dgvReportes_RowHeaderMouseClick;
             this.Controls.Add(d.ld);
             this.Controls.Add(this.d.GSdgvReportes);
             panel1.Controls.Add(this.d.GSdgvReportes);
 
-            
+
         }
 
         // Initalize the dialog.
@@ -95,12 +95,12 @@ namespace GestorDeDispositvos
         {
             try
             {
-                if(d.seleccionaRenglonReportes(e.RowIndex) != null)
+                if (d.seleccionaRenglonReportes(e.RowIndex) != null)
                 {
-                    this.pasaDatosAControles();   
+                    this.pasaDatosAControles();
                 }
             }
-            catch{  }
+            catch { }
         }
 
         public void pasaDatosAControles() {
@@ -108,12 +108,12 @@ namespace GestorDeDispositvos
             txtFolio.Text = d.GSrenglonReportes[0];
             this.obsRichtxt.Text = d.GSrenglonReportes[2];
             List<string> fecha = new List<string>();
-          
+
             this.fechaAsigDatePicker.Value = System.Convert.ToDateTime(d.GSrenglonReportes[1].Substring(0, 10));
-            
+
         }
 
-       
+
         public void copia_datos_controles(List<string> datostxt)
         {
             this.txtFolio.Text = "";
@@ -129,7 +129,7 @@ namespace GestorDeDispositvos
 
         }
 
-        public void inicializa_texto() 
+        public void inicializa_texto()
         {
             label2.Text = "Administrador" + "\nde Catalogos";
             txtFolio.TabStop = true;
@@ -171,11 +171,11 @@ namespace GestorDeDispositvos
             this.configura_iconos();
             this.configura_paneles();
 
-           // this.fechaAsigDatePicker.Value = new DateTime(2012, 05, 28);
+            // this.fechaAsigDatePicker.Value = new DateTime(2012, 05, 28);
 
             this.Width = 1200;
             this.Height = 467;
-             
+
 
             groupBox1.SendToBack();
             this.CenterToScreen();
@@ -186,7 +186,7 @@ namespace GestorDeDispositvos
 
         }
 
- 
+
         private void button2_Click(object sender, EventArgs e)
         {
 
@@ -208,7 +208,7 @@ namespace GestorDeDispositvos
             sf = new SeleccionForm();
             sf.ShowDialog();
         }
-        
+
         private void button6_Click_1(object sender, EventArgs e)
         {
             ReportesForm r = new ReportesForm();
@@ -218,7 +218,7 @@ namespace GestorDeDispositvos
 
         private void button4_Click(object sender, EventArgs e)
         {
-           
+
         }
 
         private void button7_Click(object sender, EventArgs e)
@@ -227,20 +227,44 @@ namespace GestorDeDispositvos
 
         private void button7_Click_1(object sender, EventArgs e)
         {
-        
+
+
+        }
+
+        public string contruyeFecha(DateTime d)
+        {
+            string fecha = "";
+            List<string> meses = new List<string>();
+            meses.Add("Enero"); meses.Add("Febrero"); meses.Add("Marzo"); meses.Add("Abril");
+            meses.Add("Mayo"); meses.Add("Junio"); meses.Add("Julio"); meses.Add("Agosto");
+            meses.Add("Septiembre"); meses.Add("Octubre"); meses.Add("Noviembre"); meses.Add("Diciembre");
+
+
+            string c = d.ToString();
+            string anio = c.Substring(3,5);
+            int tma = c.Length;
+            string mes = d.ToString().Substring(3, 2);
+            for (int i = 0; i < meses.Count; i++) {
+                if ( (Convert.ToInt32(mes) -1 )  == i)
+                {
+
+                  //  MessageBox.Show("TAMA " + tma.ToString() + " "+ c );
+
+                    MessageBox.Show(d.ToString().Substring(0, 2) + " de " + meses[i] + " del "+ anio);
+                    
+                }
+            }
+            return fecha;
 
         }
 
         private void printDocument1_PrintPage_1(object sender, PrintPageEventArgs e)
         {
-            DateTime TheDate = DateTime.Parse("January 01 2011");
-            // Thread.CurrentThread.CurrentCulture t = new CultureInfo("es-ES");
+            DateTime TheDate = new DateTime();
 
+            TheDate = DateTime.Now;
+            this.contruyeFecha(TheDate);
 
-
-            //(TheDate.ToLongDateString());
-
-            // La fuente que vamos a usar para imprimir.
             Font printFont = new Font("Arial", 9);
             Font headFont = new Font("Arial", 17);
             Font titleFont = new Font("Arial", 9 , FontStyle.Bold);
@@ -250,35 +274,31 @@ namespace GestorDeDispositvos
             int xPos = 50;
             float topMargin = e.MarginBounds.Top + 90;
             float yPos = 200;
-            float yPosT = 150;
+            float yPosT = 160;
 
             float linesPerPage = 0;
             int count = 0;
             string texto = "";
             DataGridViewRow row = new DataGridViewRow();
             Image image2 = Image.FromFile("c:\\images.jpg");
-
-            e.Graphics.DrawString("Número\nde Folio", titleFont , Brushes.Black, xPos, yPosT  );
-
-            e.Graphics.DrawString("Fecha\nde Asignación", titleFont, Brushes.Black, xPos+ 60 , yPosT );
-
-            e.Graphics.DrawString("Observaciones", titleFont, Brushes.Black, xPos+ 140, yPosT );
-
-            e.Graphics.DrawString("Num\nRadio", titleFont, Brushes.Black, xPos+ 290, yPosT );
-
-            e.Graphics.DrawString("Reponsable", titleFont, Brushes.Black, xPos + 320, yPosT );
-
-
+            this.encabezados_reporte( e, xPos, yPosT, titleFont );
             Bitmap imageM = new Bitmap(image2, new Size(image2.Width / 2, image2.Height / 2));
             Pen pen = new Pen(Color.Black, 3);
 
-            Point[] points = { new Point(50,  100), new Point(document.PrinterSettings.PaperSizes[0].Height-50, 100), };
+            Pen penCuadro = new Pen(Color.LightBlue, 2);
 
+
+            Point[] points = { new Point(50,  100), new Point(document.PrinterSettings.PaperSizes[0].Height-50, 100), };
             document.DefaultPageSettings.PaperSize = document.PrinterSettings.PaperSizes[0];
             
 
             e.Graphics.DrawLines(pen, points);
-            e.Graphics.DrawString("Reporte de radios", headFont, Brushes.Black, 330f, 50f);
+            e.Graphics.DrawString("Reporte de radios", headFont, Brushes.Black, 470f, 50f);
+
+            Rectangle r2 = new Rectangle(25, 150,
+                            document.PrinterSettings.PaperSizes[0].Height - 50,
+                            document.PrinterSettings.PaperSizes[0].Width - 200);
+            e.Graphics.DrawRectangle(pen, r2);
 
             // Calculamos el número de líneas que caben en cada página.
             linesPerPage = e.MarginBounds.Height / printFont.GetHeight(e.Graphics);
@@ -303,27 +323,36 @@ namespace GestorDeDispositvos
                     for (int cont = 0; cont < row.Cells.Count; cont++)
                     {
                         if (row.Cells[cont].Value != null) {
-                            t.Add(row.Cells[cont].Value.ToString()); }
-                        
-                    }
+                            if (row.Cells[cont].Value.ToString().Contains('/'))
+                            {
+                                t.Add(row.Cells[cont].Value.ToString().Substring(0, 10));
+                            }
+                            else { t.Add(row.Cells[cont].Value.ToString()); }
+                            
 
-                    foreach (DataGridViewCell celda in row.Cells)
-                    {
-                        if (celda.Value != null)
-                        {
-                            celdaDato = celda.Value.ToString();
-                            celdaDato = celdaDato.Replace(" ", "");
-                            texto += "|" + celdaDato;
+
                         }
                         
                     }
+
+
+                    for (int j = 0; j < t.Count; j++)
+                    {
+                        texto += t[j];
+                    }
+                    
+                    
                 }
 
-                // Calculamos la posición en la que se escribe la línea
                 yPos = topMargin + (count * printFont.GetHeight(e.Graphics));
-               // MessageBox.Show(yPos.ToString());
-                // Escribimos la línea con el objeto Graphics
+              
                 e.Graphics.DrawString(texto, printFont, Brushes.Black, xPos, yPos);
+                r2.X = xPos;
+                r2.Y = (int)yPos;
+                r2.Width = 40;
+                r2.Height = 30;
+
+                e.Graphics.DrawRectangle(penCuadro, r2);
 
                 count++;
                 i++;
@@ -349,6 +378,24 @@ namespace GestorDeDispositvos
             
         }
 
+        public void encabezados_reporte(PrintPageEventArgs e, float xP, float yP, Font titleFont)
+        {
+            e.Graphics.DrawString("Número\nde Folio", titleFont, Brushes.Black, xP, yP);
+
+            e.Graphics.DrawString("Fecha\nde Asignación", titleFont, Brushes.Black, xP + 60, yP);
+
+            e.Graphics.DrawString("Observaciones", titleFont, Brushes.Black, xP + 240, yP);
+
+            e.Graphics.DrawString("Número\nde Radio", titleFont, Brushes.Black, xP + 470, yP);
+
+            e.Graphics.DrawString("Reponsable", titleFont, Brushes.Black, xP + 540, yP);
+
+            e.Graphics.DrawString("Sucursal", titleFont, Brushes.Black, xP + 650, yP);
+
+            e.Graphics.DrawString("Área", titleFont, Brushes.Black, xP + 800, yP);
+
+            e.Graphics.DrawString("Estado", titleFont, Brushes.Black, xP + 950, yP);
+        }
         private void button8_Click(object sender, EventArgs e)
         {
             // if (TreeView1.SelectedNode != null)
