@@ -28,7 +28,7 @@ namespace GestorDeDispositvos
         private List<Label> llb;
         private List<string> renglonReportesL;
 
-        public DataGridView GSdgvReportes { get { return this.dgvReportes; } set { this.dgvReportes =value; } }
+        public DataGridView GSdgvReportes { get { return this.dgvReportes; } set { this.dgvReportes = value; } }
         public List<string> GSrenglonReportes { get { return this.renglonReportesL; } set { this.renglonReportesL = value; } }
 
         /*Metodo de get set de los valores de una lista de los textbox de los catalogos*/
@@ -61,13 +61,13 @@ namespace GestorDeDispositvos
             ld = new DataGridView();
             dgvReportes = new DataGridView();
             this.inicilizaDataGrid(ld, p, tama, Color.FromArgb(100, 50, 28));
-            this.inicilizaDataGrid(this.GSdgvReportes , p2, tama2, Color.FromArgb(100, 50, 28));
-            
+            this.inicilizaDataGrid(this.GSdgvReportes, p2, tama2, Color.FromArgb(100, 50, 28));
+
             renglonReportesL = new List<string>();
             llb = new List<Label>();
             this.iniLabels();
             ini_datagrid_reportes();
-            
+
 
 
 
@@ -112,7 +112,7 @@ namespace GestorDeDispositvos
             t = this.baseDatos.leeRegistros(this.baseDatos.listaQry[numQry]);
             ld.DataSource = t;
             this.cambia_colores(ld);
-            
+
             ld.RowsDefaultCellStyle.BackColor = Color.NavajoWhite;
             ld.BackgroundColor = Color.FromArgb(100, 50, 28);
             ld.ClearSelection();
@@ -133,13 +133,28 @@ namespace GestorDeDispositvos
          establece el numero de columnas y los colores */
         public void ini_datagrid_reportes()
         {
-            this.GSdgvReportes.DataSource =  this.muestra_reportes();
-            
+            this.GSdgvReportes.DataSource = this.muestra_reportes();
+
         }
-       
+
         public void cambia_encabezados()
         {
-            
+            this.GSdgvReportes.Columns[0].HeaderText = "Folio";
+            this.GSdgvReportes.ColumnHeadersHeight = 60;
+            this.GSdgvReportes.Columns[0].Width = 40;
+
+
+            this.GSdgvReportes.Columns[1].HeaderText = "Fecha de\nEntrega";
+            this.GSdgvReportes.Columns[2].HeaderText = "Observaciones";
+            this.GSdgvReportes.Columns[3].HeaderText = "Número\nde radio";
+            this.GSdgvReportes.Columns[3].Width = 70;
+            this.GSdgvReportes.Columns[1].Width = 70;
+            this.GSdgvReportes.Columns[4].Width = 100;
+            this.GSdgvReportes.Columns[4].HeaderText = "Encargado\ndel\nradio ";
+            this.GSdgvReportes.Columns[6].HeaderText = "Area";
+            this.GSdgvReportes.Columns[6].Width = 60;
+            this.GSdgvReportes.Columns[5].HeaderText = "Sucural";
+            this.GSdgvReportes.Columns[5].Width = 60;
             string temp = "";
             for (int i = 0; i < this.GSdgvReportes.Columns.Count; i++) {
 

@@ -9,9 +9,9 @@ namespace GestorDeDispositvos
     class ComboControl
     {
         private BDSQL bd;
-        public List<ComboBox> lcb ;
+        public List<ComboBox> lcb;
         public List<Label> llb;
-        public List< List<string> > listaClaves;
+        public List<List<string>> listaClaves;
         public List<Label> llbGS { get { return this.llb; } set { this.llb = value; } }
 
         public ComboControl()
@@ -19,14 +19,14 @@ namespace GestorDeDispositvos
             llb = new List<Label>();
             bd = new BDSQL();
             lcb = new List<ComboBox>();
-            listaClaves = new List< List<string> >();
-           
+            listaClaves = new List<List<string>>();
+
         }
 
-       
+
         public List<ComboBox> lcbGS { get { return this.lcb; } set { this.lcb = value; } }
 
-        
+
 
         /*Se inicializa la lista de los combox para
          * mostrar todos los catalogos de las tablas*/
@@ -42,20 +42,21 @@ namespace GestorDeDispositvos
             for (int i = 0; i < 5; i++)
             {
                 this.llbGS.Add(new Label());
-                this.llbGS[ i ].Text = arr[ i ];
-                
+                this.llbGS[i].Text = arr[i];
+
                 this.lcbGS.Add(new ComboBox());
-                
-                this.lcbGS[ i ].Location = new Point(x, y);
-                this.lcbGS[ i ].BringToFront();
-                this.llbGS[ i ].Location = new Point(x, y-15);
-                this.llbGS[i].BackColor=   Color.FromArgb(255, 224, 192);
+
+                this.lcbGS[i].Location = new Point(x, y);
+                this.lcbGS[i].BringToFront();
+                this.llbGS[i].Location = new Point(x, y - 15);
+                this.llbGS[i].BackColor = Color.FromArgb(255, 224, 192);
                 this.lcbGS[i].ForeColor = System.Drawing.Color.Black;
 
                 this.lcbGS[i].Size = new System.Drawing.Size(180, 26);
 
                 this.lcbGS[i].BackColor = Color.FromArgb(r.Next(20, 244), 140, 63);
                 this.lcbGS[i].Font = new Font("Arial", 7, FontStyle.Bold);
+                
 
 
                 y += 35;
@@ -119,6 +120,15 @@ namespace GestorDeDispositvos
                 }   
             }
         }
+        public int buscaEnCombo(string dato, int indexCombo){
+            if (this.lcbGS[indexCombo].FindStringExact(dato) != -1){
+                return this.lcbGS[indexCombo].FindStringExact(dato);
+            }
+            else
+                return -1;
+        }
+            
+        
 
 
         public void muestra_listaDListas()

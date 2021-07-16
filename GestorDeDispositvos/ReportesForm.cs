@@ -15,22 +15,6 @@ namespace GestorDeDispositvos
     {
         public ReportesForm()
         {
-
-           
-            
-            InitializeComponent();
-            webBrowser1.DocumentText = " < html > < body > < h2 > Reportes de radios</ h2 > < table >"+
-                                       "< tr > < td > 1000 </ td >"+ "< td > Paco </ td >"+
-                                       "< td > Funcionado </ td >"+
-                                       "</ tr > < tr > < td > 1001 </ td >"+
-                                       "< td > Jackson </ td >"+
-                                       "< td > Reparacion </ td >"+
-                                       "</ tr > < tr > < td > 1002 </ td >"+
-                                        "< td > Emmanuel </ td > < td > Funcionado </ td >"+ "</ tr > </ table >"
-                                        +"</ body > </ html > ";
-
-
-
         }
 
         private void ReportesForm_Load(object sender, EventArgs e)

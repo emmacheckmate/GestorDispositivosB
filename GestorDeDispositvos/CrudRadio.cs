@@ -24,12 +24,12 @@ namespace GestorDeDispositvos
     {
         private int i = 0;
 
-        private int m_currentPageIndex;
-        private IList<Stream> m_streams;
+       
         DataGridControl d;
         ComboControl cbc;
-        Microsoft.Reporting.WinForms.ReportViewer reportViewerSales = new Microsoft.Reporting.WinForms.ReportViewer();
-        Microsoft.Reporting.WinForms.ReportDataSource reportDataSourceSales = new Microsoft.Reporting.WinForms.ReportDataSource();
+        public List<int> posiciones;
+        public List<int> tamaLetras;
+        public List<int> posDeCuadros;
 
         // Declare the dialog.
         internal PrintPreviewDialog PrintPreviewDialog1 = new PrintPreviewDialog();
@@ -38,7 +38,7 @@ namespace GestorDeDispositvos
         private System.Drawing.Printing.PrintDocument document = new System.Drawing.Printing.PrintDocument();
 
 
-
+        public List<string> posicionesTxt;
         public CrudRadio()
         {
             cbc = new ComboControl();
@@ -46,18 +46,42 @@ namespace GestorDeDispositvos
             cbc.iniCBLista();
             cbc.llenaCatalogos();
             this.InitializePrintPreviewDialog();
+            posiciones = new List<int>();
+            tamaLetras = new List<int>();
+            posiciones = new List<int>();
+            posicionesTxt = new List<string>();
+            posDeCuadros = new List<int>();
+
 
             d = new DataGridControl();
 
             d.GSdgvReportes.RowHeaderMouseClick += this.dgvReportes_RowHeaderMouseClick;
+            cbc.lcbGS[0].SelectedIndexChanged += this.SelectedIndexChanged_CB1;
+
+
             this.Controls.Add(d.ld);
             this.Controls.Add(this.d.GSdgvReportes);
             panel1.Controls.Add(this.d.GSdgvReportes);
+            //79
 
-
+            string t = "El radio se encontraba con el clip roto ya se le cambiaron los tornillos, cam";
+            //MessageBox.Show(t.Length.ToString());
         }
 
+        public void inicializa_combo_boxes()
+        {
+            cbc.lcbGS[0].SelectedIndexChanged += this.SelectedIndexChanged_CB1;
+        }
+
+        public void SelectedIndexChanged_CB1(object sender, EventArgs e)
+        {
+            
+        }
+
+        
+
         // Initalize the dialog.
+
         private void InitializePrintPreviewDialog()
         {
 
@@ -98,13 +122,33 @@ namespace GestorDeDispositvos
                 if (d.seleccionaRenglonReportes(e.RowIndex) != null)
                 {
                     this.pasaDatosAControles();
+                    
+
                 }
             }
             catch { }
         }
 
+
         public void pasaDatosAControles() {
-            DateTime calendar;
+            /*
+            MessageBox.Show(d.GSrenglonReportes[0]);
+            MessageBox.Show(d.GSrenglonReportes[1]);
+            MessageBox.Show(d.GSrenglonReportes[2]);
+            MessageBox.Show(d.GSrenglonReportes[3]); //num radio
+            MessageBox.Show(d.GSrenglonReportes[4]); //Nombre
+            MessageBox.Show(d.GSrenglonReportes[5]); //Suc
+            MessageBox.Show(d.GSrenglonReportes[6]);//Area
+            MessageBox.Show(d.GSrenglonReportes[7]); //Estado
+            */
+
+            this.cbc.lcb[0].SelectedIndex = cbc.buscaEnCombo(d.GSrenglonReportes[3], 0);
+            this.cbc.lcb[1].SelectedIndex = cbc.buscaEnCombo(d.GSrenglonReportes[4], 1);
+            this.cbc.lcb[2].SelectedIndex = cbc.buscaEnCombo(d.GSrenglonReportes[5], 2);
+            this.cbc.lcb[3].SelectedIndex = cbc.buscaEnCombo(d.GSrenglonReportes[6], 3);
+            this.cbc.lcb[4].SelectedIndex = cbc.buscaEnCombo(d.GSrenglonReportes[7], 4);
+
+
             txtFolio.Text = d.GSrenglonReportes[0];
             this.obsRichtxt.Text = d.GSrenglonReportes[2];
             List<string> fecha = new List<string>();
@@ -165,11 +209,12 @@ namespace GestorDeDispositvos
         private void CrudRadio_Load(object sender, EventArgs e)
         {
 
-
+            
             this.inicializa_texto();
             this.inicializa_tooltip();
             this.configura_iconos();
             this.configura_paneles();
+            this.d.cambia_encabezados();
 
             // this.fechaAsigDatePicker.Value = new DateTime(2012, 05, 28);
 
@@ -239,21 +284,17 @@ namespace GestorDeDispositvos
             meses.Add("Mayo"); meses.Add("Junio"); meses.Add("Julio"); meses.Add("Agosto");
             meses.Add("Septiembre"); meses.Add("Octubre"); meses.Add("Noviembre"); meses.Add("Diciembre");
 
-
-            string c = d.ToString();
-            string anio = c.Substring(3,5);
-            int tma = c.Length;
-            string mes = d.ToString().Substring(3, 2);
+            string[] sacaFecha = d.ToString().Split(' ');
+            string[] sacaDias = sacaFecha[0].Split('/');
+            
+            
             for (int i = 0; i < meses.Count; i++) {
-                if ( (Convert.ToInt32(mes) -1 )  == i)
-                {
-
-                  //  MessageBox.Show("TAMA " + tma.ToString() + " "+ c );
-
-                    MessageBox.Show(d.ToString().Substring(0, 2) + " de " + meses[i] + " del "+ anio);
-                    
+                if ((Convert.ToInt32(sacaDias[1]) - 1) == i)
+                { 
+                    fecha = sacaDias[0] + " de " + meses[i] + " del " + sacaDias[2];  
                 }
             }
+           
             return fecha;
 
         }
@@ -263,15 +304,20 @@ namespace GestorDeDispositvos
             DateTime TheDate = new DateTime();
 
             TheDate = DateTime.Now;
-            this.contruyeFecha(TheDate);
+            ;
 
+            Font dateFont = new Font("Arial", 10, FontStyle.Regular);
             Font printFont = new Font("Arial", 9);
             Font headFont = new Font("Arial", 17);
-            Font titleFont = new Font("Arial", 9 , FontStyle.Bold);
-            
+            Font titleFont = new Font("Arial", 9, FontStyle.Bold);
 
-            ////  e.Graphics.DrawString( t , printFont, Brushes.Black, 500f, 25f);
+
+            e.Graphics.DrawString(this.contruyeFecha(TheDate), dateFont, Brushes.Black, 920f, 70f);
+
             int xPos = 50;
+            int xPosR = 30;
+
+
             float topMargin = e.MarginBounds.Top + 90;
             float yPos = 200;
             float yPosT = 160;
@@ -281,19 +327,21 @@ namespace GestorDeDispositvos
             string texto = "";
             DataGridViewRow row = new DataGridViewRow();
             Image image2 = Image.FromFile("c:\\images.jpg");
-            this.encabezados_reporte( e, xPos, yPosT, titleFont );
+
+            this.encabezados_reporte(e, xPos, yPosT, titleFont);
+            this.LLenaLista(xPos); this.LLenaListaTama();
+            this.LLenaListaPosCuad(xPos);
             Bitmap imageM = new Bitmap(image2, new Size(image2.Width / 2, image2.Height / 2));
             Pen pen = new Pen(Color.Black, 3);
 
-            Pen penCuadro = new Pen(Color.LightBlue, 2);
-
+            Pen penCuadro = new Pen(Color.Black, 2);
 
             Point[] points = { new Point(50,  100), new Point(document.PrinterSettings.PaperSizes[0].Height-50, 100), };
             document.DefaultPageSettings.PaperSize = document.PrinterSettings.PaperSizes[0];
             
 
             e.Graphics.DrawLines(pen, points);
-            e.Graphics.DrawString("Reporte de radios", headFont, Brushes.Black, 470f, 50f);
+            e.Graphics.DrawString("Reporte de radios", headFont, Brushes.Black, 470f, 60f);
 
             Rectangle r2 = new Rectangle(25, 150,
                             document.PrinterSettings.PaperSizes[0].Height - 50,
@@ -306,106 +354,150 @@ namespace GestorDeDispositvos
             Rectangle r = new Rectangle( 25 , 150 , 
                                         document.PrinterSettings.PaperSizes[0].Height - 50, 
                                         document.PrinterSettings.PaperSizes[0].Width - 200);
-            e.Graphics.DrawRectangle(pen, r );
+            //e.Graphics.DrawRectangle(pen, r );
             e.Graphics.DrawImage(imageM, 20f, 20f);
 
-            
-            // Recorremos las filas del DataGridView hasta que llegemos
-            // a las líneas que nos caben en cada página o al final del grid.
-            while (count < linesPerPage && i < this.d.GSdgvReportes.Rows.Count)
+            while (count < linesPerPage &&
+                   i < this.d.GSdgvReportes.Rows.Count)
             {
+                this.posicionesTxt.Clear();
                 List<string> t = new List<string>();
                 row = this.d.GSdgvReportes.Rows[i];
                 texto = "";
-                string celdaDato;
+                
                 if (row != null)
                 {
                     for (int cont = 0; cont < row.Cells.Count; cont++)
                     {
+                        
                         if (row.Cells[cont].Value != null) {
                             if (row.Cells[cont].Value.ToString().Contains('/'))
                             {
                                 t.Add(row.Cells[cont].Value.ToString().Substring(0, 10));
+                                this.posicionesTxt.Add(row.Cells[cont].Value.ToString().Substring(0, 10) );
+
                             }
-                            else { t.Add(row.Cells[cont].Value.ToString()); }
-                            
-
-
+                            else { t.Add(row.Cells[cont].Value.ToString());
+                                this.posicionesTxt.Add(row.Cells[cont].Value.ToString());
+                            }
                         }
                         
                     }
 
-
-                    for (int j = 0; j < t.Count; j++)
-                    {
-                        texto += t[j];
-                    }
-                    
-                    
                 }
 
-                yPos = topMargin + (count * printFont.GetHeight(e.Graphics));
-              
-                e.Graphics.DrawString(texto, printFont, Brushes.Black, xPos, yPos);
-                r2.X = xPos;
-                r2.Y = (int)yPos;
-                r2.Width = 40;
-                r2.Height = 30;
 
-                e.Graphics.DrawRectangle(penCuadro, r2);
+
+
+                yPos = topMargin + (count * printFont.GetHeight(e.Graphics));
+
+                if (posicionesTxt.Count > 0)
+                {
+                    for (int x = 0; x <= 7; x++){
+                        this.dibujaYConfigCuadro(r2, printFont, e, this.posDeCuadros[x], yPos, penCuadro, this.tamaLetras[x]);
+                        e.Graphics.DrawString(this.posicionesTxt[x], printFont, Brushes.Black, this.posiciones[x] , yPos);
+                    }
+                }
 
                 count++;
                 i++;
             }
-
-            // Una vez fuera del bucle comprobamos si nos quedan más filas 
-            // por imprimir, si quedan saldrán en la siguente página
-
             if (i < this.d.GSdgvReportes.Rows.Count)
                 e.HasMorePages = true;
-            else
-            {
-                // si llegamos al final, se establece HasMorePages a 
-                // false para que se acabe la impresión
+            else{
                 e.HasMorePages = false;
-
-                // Es necesario poner el contador a 0 porque, por ejemplo si se hace 
-                // una impresión desde PrintPreviewDialog, se vuelve disparar este 
-                // evento como si fuese la primera vez, y si i está con el valor de la
-                // última fila del grid no se imprime nada
                 i = 0;
             }
             
         }
 
+        public void dibujaYConfigCuadro(Rectangle r2 ,Font printFont,PrintPageEventArgs e, int xPos, float yPos, Pen penCuadro, int W)
+        {
+            r2.X += xPos;
+            r2.Y = (int)yPos;
+            r2.Width = 50;
+            r2.Width = W;
+            r2.Height = (int)printFont.GetHeight(e.Graphics);
+            e.Graphics.DrawRectangle(penCuadro, r2);
+
+        }
+
         public void encabezados_reporte(PrintPageEventArgs e, float xP, float yP, Font titleFont)
         {
             e.Graphics.DrawString("Número\nde Folio", titleFont, Brushes.Black, xP, yP);
-
             e.Graphics.DrawString("Fecha\nde Asignación", titleFont, Brushes.Black, xP + 60, yP);
-
-            e.Graphics.DrawString("Observaciones", titleFont, Brushes.Black, xP + 240, yP);
-
-            e.Graphics.DrawString("Número\nde Radio", titleFont, Brushes.Black, xP + 470, yP);
-
-            e.Graphics.DrawString("Reponsable", titleFont, Brushes.Black, xP + 540, yP);
-
-            e.Graphics.DrawString("Sucursal", titleFont, Brushes.Black, xP + 650, yP);
-
-            e.Graphics.DrawString("Área", titleFont, Brushes.Black, xP + 800, yP);
-
+            e.Graphics.DrawString("Observaciones", titleFont, Brushes.Black, xP + 330, yP);
+            e.Graphics.DrawString("Número\nde Radio", titleFont, Brushes.Black, xP + 610, yP);
+            e.Graphics.DrawString("Reponsable", titleFont, Brushes.Black, xP + 700, yP);
+            e.Graphics.DrawString("Beta", titleFont, Brushes.Black, xP + 825, yP);
+            e.Graphics.DrawString("Área", titleFont, Brushes.Black, xP + 880, yP);
             e.Graphics.DrawString("Estado", titleFont, Brushes.Black, xP + 950, yP);
+        }
+
+        public void LLenaLista(float xP)
+        {
+            posiciones.Add(65);
+            posiciones.Add((int)xP + 75);
+            posiciones.Add((int)xP + 160);
+
+            posiciones.Add((int)xP + 600);
+
+            posiciones.Add((int)xP + 675);
+            posiciones.Add((int)xP + 840);
+            posiciones.Add((int)xP + 863);
+            posiciones.Add((int)xP + 943);
+        }
+
+        public void LLenaListaPosCuad(float xP)
+        {
+
+
+            posDeCuadros.Add(25);
+            posDeCuadros.Add((int)xP +30);
+            posDeCuadros.Add((int)xP + 130);
+
+            posDeCuadros.Add((int)xP + 574);
+
+            posDeCuadros.Add((int)xP + 650);
+
+            posDeCuadros.Add((int)xP + 810);
+
+            posDeCuadros.Add((int)xP + 837);
+            posDeCuadros.Add((int)xP + 918);
+        }
+
+        public void LLenaListaTama()
+        {
+             
+            this.tamaLetras.Add( 50 );
+            this.tamaLetras.Add( 95 );
+            this.tamaLetras.Add( 438 );
+            this.tamaLetras.Add( 70 );
+            this.tamaLetras.Add( 155 );
+
+            this.tamaLetras.Add(23 );
+            this.tamaLetras.Add( 75 );
+            this.tamaLetras.Add(77);
+           
         }
         private void button8_Click(object sender, EventArgs e)
         {
-            // if (TreeView1.SelectedNode != null)
             document.DocumentName = "Reporte de Radios";
             PrintPreviewDialog1.Document = document;
-            PrintPreviewDialog1.ShowIcon = false;
-
-            // Call the ShowDialog method. This will trigger the document's
-            //  PrintPage event.
+            PrintPreviewDialog1.ShowIcon = false;  
             PrintPreviewDialog1.ShowDialog();
+        }
+
+        private void button7_Click_2(object sender, EventArgs e)
+        {
+            printDocument1.DocumentName = "Reporte de radios";
+            printDocument1.DefaultPageSettings.Landscape = true;
+            printDocument1.Print();
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            MessageBox.Show("Cb editado");
         }
     }
     }
