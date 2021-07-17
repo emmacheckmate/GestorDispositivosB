@@ -62,10 +62,7 @@ namespace GestorDeDispositvos
             this.Controls.Add(d.ld);
             this.Controls.Add(this.d.GSdgvReportes);
             panel1.Controls.Add(this.d.GSdgvReportes);
-            //79
-
-            string t = "El radio se encontraba con el clip roto ya se le cambiaron los tornillos, cam";
-            //MessageBox.Show(t.Length.ToString());
+            
         }
 
         public void inicializa_combo_boxes()
@@ -256,8 +253,7 @@ namespace GestorDeDispositvos
 
         private void button6_Click_1(object sender, EventArgs e)
         {
-            ReportesForm r = new ReportesForm();
-            r.ShowDialog();
+           
 
         }
 

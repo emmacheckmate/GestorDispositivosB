@@ -182,12 +182,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Areas.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Areas.Designer.cs">
-      <DependentUpon>Areas.cs</DependentUpon>
-    </Compile>
     <Compile Include="BDSQL.cs" />
     <Compile Include="ComboControl.cs" />
     <Compile Include="CrudRadio.cs">
@@ -218,18 +212,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RegRadio.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="RegRadio.Designer.cs">
-      <DependentUpon>RegRadio.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ReportesForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ReportesForm.Designer.cs">
-      <DependentUpon>ReportesForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="SeleccionForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -237,9 +219,6 @@
       <DependentUpon>SeleccionForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Validaciones.cs" />
-    <EmbeddedResource Include="Areas.resx">
-      <DependentUpon>Areas.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="CrudRadio.resx">
       <DependentUpon>CrudRadio.cs</DependentUpon>
     </EmbeddedResource>
@@ -262,12 +241,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="RegRadio.resx">
-      <DependentUpon>RegRadio.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ReportesForm.resx">
-      <DependentUpon>ReportesForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="SeleccionForm.resx">
       <DependentUpon>SeleccionForm.cs</DependentUpon>
     </EmbeddedResource>

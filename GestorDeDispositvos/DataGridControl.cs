@@ -137,24 +137,51 @@ namespace GestorDeDispositvos
 
         }
 
-        public void cambia_encabezados()
+        public void tama_encabezados()
         {
-            this.GSdgvReportes.Columns[0].HeaderText = "Folio";
             this.GSdgvReportes.ColumnHeadersHeight = 60;
             this.GSdgvReportes.Columns[0].Width = 40;
-
-
-            this.GSdgvReportes.Columns[1].HeaderText = "Fecha de\nEntrega";
-            this.GSdgvReportes.Columns[2].HeaderText = "Observaciones";
-            this.GSdgvReportes.Columns[3].HeaderText = "Número\nde radio";
             this.GSdgvReportes.Columns[3].Width = 70;
             this.GSdgvReportes.Columns[1].Width = 70;
             this.GSdgvReportes.Columns[4].Width = 100;
+            this.GSdgvReportes.Columns[5].Width = 60;
+        }
+
+        public void nombres_encabezados()
+        {
+            this.GSdgvReportes.Columns[0].HeaderText = "Folio";
+        }
+        public void cambia_encabezados()
+        {
+            
+
+            this.tama_encabezados();
+            this.nombres_encabezados();
+            this.GSdgvReportes.Columns[1].HeaderText = "Fecha de\nEntrega";
+            this.GSdgvReportes.Columns[2].HeaderText = "Observaciones";
+            this.GSdgvReportes.Columns[3].HeaderText = "Número\nde radio";
+            
             this.GSdgvReportes.Columns[4].HeaderText = "Encargado\ndel\nradio ";
             this.GSdgvReportes.Columns[6].HeaderText = "Area";
-            this.GSdgvReportes.Columns[6].Width = 60;
+            
             this.GSdgvReportes.Columns[5].HeaderText = "Sucural";
-            this.GSdgvReportes.Columns[5].Width = 60;
+            
+            this.GSdgvReportes.Columns[7].HeaderText = "Estado";
+            this.GSdgvReportes.Columns[0].DefaultCellStyle.BackColor = Color.LightBlue;
+            this.GSdgvReportes.Columns[2].DefaultCellStyle.BackColor = Color.LightBlue;
+            this.GSdgvReportes.Columns[4].DefaultCellStyle.BackColor = Color.LightBlue;
+            this.GSdgvReportes.Columns[6].DefaultCellStyle.BackColor = Color.LightBlue;
+            this.GSdgvReportes.EnableHeadersVisualStyles = false;
+            this.GSdgvReportes.Columns[0].HeaderCell.Style.BackColor = Color.CornflowerBlue;
+            this.GSdgvReportes.Columns[1].HeaderCell.Style.BackColor = Color.CornflowerBlue;
+            this.GSdgvReportes.Columns[2].HeaderCell.Style.BackColor = Color.CornflowerBlue;
+            this.GSdgvReportes.Columns[3].HeaderCell.Style.BackColor = Color.CornflowerBlue;
+            this.GSdgvReportes.Columns[4].HeaderCell.Style.BackColor = Color.CornflowerBlue;
+            this.GSdgvReportes.Columns[5].HeaderCell.Style.BackColor = Color.CornflowerBlue;
+            this.GSdgvReportes.Columns[6].HeaderCell.Style.BackColor = Color.CornflowerBlue;
+            this.GSdgvReportes.Columns[7].HeaderCell.Style.BackColor = Color.CornflowerBlue;
+
+
             string temp = "";
             for (int i = 0; i < this.GSdgvReportes.Columns.Count; i++) {
 

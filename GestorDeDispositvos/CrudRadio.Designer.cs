@@ -47,8 +47,6 @@ namespace GestorDeDispositvos
             this.button8 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
-            this.label10 = new System.Windows.Forms.Label();
-            this.button6 = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -57,7 +55,6 @@ namespace GestorDeDispositvos
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -160,7 +157,6 @@ namespace GestorDeDispositvos
             // 
             this.panel1.AutoSize = true;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel1.Controls.Add(this.comboBox1);
             this.panel1.Controls.Add(this.label11);
             this.panel1.Controls.Add(this.button7);
             this.panel1.Controls.Add(this.label12);
@@ -168,8 +164,6 @@ namespace GestorDeDispositvos
             this.panel1.Controls.Add(this.button8);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.button5);
-            this.panel1.Controls.Add(this.label10);
-            this.panel1.Controls.Add(this.button6);
             this.panel1.Controls.Add(this.pictureBox2);
             this.panel1.Controls.Add(this.label9);
             this.panel1.Controls.Add(this.obsRichtxt);
@@ -264,29 +258,6 @@ namespace GestorDeDispositvos
             this.button5.UseVisualStyleBackColor = false;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.label10.Location = new System.Drawing.Point(356, 392);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(80, 20);
-            this.label10.TabIndex = 25;
-            this.label10.Text = "Consultas";
-            // 
-            // button6
-            // 
-            this.button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button6.Image = global::GestorDeDispositvos.Properties.Resources.reportes;
-            this.button6.Location = new System.Drawing.Point(363, 309);
-            this.button6.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(72, 69);
-            this.button6.TabIndex = 8;
-            this.button6.UseVisualStyleBackColor = false;
-            this.button6.Click += new System.EventHandler(this.button6_Click_1);
-            // 
             // pictureBox2
             // 
             this.pictureBox2.Image = global::GestorDeDispositvos.Properties.Resources.baner1;
@@ -370,20 +341,6 @@ namespace GestorDeDispositvos
             // 
             this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage_1);
             // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "value1",
-            "value2",
-            "value3",
-            "value4"});
-            this.comboBox1.Location = new System.Drawing.Point(1023, 126);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(194, 28);
-            this.comboBox1.TabIndex = 108;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            // 
             // CrudRadio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -424,8 +381,6 @@ namespace GestorDeDispositvos
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Label label2;
         private System.Drawing.Printing.PrintDocument printDocument1;
         private System.Windows.Forms.Button button8;
@@ -433,6 +388,5 @@ namespace GestorDeDispositvos
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

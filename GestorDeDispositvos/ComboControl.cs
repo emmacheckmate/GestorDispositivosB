@@ -3,6 +3,7 @@ using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 using System;
+using System.Text.RegularExpressions;
 
 namespace GestorDeDispositvos
 {
@@ -121,11 +122,38 @@ namespace GestorDeDispositvos
             }
         }
         public int buscaEnCombo(string dato, int indexCombo){
-            if (this.lcbGS[indexCombo].FindStringExact(dato) != -1){
-                return this.lcbGS[indexCombo].FindStringExact(dato);
+
+            if (indexCombo == 2)
+            {
+                dato = Regex.Replace(dato, @"\s+", "");
+                switch (dato){
+
+                    case "6":
+                        dato = "Himno";
+                        break;
+
+                    case "7":
+                        dato = "Pozos";
+                        break;
+
+                    case "8":
+                        dato = "Soledad";
+                        break;
+                }
+
             }
-            else
-                return -1;
+            
+
+                if (this.lcbGS[indexCombo].FindStringExact(dato) != -1) 
+                {
+
+                                
+                    return this.lcbGS[indexCombo].FindStringExact(dato);
+                }
+                else
+                    return -1;
+            
+          
         }
             
         

@@ -269,14 +269,11 @@ C:\Users\Sistemas_B8\Documents\GitHub\GestorDispositivosB\GestorDeDispositvos\bi
 C:\Users\Sistemas_B8\Documents\GitHub\GestorDispositivosB\GestorDeDispositvos\bin\Debug\zh-Hans\Microsoft.Data.SqlClient.resources.dll
 C:\Users\Sistemas_B8\Documents\GitHub\GestorDispositivosB\GestorDeDispositvos\bin\Debug\zh-Hant\Microsoft.Data.SqlClient.resources.dll
 C:\Users\Sistemas_B8\Documents\GitHub\GestorDispositivosB\GestorDeDispositvos\obj\Debug\GestorDeDispositvos.csproj.AssemblyReference.cache
-C:\Users\Sistemas_B8\Documents\GitHub\GestorDispositivosB\GestorDeDispositvos\obj\Debug\GestorDeDispositvos.Areas.resources
 C:\Users\Sistemas_B8\Documents\GitHub\GestorDispositivosB\GestorDeDispositvos\obj\Debug\GestorDeDispositvos.CrudRadio.resources
 C:\Users\Sistemas_B8\Documents\GitHub\GestorDispositivosB\GestorDeDispositvos\obj\Debug\GestorDeDispositvos.Dispositivos.resources
 C:\Users\Sistemas_B8\Documents\GitHub\GestorDispositivosB\GestorDeDispositvos\obj\Debug\GestorDeDispositvos.FormDinamico.resources
 C:\Users\Sistemas_B8\Documents\GitHub\GestorDispositivosB\GestorDeDispositvos\obj\Debug\GestorDeDispositvos.Principal.resources
 C:\Users\Sistemas_B8\Documents\GitHub\GestorDispositivosB\GestorDeDispositvos\obj\Debug\GestorDeDispositvos.Properties.Resources.resources
-C:\Users\Sistemas_B8\Documents\GitHub\GestorDispositivosB\GestorDeDispositvos\obj\Debug\GestorDeDispositvos.RegRadio.resources
-C:\Users\Sistemas_B8\Documents\GitHub\GestorDispositivosB\GestorDeDispositvos\obj\Debug\GestorDeDispositvos.ReportesForm.resources
 C:\Users\Sistemas_B8\Documents\GitHub\GestorDispositivosB\GestorDeDispositvos\obj\Debug\GestorDeDispositvos.SeleccionForm.resources
 C:\Users\Sistemas_B8\Documents\GitHub\GestorDispositivosB\GestorDeDispositvos\obj\Debug\GestorDeDispositvos.csproj.GenerateResource.cache
 C:\Users\Sistemas_B8\Documents\GitHub\GestorDispositivosB\GestorDeDispositvos\obj\Debug\GestorDeDispositvos.csproj.CoreCompileInputs.cache
