@@ -495,6 +495,14 @@ namespace GestorDeDispositvos
         {
             MessageBox.Show("Cb editado");
         }
+
+        private void obsRichtxt_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(obsRichtxt.Text.Count() == obsRichtxt.MaxLength )
+            {
+                MessageBox.Show("No se permite escribir mas que 70 caracteres");
+            }
+        }
     }
     }
 

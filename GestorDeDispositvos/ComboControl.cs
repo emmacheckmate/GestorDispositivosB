@@ -96,6 +96,8 @@ namespace GestorDeDispositvos
                     if (col.Ordinal == 0){
                         this.listaClaves.Add(new List<string>());
                         foreach (DataRow row in d.Rows){
+                            
+
                             this.listaClaves[i].Add(row[col.Ordinal].ToString());
                         }
                     }
@@ -126,7 +128,8 @@ namespace GestorDeDispositvos
             if (indexCombo == 2)
             {
                 dato = Regex.Replace(dato, @"\s+", "");
-                switch (dato){
+                switch (dato)
+                {
 
                     case "6":
                         dato = "Himno";
@@ -142,42 +145,23 @@ namespace GestorDeDispositvos
                 }
 
             }
-            
+          
 
-                if (this.lcbGS[indexCombo].FindStringExact(dato) != -1) 
-                {
 
-                                
-                    return this.lcbGS[indexCombo].FindStringExact(dato);
-                }
-                else
-                    return -1;
+            if (this.lcbGS[indexCombo].FindString(dato) != -1)
+            {
+
+
+                return this.lcbGS[indexCombo].FindString(dato);
+            }
+            else
+            {
+                
+                return -1;
+            }
             
           
         }
-            
-        
-
-
-        public void muestra_listaDListas()
-        {
-            string datos = "";
-            foreach (List<string> l in this.listaClaves)
-            {
-                
-                foreach(string ll in l)
-                {
-                    datos += ll + " " ;
-                }
-                datos += "\n\n";
-            }
-            //MessageBox.Show(datos);
-        }
-
-        
-
-
-
     }
 }
 
