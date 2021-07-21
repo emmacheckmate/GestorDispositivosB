@@ -478,7 +478,7 @@ namespace GestorDeDispositvos
         }
         private void button8_Click(object sender, EventArgs e)
         {
-            document.DocumentName = "Reporte de Radios";
+            document.DocumentName = "Relación de Radio Frecuencias";
             PrintPreviewDialog1.Document = document;
             PrintPreviewDialog1.ShowIcon = false;  
             PrintPreviewDialog1.ShowDialog();
